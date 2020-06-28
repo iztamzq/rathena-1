@@ -19297,25 +19297,25 @@ void clif_display_pinfo(struct map_session_data *sd, int cmdtype) {
 		 * Set for EXP
 		 */
 		//0:PCRoom
-		details_bexp[0] = map_getmapflag(sd->bl.m, MF_BEXP);
-		if (details_bexp[0] == 100 || !details_bexp[0])
-			details_bexp[0] = 0;
+		details_bexp[1] = map_getmapflag(sd->bl.m, MF_BEXP);
+		if (details_bexp[1] == 100 || !details_bexp[1])
+			details_bexp[1] = 0;
 		else {
-			if (details_bexp[0] < 100) {
-				details_bexp[0] = 100 - details_bexp[0];
-				details_bexp[0] = 0 - details_bexp[0];
+			if (details_bexp[1] < 100) {
+				details_bexp[1] = 100 - details_bexp[1];
+				details_bexp[1] = 0 - details_bexp[1];
 			}
 			else
-				details_bexp[0] = details_bexp[0] - 100;
+				details_bexp[1] = details_bexp[0] - 100;
 		}
 		//1:Premium
 		if (pc_isvip(sd)) {
-			details_bexp[1] = battle_config.vip_base_exp_increase * 10;
-			if (details_bexp[1] < 0)
-				details_bexp[1] = 0 - details_bexp[1];
+			details_bexp[0] = battle_config.vip_base_exp_increase * 10;
+			if (details_bexp[0] < 0)
+				details_bexp[0] = 0 - details_bexp[0];
 		}
 		else
-			details_bexp[1] = 0;
+			details_bexp[0] = 0;
 		//2:Server
 		details_bexp[2] = battle_config.base_exp_rate;
 		if (details_bexp[2] == 100)
@@ -19336,15 +19336,15 @@ void clif_display_pinfo(struct map_session_data *sd, int cmdtype) {
 		 * Set for Drop rate
 		 */
 		//0:PCRoom
-		details_drop[0] = 0;
+		details_drop[1] = 0;
 		//1:Premium
-		details_drop[1] = (battle_config.vip_drop_increase * battle_config.item_rate_common) / 100;
+		details_drop[0] = (battle_config.vip_drop_increase * battle_config.item_rate_common) / 100;
 		if (pc_isvip(sd)) {
-			if (details_drop[1] < 0)
-				details_drop[1] = 0 - details_drop[1];
+			if (details_drop[0] < 0)
+				details_drop[0] = 0 - details_drop[0];
 		}
 		else
-			details_drop[1] = 0;
+			details_drop[0] = 0;
 		//2:Server
 		details_drop[2] = battle_config.item_rate_common;
 		if (details_drop[2] == 100)
@@ -19366,23 +19366,23 @@ void clif_display_pinfo(struct map_session_data *sd, int cmdtype) {
 		 */
 		//! FIXME: Current penalty system makes this announcement unable to give info on + or - rate
 		//0:PCRoom
-		details_penalty[0] = 0;
+		details_penalty[1] = 0;
 		//1:Premium
 		if (pc_isvip(sd)) {
-			details_penalty[1] = battle_config.vip_exp_penalty_base;
-			if (details_penalty[1] == 100)
-				details_penalty[1] = 0;
+			details_penalty[0] = battle_config.vip_exp_penalty_base;
+			if (details_penalty[0] == 100)
+				details_penalty[0] = 0;
 			else {
-				if (details_penalty[1] < 100) {
-					details_penalty[1] = 100 - details_penalty[1];
-					details_penalty[1] = 0 - details_penalty[1];
+				if (details_penalty[0] < 100) {
+					details_penalty[0] = 100 - details_penalty[0];
+					details_penalty[0] = 0 - details_penalty[0];
 				}
 				else
-					details_penalty[1] = details_penalty[1] - 100;
+					details_penalty[0] = details_penalty[0] - 100;
 			}
 		}
 		else
-			details_penalty[1] = 0;
+			details_penalty[0] = 0;
 		//2:Server
 		details_penalty[2] = battle_config.death_penalty_base;
 		if (details_penalty[2] == 100)
