@@ -263,7 +263,7 @@ OnKill:
 OnMyMobDead:
 	if (mobcount("bat_b01","guardian#bat_b01_b::OnMyMobDead") < 1) {
 		donpcevent "cell#bat_b01_b::OnGreen";
-		mapannounce "bat_b01", "Guardian ปกป้อง Crystal ของ Guillaume's ถูกสังหาร",bc_map,"0xFFCE00";
+		mapannounce "bat_b01", "Guardian ปกป้อง Crystal ของ Croix's ถูกสังหาร",bc_map,"0xFFCE00";
 		setunitdata $@FlavBG1_C2_ID,UMOB_DMGIMMUNE,0; // Make Crystal damageable again
 	}
 	end;
