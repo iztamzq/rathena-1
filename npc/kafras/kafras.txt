@@ -29,36 +29,36 @@
 aldeba_in,96,181,4	script	Kafra Service	113,{
 	cutin "kafra_05",2;
 	mes "[Kafra Leilah]";
-	mes "Hm...?";
-	mes "Oh, welcome to";
+	mes "หืม...?";
+	mes "โอ้, ยินดีต้อนรับ";
 	mes "the Kafra Corporation";
-	mes "Headquarters. Did you";
-	mes "need something?";
+	mes "สำนักงานใหญ่ คุณต้องการ";
+	mes "ให้ช่วยอะไรไหม?";
 	next;
-	switch(select("Save:Use Storage:Rent a Pushcart:Cancel")) {
+	switch(select("บันทึกจุดเซฟ:เปิดคลัง:เช่ารถเข็ญ:ยกเลิก")) {
 	case 1:
 		mes "[Kafra Leilah]";
-		mes "Your Respawn Point has";
-		mes "been saved here, inside";
+		mes "จุดเกิดของคุณ";
+		mes "ถูกบันทึกแล้ว ภายใน";
 		mes "of the Kafra Corporation";
-		mes "Headquarters. Thank you.";
+		mes "สำนักงานใหญ่ ขอบคุณค่ะ";
 		next;
 		savepoint "aldeba_in",96,179,1,1;
 		mes "[Kafra Leilah]";
-		mes "Please make use of";
-		mes "the Kafra Services that are";
-		mes "available throughout all of";
-		mes "Midgard. Thank you for";
-		mes "visiting the Kafra Headquarters.";
+		mes "กรุณาใช้ประโยชน์จาก";
+		mes "the Kafra Services";
+		mes "ที่มีให้บริการทุกที่ใน";
+		mes "Midgard. ขอบคุณสำหรับ";
+		mes "การมาเยี่ยม the Kafra สำนักงานใหญ่";
 		close2;
 		break;
 	case 2:
 		if (Zeny < 20) {
 			mes "[Kafra Leilah]";
-			mes "Excuse me, but it";
-			mes "seems that you don't";
-			mes "have the 20 zeny to pay";
-			mes "the Storage access fee...";
+			mes "ขออภัย แต่เหมือนว่า";
+			mes "คุณมีเงินไม่เพียงพอ";
+			mes "ต้องจ่าย 20 zeny";
+			mes "ค่าธรรมเนียมเปิดคลัง...";
 			close;
 		}
 		mes "[Kafra Leilah]";
