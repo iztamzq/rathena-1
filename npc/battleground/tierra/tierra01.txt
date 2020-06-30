@@ -803,12 +803,12 @@ OnTimer1830000:
 
 /*
 bat_a01,351,75,3	script	Croix Camp Soldier#bat_a01_guide	934,{
-	mes "Loading...";
+	mes "กำลังโหลด...";
 	close;
 }
 
 bat_a01,356,326,3	script	Guillaume Camp Soldier#bat_a01_guide	934,{
-	mes "Loading...";
+	mes "กำลังโหลด...";
 	close;
 }
 */
