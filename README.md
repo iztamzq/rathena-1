@@ -4,8 +4,7 @@
 [![Build Status](https://travis-ci.org/rathena/rathena.png?branch=master)](https://travis-ci.org/rathena/rathena) [![Build status](https://ci.appveyor.com/api/projects/status/8574b8nlwd57loda/branch/master?svg=true)](https://ci.appveyor.com/project/rAthenaAPI/rathena/branch/master) [![Total alerts](https://img.shields.io/lgtm/alerts/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/alerts/) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/context:cpp) ![GitHub](https://img.shields.io/github/license/rathena/rathena.svg) ![GitHub repo size](https://img.shields.io/github/repo-size/rathena/rathena.svg)
 > rAthena เป็นโครงการพัฒนาซอฟต์แวร์ที่ทำงานร่วมกันซึ่ง การสร้างแพคเกจเซิร์ฟเวอร์เกมสวมบทบาทออนไลน์ที่มีผู้เล่นหลายคน (MMORPG) เขียนใน C โปรแกรมนี้มีความหลากหลายมากและให้ NPC วาร์ปและการดัดแปลง โครงการนี้ได้รับการจัดการร่วมกันโดยกลุ่มอาสาสมัครทั่วโลกรวมถึงชุมชนที่ให้การประกันคุณภาพและการสนับสนุน rAthena คือความต่อเนื่องของโครงการ eAthena.
 
-[Discord](https://discord.gg/x6fCgkU)|[FluxCP](https://github.com/rathena/FluxCP)|[Donate]()
---------|--------|--------|--------|--------|--------
+[Discord](https://discord.gg/ErfhkkK)|[FluxCP](https://github.com/rathena/FluxCP)|[Donate]()
 
 ## 1. Prerequisites
 ก่อนติดตั้ง rAthena มีเครื่องมือและแอปพลิเคชั่นบางอย่างที่คุณต้องการ
