@@ -100,61 +100,61 @@ function	script	F_Kafra	{
 		break;
 	case 3:// Amatsu specific message (obsolete)
 		mes "[Kafra Employee]";
-		mes "So, have you come from a faraway land to study our culture, or are you just sightseeing?";
-		mes "In either case, why not stay awhile?";
-		mes "The air is eternally heavy with the";
-		mes "scent of pleasant wildflowers.";
+		mes "ดังนั้นคุณมาจากดินแดนอันห่างไกลเพื่อศึกษาวัฒนธรรมของเราหรือคุณเพียงแค่ท่องเที่ยว?";
+		mes "ในทั้งนี้ทั้งนั้น ทำไมไม่พักซักครู่?";
+		mes "อากาศที่แสนจะปวนแปรตลอด";
+		mes "กลิ่นของดอกไม้ป่าที่น่ารื่นรมย์";
 		break;
 	case 4:// Luoyang and Ayothaya specific message (obsolete)
 		mes "[Kafra Employee]";
-		mes "With our many Kafra";
-		mes "service locations, you're never";
-		mes "far from home.";
+		mes "ด้วยจำนวน Kafra ที่มีอยู่มาก";
+		mes "บริการทุกพื้นที่";
+		mes "ไม่เคยไกลจากบ้านคุณเลย";
 		break;
 	case 5:// NPC has it's own welcome message. (Display nothing)
 		break;
 	}
 	next;
 	if (.@welcome == 2)// Guild Kafra Menu override (free Teleport, free Storage, Free Cart)
-		setarray .@K_Menu0$[0], "Use Storage", "Use Guild Storage", "Rent a Pushcart", "Use Teleport Service", "Cancel";
+		setarray .@K_Menu0$[0], "เปิดคลัง", "เปิดคลังกิลด์", "เช่ารถเข็น", "ใช้บริการเทเลพอต", "ยกเลิก";
 	else {
 		switch(.@menu_num) {
 			// Save and Storage only
-			case 1:	setarray .@K_Menu0$[0],"Save","Use Storage","Cancel"; break;
+			case 1:	setarray .@K_Menu0$[0],"บันทึกจุดเกิด","เปิดคลัง","ยกเลิก"; break;
 			// Storage only
-			case 2:	setarray .@K_Menu0$[0],"Use Storage","Cancel"; break;
+			case 2:	setarray .@K_Menu0$[0],"เปิดคลัง","ยกเลิก"; break;
 			// No Teleport (Common)
-			case 3: setarray .@K_Menu0$[0],"Save","Use Storage","Rent a Pushcart","Check Other Information","Cancel"; break;
+			case 3: setarray .@K_Menu0$[0],"บันทึกจุดเกิด","เปิดคลัง","เช่ารถเข็น","ตรวจสอบข้อมูลอื่นๆ","ยกเลิก"; break;
 			// Case 4 is Einbroch no tele message.
 			// No save, or teleport. (Common)
-			case 5:	setarray .@K_Menu0$[0],"Use Storage","Rent a Pushcart","Check Other Information","Cancel"; break;
+			case 5:	setarray .@K_Menu0$[0],"เปิดคลัง","เช่ารถเข็น","ตรวจสอบข้อมูลอื่นๆ","ยกเลิก"; break;
 			// Storage and Check Other Information only.
-			case 6:	setarray .@K_Menu0$[0],"Use Storage","Check Other Information","Cancel"; break;
+			case 6:	setarray .@K_Menu0$[0],"เปิดคลัง","ตรวจสอบข้อมูลอื่นๆ","ยกเลิก"; break;
 			// Save, Storage, and Pushcart only (Kafra Warehouse)
-			case 7:	setarray .@K_Menu0$[0],"Save","Use Storage","Rent a Pushcart","Cancel"; break;
+			case 7:	setarray .@K_Menu0$[0],"บันทึกจุดเกิด","เปิดคลัง","เช่ารถเข็น","ยกเลิก"; break;
 			// Save, Storage, Other Check information. (Turbo track)
-			case 8: setarray .@K_Menu0$[0],"Save","Use Storage","Check Other Information","Cancel"; break;
+			case 8: setarray .@K_Menu0$[0],"บันทึกจุดเกิด","เปิดคลัง","ตรวจสอบข้อมูลอื่นๆ","ยกเลิก"; break;
 			// No Save (Rune Knight)
-			case 9: setarray .@K_Menu0$[0],"Use Storage","Rent a Pushcart","Use Teleport Service","Check Other Information","Cancel"; break;
+			case 9: setarray .@K_Menu0$[0],"เปิดคลัง","เช่ารถเข็น","ใช้บริการเทเลพอต","ตรวจสอบข้อมูลอื่นๆ","ยกเลิก"; break;
 			// Storage, Save, and Pushcart (Dewata, reorder of case 7)
-			case 10: setarray .@K_Menu0$[0],"Use Storage","Save","Rent a Pushcart","Cancel"; break;
+			case 10: setarray .@K_Menu0$[0],"เปิดคลัง","บันทึกจุดเกิด","เช่ารถเข็น","ยกเลิก"; break;
 			// Default message (obsolete)
-			default: setarray .@K_Menu0$[0],"Save","Use Storage","Use Teleport Service","Rent a Pushcart","Check Other Information","Cancel"; break;
+			default: setarray .@K_Menu0$[0],"บันทึกจุดเกิด","เปิดคลัง","ใช้บริการเทเลพอต","เช่ารถเข็น","ตรวจสอบข้อมูลอื่นๆ","ยกเลิก"; break;
 		}
 	}
 	.@menu$ = implode(.@K_Menu0$,":");
 	while (true) {
 		.@j = select(.@menu$) - 1;
-		if (.@K_Menu0$[.@j] == "Save")
+		if (.@K_Menu0$[.@j] == "บันทึกจุดเกิด")
 			return;
-		else if (.@K_Menu0$[.@j] == "Use Storage") {
+		else if (.@K_Menu0$[.@j] == "เปิดคลัง") {
 			if (.@welcome == 2)// Do not charge for Guild Storage
 				callfunc "F_KafStor",2,0,0;
 			else
 				callfunc "F_KafStor",0,getarg(3),.@welcome;
 			next;
 		}
-		else if (.@K_Menu0$[.@j] == "Use Teleport Service") {
+		else if (.@K_Menu0$[.@j] == "ใช้บริการเทเลพอต") {
 			if (.@menu_num != 4)// Display Einbroch "No Teleport Service" notice.
 				callfunc "F_KafTele",.@welcome;
 			else {
@@ -173,19 +173,19 @@ function	script	F_Kafra	{
 			}
 			next;
 		}
-		else if (.@K_Menu0$[.@j] == "Rent a Pushcart") {
+		else if (.@K_Menu0$[.@j] == "เช่ารถเข็น") {
 			if (callfunc("F_KafCart",.@welcome,getarg(4)) == 1)
 				next;
 		}
-		else if (.@K_Menu0$[.@j] == "Check Other Information") {
+		else if (.@K_Menu0$[.@j] == "ตรวจสอบข้อมูลอื่นๆ") {
 			callfunc "F_KafInfo",getarg(2);
 			next;
 		}
-		else if (.@K_Menu0$[.@j] == "Cancel") {
+		else if (.@K_Menu0$[.@j] == "ยกเลิก") {
 			callfunc "F_KafEnd",.@welcome,0;
 			end;
 		}
-		else if (.@K_Menu0$[.@j] == "Use Guild Storage") {
+		else if (.@K_Menu0$[.@j] == "เปิดคลังกิลด์") {
 			callfunc "F_KafStor",1,0;
 			next;
 		}
