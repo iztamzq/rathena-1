@@ -4,6 +4,7 @@
 //= rAthena Dev Team
 //= Darlskies, Darkchild, Syrus22, Lupus, kobra_k88 (2.0)
 //= L0ne_W0lf
+//= แปลไทยโดย Playragnarok
 //===== Current Version: =====================================
 //= 6.8
 //===== Compatible With: =====================================
@@ -159,17 +160,17 @@ function	script	F_Kafra	{
 				callfunc "F_KafTele",.@welcome;
 			else {
 				mes "[Kafra Employee]";
-				mes "Because of the ^FF0000Limited";
-				mes "Transport Agreement^000000, the";
-				mes "Kafra Corporation cannot";
-				mes "provide Teleport Services";
-				mes "in the Schwarzwald Republic.";
+				mes "เนื่องจากว่า ^FF0000ถูกจำกัด";
+				mes "ข้อตกลงการขนส่ง^000000";
+				mes "Kafra Corporation ไม่สามารถ";
+				mes "ให้บริการเทเลพอต";
+				mes "ไปยัง Schwarzwald Republic ได้";
 				next;
 				mes "[Kafra Employee]";
-				mes "We ask that you please";
-				mes "use the Airship Service";
-				mes "instead. Thank you for your";
-				mes "understanding and cooperation.";
+				mes "เราขอให้คุณ";
+				mes "โปรดใช้ Airship Service แทน";
+				mes "ขอบคุุณที่เข้าใจ";
+				mes "และให้ความร่วมมือ";
 			}
 			next;
 		}
@@ -203,8 +204,8 @@ function	script	F_KafStor	{
 	if (.@type == 1) {
 		if (guildopenstorage()) {
 			mes "[Kafra Employee]";
-			mes "I'm sorry but another guild member is using the guild storage";
-			mes "right now.  Please wait until that person is finished.";
+			mes "ฉันขออภัย แต่สมาชิกกิลด์คนอื่นกำลังใช้ที่เก็บข้อมูลของกิลด์";
+			mes "ตอนนี้ โปรดรอจนกว่าบุคคลนั้นจะเสร็จสิ้น";
 			close3;
 		}
 		cutin "", 255;
@@ -215,16 +216,16 @@ function	script	F_KafStor	{
 		mes "[Kafra Employee]";
 		// Niflheim Specific Message
 		if (getarg(2) == 1) {
-			mes "^666666S-s-ssoooorry,";
-			mes "y-you're a-a-aaaa";
-			mes "Nooviiice... N-neeeds";
-			mes "B-basic sssskill l-level 6...^000000";
+			mes "^666666ข-ข-ขออภัย";
+			mes "ค-คุณ ณ-ณ-ณณณณ";
+			mes "Nooviiice... ต-ต้ออออง";
+			mes "B-basic sssskill เ-เลเวล 6...^000000";
 			return;
 		}
-		mes "I'm sorry, but you";
-		mes "need the Novice's";
-		mes "Basic Skill Level 6 to";
-		mes "use the Storage Service.";
+		mes "ฉันขออภัย แต่คุณ";
+		mes "Novice's";
+		mes "ต้องเรียนรู้ Basic Skill Level 6";
+		mes "เพื่อใช้งาน Storage Service";
 		return;
 	}
 	// Accessing Normal Storage (Skipped if accessing Storage from Guild castle)
@@ -239,16 +240,16 @@ function	script	F_KafStor	{
 				if (getarg(2) == 1) {
 					percentheal -50,-50;
 					mes "^666666Zeeeeeny...";
-					mes "M-more z-zeny...!";
-					mes "N-neeed 150... zeny...";
-					mes "Ergh! T-taking bl-blood~!^000000";
+					mes "ม-มากกว่า z-zeny...!";
+					mes "ต-ต้ออองการ 150... zeny...";
+					mes "เอ่อ! T-taking ~!^000000";
 					return;
 				}
 				// Standard Message
-				mes "I'm sorry, but you don't";
-				mes "have enough zeny to use";
-				mes "the Storage Service. Our";
-				mes "Storage access fee is " + .@fee + " zeny.";
+				mes "ฉันขออภัย แต่คุณ";
+				mes "มี zeny ไม่มีเพียงพอ";
+				mes "ที่จะใช้บริการคลัง";
+				mes "Storage มีค่าธรรมเนียม " + .@fee + " zeny.";
 				return;
 			}
 			Zeny -= .@fee;
@@ -268,9 +269,9 @@ function	script	F_KafStor	{
 		// Normal message
 		else {
 			mes "[Kafra Employee]";
-			mes "Here, let me open";
-			mes "your Storage for you.";
-			mes "Thank you for using";
+			mes "เอาหล่ะ, ให้ฉันได้";
+			mes "เปิดคลังให้คุณ";
+			mes "ขอบคุณที่ใช้บริการ";
 			mes "the Kafra Service.";
 		}
 	}
@@ -286,11 +287,11 @@ function	script	F_KafStor	{
 //===================================================
 function	script	F_KafTele	{
 	mes "[Kafra Employee]";
-	mes "Please choose";
-	mes "your destination.";
+	mes "โปรดเลือก";
+	mes "จุดหมายของคุณ";
 	next;
 	.@j = select( implode(@wrpC$,":") ) - 1;
-	if (@wrpC$[.@j] == "Cancel")
+	if (@wrpC$[.@j] == "ยกเลิก")
 		return;
 	// Consume "Free Ticket for Kafra Transportation" if available.
 	// Do not consume if in Guild castle
@@ -299,9 +300,9 @@ function	script	F_KafTele	{
 	else {
 		if (Zeny < @wrpP[.@j]) {
 			mes "[Kafra Employee]";
-			mes "I'm sorry, but you don't have";
-			mes "enough zeny for the Teleport";
-			mes "Service. The fee to teleport";
+			mes "ฉันขออภัย แต่คุณ";
+			mes "มี zeny ไม่มีเพียงพอ";
+			mes "ที่จะใช้บริการเทเลพอต";
 			mes "to " + @wrpD$[.@j] + " is " + @wrpP[.@j] + " zeny.";
 			close3;
 		}
@@ -338,25 +339,25 @@ function	script	F_KafCart	{
 	// Ensure that the class wanting to rent a pushcart is a merchant
 	if (BaseClass != Job_Merchant) {
 		mes "[Kafra Employee]";
-		mes "I'm sorry, but the";
-		mes "Pushcart rental service";
+		mes "ฉันขออภัย แต่ว่า";
+		mes "บริการเช่ารถเข็น";
 		if (checkre(RENEWAL) == true)
-			mes "is only available to Merchant classes.";
+			mes "มีให้บริการเพียงแค่ Merchant";
 		else {
-			mes "is only available to Merchants,";
+			mes "มีบริการให้เพียง Merchants,";
 			mes "Blacksmiths, Master Smiths,";
-			mes "Alchemists and Biochemists.";
+			mes "Alchemists และ Biochemists.";
 		}
 		return 1;
 	}
 	// Make sure the invoking character does not have a cart already
 	else if (checkcart() == true) {
 		mes "[Kafra Employee]";
-		mes "You already have";
-		mes "a Pushcart equipped.";
-		mes "Unfortunately, we can't";
-		mes "rent more than one to";
-		mes "each customer at a time.";
+		mes "คุณได้มี";
+		mes รถเข็นอยู่แล้ว";
+		mes "น่าเสียดายที่เราทำไม่ได้";
+		mes "ให้คุณได้เช่ามากกว่าหนึ่ง";
+		mes "ในเวลาขณะเดียวกันนี้";
 		return 1;
 	}
 	// Check if the player has the Pushcart skill

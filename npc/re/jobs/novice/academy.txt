@@ -2,6 +2,7 @@
 //= Criatura Academy
 //===== By: ====================================================================
 //= Kisuka (1.0)
+//= แปลไทยโดย Playragnarok 1.0
 //===== Current Version: =======================================================
 //= 2.0.0
 //===== File Encoding ==========================================================
@@ -64,15 +65,15 @@ iz_int04,51,30,0	duplicate(iz_int#intro_evt02)	iz_int04#intro_evt02	HIDDEN_WARP_
 
 //== Wounded Swordsman (iz_int) =================================
 iz_int,56,32,3	script	Wounded Swordsman#intro_npc01_iz_int	4_TOWER_01,5,5,{
-	npctalk "Oh...", "", bc_self;
+	npctalk "โอ...", "", bc_self;
 	cloakonnpc strnpcinfo(0), getcharid(0);
 	cloakoffnpc "Wounded Swordsman#intro_npc02_" + strnpcinfo(4), getcharid(0);
 	end;
 
 OnTouch:
-	npctalk "Urgh... please... help me...", "", bc_self;
+	npctalk "เฮือก... ได้โปรด... ช่วย ข้าด้วย...", "", bc_self;
 	sleep2 500;
-	npctalk "In order to talk with me.. click my body..", "", bc_self;
+	npctalk "เพื่อคุยกับฉัน .. สะกดตัวของฉัน..", "", bc_self;
 	end;
 
 OnInit:
@@ -87,32 +88,32 @@ iz_int04,56,32,3	duplicate(Wounded Swordsman#intro_npc01_iz_int)	Wounded Swordsm
 iz_int,56,32,3	script	Wounded Swordsman#intro_npc02_iz_int	4_TOWER_02,{
 	if (isbegin_quest(21001) == 0) {
 		mes "[Wounded]";
-		mes "Wow! Thanks a lot!";
-		mes "I don't know how this happened to our ship";
-		mes "but we should go to see the captain.";
+		mes "ว้าว! ขอบใจมากนะ!";
+		mes "ฉันไม่รู้ว่าสิ่งนี้เกิดขึ้นกับเรือของเราได้อย่างไร";
+		mes "แต่พวกเราควรไปหากัปตัน";
 		next;
 		mes "[Wounded]";
-		mes "... ohh, it seems my body is too injured.";
-		mes "Maybe you can go without me?";
+		mes "... โอ้ว, ดูเหมือนว่าร่างกายของฉันได้รับบาดเจ็บเกินไป";
+		mes "เจ้าอาจจะต้องไปโดยไม่มีข้า?";
 		setquest 21001;
 		next;
 		cutin "tutorial02",4;
 		mes "^4d4dff!- Information -!^000000";
-		mes "NPC Quest Received.";
+		mes "รับ NPC Quest";
 	}
 	else {
 		mes "[Wounded]";
-		mes "Luckily the water has not entered the ship.";
-		mes "I will wait here, you should go see the captain.";
+		mes "โชคดีที่น้ำไม่เข้ามาในเรือ";
+		mes "ข้าจะรอตรงนี้ เจ้าควรไปหากัปตัน";
 		next;
 		mes "[Wounded]";
-		mes "I'm fine! I'm fine!";
-		mes "Don't worry about me, you should really go to the captain!";
+		mes "สบาย! ฉันเอาอยู่!";
+		mes "ไม่ต้องห่วงเกี่ยวกับฉัน เจ้าควรรีบไปหากัปตัน ตอนนี้!";
 		next;
 		mes "^4d4dff!- Information -!^000000";
 	}
-	mes "^4d4dffQuestinfo Shortcut is Alt + U^000000";
-	mes "You can check your quest status there anytime.";
+	mes "^4d4dffQuestinfo กด Alt + U^000000";
+	mes "เจ้าสามารถดูภาระกิจได้ตลอด";
 	close2;
 	cutin "",255;
 	end;
@@ -133,36 +134,36 @@ int_land,78,103,5	script	Captain Carocc#intro_npc03	4_M_REINDEER,{
 	switch( isbegin_quest(21008) ) {
 	case 0:
 		mes "[Captain Carocc]";
-		mes "There are still people in the cabins?!";
-		mes "At least you are safe.";
-		mes "Are you alright?";
+		mes "ยังมีผู้คนในกระท่อม?!";
+		mes "อย่างน้อยคุณก็ปลอดภัย";
+		mes "คุณไม่เป็นอะไรใช่ไหม?";
 		next;
-		if (select("I'm alright, but others need help.", "I think I am the last?") == 1) {
+		if (select("ฉันปลอดภัยดี แต่มีคนต้องช่วยเหลือ", "ฉันคิดว่า ฉันคนสุดท้าย?") == 1) {
 			mes "[Captain Carocc]";
-			mes "There are more people left?";
-			mes "I will send a rescue team to them.";
-			mes "Thank you for your report.";
+			mes "ยังมีคนอื่นอีกไหม?";
+			mes "ฉันจะส่งคนไปกู้ภัย";
+			mes "ขอบคุณที่มารายงาน";
 		} else {
 			mes "[Captain Carocc]";
-			mes "Alright, that's good.";
-			mes "The storm came unexpectedly but I never thought it would hit us that hard.";
+			mes "เอาล่ะ เป็นสิ่งที่ดี";
+			mes "พายุมาโดยไม่คาดคิด แต่ฉันไม่เคยคิดเลยว่ามันจะกระทบเราอย่างหนัก";
 		}
 		next;
 		mes "[Captain Carocc]";
-		mes "At least most people made it to safety.";
+		mes "อย่างน้อยคนส่วนใหญ่ก็ปลอดภัย";
 		next;
 		mes "[Captain Carocc]";
-		mes "Look at the trees there, ^4d4dfffollow them to the southwest^000000 to find a new ship.";
-		mes "The ship will take you to ^4d4dffIzlude^000000, our original destination.";
+		mes "มองดูต้นไม้เหล่านั้น ^4d4dffตามหา southwest^000000 เพื่อหาเรือใหม่";
+		mes "เรือจะมารับคุณ ^4d4dffIzlude^000000, ไปยังเส้นทางเดิมของเรา";
 		next;
 		mes "[Captain Carocc]";
-		mes "Ah! Speaking of it, those ^4d4dffPorings^000000 on this island drop several materials we could use for repairs.";
+		mes "อ้ะ! พูดถึงว่า ^4d4dffPorings^000000 บนเกาะแห่งนี้มีวัสดุหลายอย่างที่เราสามารถใช้ซ่อมแซมได้";
 		next;
 		mes "[Captain Carocc]";
-		mes "^4d4dffKill the Porings and bring 2 Lumbers to the southern crew^000000.";
+		mes "^4d4dffฆ่า Porings และเก็บ 2 Lumbers นำไปให้ลูกเรือ^000000.";
 		next;
 		mes "[Captain Carocc]";
-		mes "It is a hard task, but you look tough enough.";
+		mes "มันเป็นงานที่ยาก แต่คุณดูแข็งแกร่งพอ";
 		specialeffect2 EF_HEAL2;
 		heal 9999,0;
 		skilleffect 34,0;
@@ -176,26 +177,26 @@ int_land,78,103,5	script	Captain Carocc#intro_npc03	4_M_REINDEER,{
 		setquest 21008;
 		next;
 		mes "[Captain Carocc]";
-		mes "Speaking of Porings, you have to equip your gears.";
-		mes "You should have a ^4d4dffweapon and an armor^000000 equipped.";
+		mes "เมื่อพูดถึง Porings คุณต้องเตรียมอุปกรณ์ของคุณ";
+		mes "คุณควรมี ^4d4dffอาวุธ และเกราะ^000000 สวมใส่";
 		next;
 		cutin "tutorial03",4;
-		mes "!- Information -!";
-		mes "^4d4dffYou can equip gear or use items by simply double clicking them.";
-		mes "The item window can be opened by pressing Alt + E or using the menu button.^000000";
+		mes "!- ข้อมูล -!";
+		mes "^4d4dffคุณสามารถสวมใส่อุปกรณ์หรือใช้ไอเท็มเพียงแค่คลิกสองครั้ง";
+		mes "หน้าต่างไอเทมสามารถเปิดได้โดยกด Alt + E หรือใช้ปุ่มเมนู^000000";
 		next;
-		mes "!- Information -!";
-		mes "^4d4dffEquipped Items can be seen by pressing Alt + Q.";
-		mes "Either double click or drag & drop to equip or unequip them.^000000";
+		mes "!- ข้อมูล -!";
+		mes "^4d4dffหน้าต่างสวมใส่เปิดได้เพียงกด Alt + Q";
+		mes "ให้ดับเบิลคลิกหรือลากและวางเพื่อติดตั้งหรือถอดอุปกรณ์^000000";
 		next;
 		cutin "",255;
 		mes "[Captain Carlock]";
-		mes "Did you check all your equipment?";
-		mes "^4d4dffSkill distribution^000000 should be done.";
+		mes "คุณตรวจสอบอุปกรณ์ทั้งหมดของคุณแล้วยัง?";
+		mes "^4d4dffSkill เบื้องต้น^000000 ควรเรียบร้อย";
 		next;
 		mes "[Captain Carlock]";
-		mes "For a smooth battle, you have to distribute your abilities properly.";
-		mes "^4d4dffIf you want to increase your strength, you need to raise Str^000000. ^4d4dffIf you want to increase your hit, you must raise Dex^000000.";
+		mes "สำหรับการต่อสู้ที่ราบรื่นคุณต้องกระจายความสามารถของคุณอย่างเหมาะสม";
+		mes "^4d4dffถ้าคุณต้องการเพิ่มความแข็งแกร่งของคุณคุณต้องเพิ่ม Str^000000. ^4d4dffหากคุณต้องการเพิ่มการโจมตีของคุณคุณต้องเพิ่ม Dex^000000.";
 		break;
 	case 1:
 		mes "[Captain Carocc]";
