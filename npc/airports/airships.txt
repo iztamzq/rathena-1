@@ -58,7 +58,7 @@ OnTimer60000:
 	set $@airplanelocation,1;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","ยินดีต้อนรับสู่ Einbroch เดินทางปลอดภัย",bc_map,"0x00ff00";
+	mapannounce "airplane","ยินดีต้อนรับสู่ Einbroch ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0x00ff00";
 	end;
 OnTimer70000:
 	mapannounce "airplane","ขณะนี้เราอยู่ใน Einbroch เรือเหาะจะออกในไม่ช้า",bc_map,"0x00ff00";
@@ -78,7 +78,7 @@ OnTimer140000:
 	set $@airplanelocation,2;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","ยินดีต้อนรับสู่ Lighthalzen เดินทางปลอดภัย",bc_map,"0x70dbdb";
+	mapannounce "airplane","ยินดีต้อนรับสู่ Lighthalzen ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0x70dbdb";
 	end;
 OnTimer150000:
 	mapannounce "airplane","ขณะนี้เราอยู่ใน Lighthalzen เรือเหาะจะออกในไม่ช้า",bc_map,"0x70dbdb";
@@ -98,7 +98,7 @@ OnTimer220000:
 	set $@airplanelocation,1;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","ยินดีต้อนรับสู่ Einbroch เดินทางปลอดภัย",bc_map,"0x00ff00";
+	mapannounce "airplane","ยินดีต้อนรับสู่ Einbroch ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0x00ff00";
 	end;
 OnTimer230000:
 	mapannounce "airplane","ขณะนี้เราอยู่ใน Einbroch เรือเหาะจะออกในไม่ช้า",bc_map,"0x00ff00";
@@ -118,7 +118,7 @@ OnTimer300000:
 	set $@airplanelocation,0;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","ยินดีต้อนรับสู่ Juno เดินทางปลอดภัย",bc_map,"0xff8200";
+	mapannounce "airplane","ยินดีต้อนรับสู่ Juno ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0xff8200";
 	end;
 OnTimer310000:
 	mapannounce "airplane","ขณะนี้เราอยู่ใน Juno เรือเหาะจะออกในไม่ช้า",bc_map,"0xff8200";
@@ -138,7 +138,7 @@ OnTimer380000:
 	set $@airplanelocation,3;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","ยินดีต้อนรับสู่ Hugel เดินทางปลอดภัย",bc_map,"0xca4bf3";
+	mapannounce "airplane","ยินดีต้อนรับสู่ Hugel ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0xca4bf3";
 	end;
 OnTimer390000:
 	mapannounce "airplane","ขณะนี้เราอยู่ใน Hugel เรือเหาะจะออกในไม่ช้า",bc_map,"0xca4bf3";
@@ -158,7 +158,7 @@ OnTimer460000:
 	set $@airplanelocation,0;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","ยินดีต้อนรับสู่ Juno เดินทางปลอดภัย",bc_map,"0xff8200";
+	mapannounce "airplane","ยินดีต้อนรับสู่ Juno ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0xff8200";
 	end;
 OnTimer470000:
 	mapannounce "airplane","ขณะนี้เราอยู่ใน Juno เรือเหาะจะออกในไม่ช้า",bc_map,"0xff8200";
@@ -697,7 +697,7 @@ OnTimer60000:
 	set $@airplanelocation2,1;
 	donpcevent "#AirshipWarp-3::OnUnhide";
 	donpcevent "#AirshipWarp-4::OnUnhide";
-	mapannounce "airplane_01","ยินดีต้อนรับสู่ Izlude เดินทางปลอดภัย",bc_map,"0x00ff00";
+	mapannounce "airplane_01","ยินดีต้อนรับสู่ Izlude ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0x00ff00";
 	end;
 OnTimer70000:
 	mapannounce "airplane_01","ขณะนี้เราอยู่ใน Izlude เรือเหาะจะออกในไม่ช้า",bc_map,"0x00ff00";
@@ -717,7 +717,7 @@ OnTimer140000:
 	set $@airplanelocation2,2;
 	donpcevent "#AirshipWarp-3::OnUnhide";
 	donpcevent "#AirshipWarp-4::OnUnhide";
-	mapannounce "airplane_01","ยินดีต้อนรับสู่ Juno เดินทางปลอดภัย",bc_map,"0x70dbdb";
+	mapannounce "airplane_01","ยินดีต้อนรับสู่ Juno ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0x70dbdb";
 	end;
 OnTimer150000:
 	mapannounce "airplane_01","ขณะนี้เราอยู่ใน Juno เรือเหาะจะออกในไม่ช้า",bc_map,"0x70dbdb";
@@ -737,7 +737,7 @@ OnTimer220000:
 	set $@airplanelocation2,0;
 	donpcevent "#AirshipWarp-3::OnUnhide";
 	donpcevent "#AirshipWarp-4::OnUnhide";
-	mapannounce "airplane_01","ยินดีต้อนรับสู่ Rachel เดินทางปลอดภัย",bc_map,"0xFF8200";
+	mapannounce "airplane_01","ยินดีต้อนรับสู่ Rachel ขอให้เดินทางโดยสวัสดิภาพ",bc_map,"0xFF8200";
 	end;
 OnTimer230000:
 	mapannounce "airplane_01","ขณะนี้เราอยู่ใน Rachel เรือเหาะจะออกในไม่ช้า",bc_map,"0xFF8200";
