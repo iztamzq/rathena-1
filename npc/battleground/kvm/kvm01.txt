@@ -131,8 +131,8 @@ OnGuillaumeDie:
 		bg_updatescore "bat_c01",.Guillaume_Count,.Croix_Count;
 		if( .Guillaume_Count < 1 ) donpcevent "KvM01_BG::OnCroixWin";
 		else {
-			mapannounce "bat_c01", "à¸ˆà¸³à¸™à¸§à¸™ Guillaumes à¸„à¸·à¸­ "+.Guillaume_Count+".",bc_map,"0x00ff00";
-			mapannounce "bat_c01", "à¸ˆà¸³à¸™à¸§à¸™ Croixes à¸„à¸·à¸­ "+.Croix_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c01", "¨Ó¹Ç¹ Guillaumes ¤×Í "+.Guillaume_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c01", "¨Ó¹Ç¹ Croixes ¤×Í "+.Croix_Count+".",bc_map,"0x00ff00";
 		}
 	}
 	end;
@@ -149,8 +149,8 @@ OnCroixDie:
 		bg_updatescore "bat_c01",.Guillaume_Count,.Croix_Count;
 		if( .Croix_Count < 1 ) donpcevent "KvM01_BG::OnGuillaumeWin";
 		else {
-			mapannounce "bat_c01", "à¸ˆà¸³à¸™à¸§à¸™ Guillaumes à¸„à¸·à¸­ "+.Guillaume_Count+".",bc_map,"0x00ff00";
-			mapannounce "bat_c01", "à¸ˆà¸³à¸™à¸§à¸™ Croixes à¸„à¸·à¸­ "+.Croix_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c01", "¨Ó¹Ç¹ Guillaumes ¤×Í "+.Guillaume_Count+".",bc_map,"0x00ff00";
+			mapannounce "bat_c01", "¨Ó¹Ç¹ Croixes ¤×Í "+.Croix_Count+".",bc_map,"0x00ff00";
 		}
 	}
 	end;
@@ -174,16 +174,16 @@ OnStart:
 	end;
 
 OnTimer1000:
-	mapannounce "bat_c01", "à¸ à¸²à¸¢à¹ƒà¸™ 1 à¸™à¸²à¸—à¸µ KVM à¸ˆà¸°à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÀÒÂã¹ 1 ¹Ò·Õ KVM ¨ÐàÃÔèÁµé¹",bc_map,"0x00ff00";
 	end;
 
 OnTimer3000:
-	mapannounce "bat_c01", "à¹€à¸§à¸¥à¸²à¸ªà¸¹à¸‡à¸ªà¸¸à¸”à¸ªà¸³à¸«à¸£à¸±à¸šà¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸„à¸·à¸­ 5 à¸™à¸²à¸—à¸µ",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "àÇÅÒÊÙ§ÊØ´ÊÓËÃÑº¡ÒÃµèÍÊÙé KVM ¤×Í 5 ¹Ò·Õ",bc_map,"0x00ff00";
 	end;
 
 OnTimer6000:
-	mapannounce "bat_c01", "à¹‚à¸›à¸£à¸”à¹€à¸•à¸£à¸µà¸¢à¸¡à¸„à¸§à¸²à¸¡à¸žà¸£à¹‰à¸­à¸¡ à¸ªà¸³à¸«à¸£à¸±à¸šà¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM",bc_map,"0x00ff00";
-	mapannounce "bat_c01", "à¸—à¹ˆà¸²à¸™à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸žà¸´à¹ˆà¸¡à¸„à¸§à¸²à¸¡à¸ªà¸²à¸¡à¸²à¸£à¸–à¸žà¸´à¹€à¸¨à¸©à¹ƒà¸«à¹‰à¸„à¸™à¸‚à¸­à¸‡à¸—à¹ˆà¸²à¸™à¹„à¸”à¹‰",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "â»Ã´àµÃÕÂÁ¤ÇÒÁ¾ÃéÍÁ ÊÓËÃÑº¡ÒÃµèÍÊÙé KVM",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "·èÒ¹ÊÒÁÒÃ¶à¾ÔèÁ¤ÇÒÁÊÒÁÒÃ¶¾ÔàÈÉãËé¤¹¢Í§·èÒ¹ä´é",bc_map,"0x00ff00";
 	donpcevent "#A_camp_start01::OnEnable";
 	donpcevent "#B_camp_start01::OnEnable";
 	end;
@@ -194,26 +194,26 @@ OnTimer13000:
 	end;
 
 OnTimer30000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 30 à¸§à¸´à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 30 ÇÔ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐàÃÔèÁµé¹",bc_map,"0x00ff00";
 	end;
 
 OnTimer45000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 15 à¸§à¸´à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 15 ÇÔ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐàÃÔèÁµé¹",bc_map,"0x00ff00";
 	donpcevent "::OnKvM01One";
 	end;
 
 OnTimer50000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 10 à¸§à¸´à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 10 ÇÔ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐàÃÔèÁµé¹",bc_map,"0x00ff00";
 	donpcevent "::OnKvM01Two";
 	end;
 
 OnTimer55000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 5 à¸§à¸´à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 5 ÇÔ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐàÃÔèÁµé¹",bc_map,"0x00ff00";
 	donpcevent "::OnKvM01One";
 	end;
 
 OnTimer59000:
-	mapannounce "bat_c01", "KVM à¹„à¸”à¹‰à¹€à¸£à¸´à¹ˆà¸¡à¸‚à¸¶à¹‰à¸™à¹à¸¥à¹‰à¸§",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "KVM ä´éàÃÔèÁ¢Öé¹áÅéÇ",bc_map,"0x00ff00";
 	donpcevent "::OnKvM01Two";
 	end;
 
@@ -226,7 +226,7 @@ OnTimer61000:
 		if (.Guillaume_Count < 5 || .Croix_Count < 5) {
 			set $@KvM01BG_Victory, 3;
 			set $@KvM01BG, 3;
-			mapannounce "bat_c01","à¸¡à¸µà¸œà¸¹à¹‰à¹€à¸¥à¹ˆà¸™à¹„à¸¡à¹ˆà¹€à¸žà¸µà¸¢à¸‡à¸žà¸­ à¸—à¸µà¹ˆà¸ˆà¸°à¹€à¸£à¸´à¹ˆà¸¡à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰",1,0x696969;
+			mapannounce "bat_c01","ÁÕ¼ÙéàÅè¹äÁèà¾ÕÂ§¾Í ·Õè¨ÐàÃÔèÁ¡ÒÃµèÍÊÙé",1,0x696969;
 			stopnpctimer;
 			donpcevent "KvM01_BG::OnStop";
 			end;
@@ -239,27 +239,27 @@ OnTimer61000:
 	end;
 
 OnTimer300000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 1 à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 1 ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐÊÔé¹ÊØ´",bc_map,"0x00ff00";
 	end;
 
 OnTimer330000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 30 à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 30 ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐÊÔé¹ÊØ´",bc_map,"0x00ff00";
 	end;
 
 OnTimer345000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 15 à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 15 ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐÊÔé¹ÊØ´",bc_map,"0x00ff00";
 	end;
 
 OnTimer350000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 10 à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 10 ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐÊÔé¹ÊØ´",bc_map,"0x00ff00";
 	end;
 
 OnTimer355000:
-	mapannounce "bat_c01", "à¸­à¸µà¸ 5 à¸™à¸²à¸—à¸µ à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸°à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ÍÕ¡ 5 ¹Ò·Õ ¡ÒÃµèÍÊÙé KVM ¨ÐÊÔé¹ÊØ´",bc_map,"0x00ff00";
 	end;
 
 OnTimer360000:
-	mapannounce "bat_c01", "à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰ KVM à¸ˆà¸šà¸¥à¸‡à¹à¸¥à¹‰à¸§",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "¡ÒÃµèÍÊÙé KVM ¨ºÅ§áÅéÇ",bc_map,"0x00ff00";
 	if( .Croix_Count > .Guillaume_Count )
 		donpcevent "KvM01_BG::OnCroixWin";
 	else if( .Croix_Count < .Guillaume_Count )
@@ -268,9 +268,9 @@ OnTimer360000:
 	{ // Draw Game
 		set $@KvM01BG, 3;
 		set $@KvM01BG_Victory, 3;
-		mapannounce "bat_c01", "à¸ˆà¸³à¸™à¸§à¸™ Guillaumes à¸„à¸·à¸­ "+.Guillaume_Count+".",bc_map,"0x00ff00";
-		mapannounce "bat_c01", "à¸ˆà¸³à¸™à¸§à¸™ Croixes à¸„à¸·à¸­ "+.Croix_Count+".",bc_map,"0x00ff00";
-		mapannounce "bat_c01", "à¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰à¸„à¸£à¸±à¹‰à¸‡à¸™à¸µà¹‰à¸ˆà¸šà¸¥à¸‡à¸”à¹‰à¸§à¸¢à¸œà¸¥à¹€à¸ªà¸¡à¸­",bc_map,"0x00ff00";
+		mapannounce "bat_c01", "¨Ó¹Ç¹ Guillaumes ¤×Í "+.Guillaume_Count+".",bc_map,"0x00ff00";
+		mapannounce "bat_c01", "¨Ó¹Ç¹ Croixes ¤×Í "+.Croix_Count+".",bc_map,"0x00ff00";
+		mapannounce "bat_c01", "¡ÒÃµèÍÊÙé¤ÃÑé§¹Õé¨ºÅ§´éÇÂ¼ÅàÊÁÍ",bc_map,"0x00ff00";
 		donpcevent "KvM01_BG::OnStop";
 	}
 	end;
@@ -278,18 +278,18 @@ OnTimer360000:
 OnGuillaumeWin:
 	set $@KvM01BG, 3;
 	set $@KvM01BG_Victory, 1;
-	mapannounce "bat_c01", "Guillaume à¸Šà¸™à¸°!",bc_map,"0x00ff00";
-	mapannounce "bat_c01", "à¸‚à¸­à¹à¸ªà¸”à¸‡à¸„à¸§à¸²à¸¡à¸¢à¸´à¸™à¸”à¸µà¸à¸±à¸šà¸ªà¸¡à¸²à¸Šà¸´à¸ Guillaume",bc_map,"0x00ff00";
-	mapannounce "bat_c01", "à¸—à¸¸à¸à¸„à¸™à¸ˆà¸°à¸–à¸¹à¸à¸¢à¹‰à¸²à¸¢à¹„à¸›à¸¢à¸±à¸‡à¸ˆà¸¸à¸”à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "Guillaume ª¹Ð!",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "¢ÍáÊ´§¤ÇÒÁÂÔ¹´Õ¡ÑºÊÁÒªÔ¡ Guillaume",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "·Ø¡¤¹¨Ð¶Ù¡ÂéÒÂä»ÂÑ§¨Ø´àÃÔèÁµé¹",bc_map,"0x00ff00";
 	donpcevent "KvM01_BG::OnStop";
 	end;
 
 OnCroixWin:
 	set $@KvM01BG, 3;
 	set $@KvM01BG_Victory, 2;
-	mapannounce "bat_c01", "Croix à¸Šà¸™à¸°!",bc_map,"0x00ff00";
-	mapannounce "bat_c01", "à¸‚à¸­à¹à¸ªà¸”à¸‡à¸„à¸§à¸²à¸¡à¸¢à¸´à¸™à¸”à¸µà¸à¸±à¸šà¸ªà¸¡à¸²à¸Šà¸´à¸ Croix",bc_map,"0x00ff00";
-	mapannounce "bat_c01", "à¸—à¸¸à¸à¸„à¸™à¸ˆà¸°à¸–à¸¹à¸à¸¢à¹‰à¸²à¸¢à¹„à¸›à¸¢à¸±à¸‡à¸ˆà¸¸à¸”à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "Croix ª¹Ð!",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "¢ÍáÊ´§¤ÇÒÁÂÔ¹´Õ¡ÑºÊÁÒªÔ¡ Croix",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "·Ø¡¤¹¨Ð¶Ù¡ÂéÒÂä»ÂÑ§¨Ø´àÃÔèÁµé¹",bc_map,"0x00ff00";
 	donpcevent "KvM01_BG::OnStop";
 	end;
 
@@ -314,21 +314,21 @@ OnBegin:
 	end;
 
 OnTimer1000:
-	mapannounce "bat_c01", "à¹‚à¸›à¸£à¸”à¸¥à¸‡à¸—à¸°à¹€à¸šà¸µà¸¢à¸™à¸à¸±à¸šà¹€à¸ˆà¹‰à¸²à¸«à¸™à¹‰à¸²à¸—à¸µà¹ˆ à¹€à¸žà¸·à¹ˆà¸­à¸£à¸±à¸šà¸„à¸°à¹à¸™à¸™ KVM",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "â»Ã´Å§·ÐàºÕÂ¹¡Ñºà¨éÒË¹éÒ·Õè à¾×èÍÃÑº¤Ðá¹¹ KVM",bc_map,"0x00ff00";
 	end;
 
 OnTimer3000:
-	mapannounce "bat_c01", "à¹€à¸ˆà¹‰à¸²à¸«à¸™à¹‰à¸²à¸—à¸µà¹ˆ à¸ˆà¸°à¹ƒà¸«à¹‰à¸„à¸°à¹à¸™à¸™à¸à¸±à¸šà¸—à¹ˆà¸²à¸™à¹€à¸›à¹‡à¸™à¹€à¸§à¸¥à¸² 30 à¸§à¸´à¸™à¸²à¸—à¸µ",bc_map,"0x00ff00";
-	mapannounce "bat_c01", "à¹ƒà¸™ 30 à¸§à¸´à¸™à¸²à¸—à¸µ à¹€à¸ˆà¹‰à¸²à¸«à¸™à¹‰à¸²à¸—à¸µà¹ˆà¸ˆà¸°à¸–à¸¹à¸à¸ªà¹ˆà¸‡à¸­à¸­à¸à¹„à¸›",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "à¨éÒË¹éÒ·Õè ¨ÐãËé¤Ðá¹¹¡Ñº·èÒ¹à»ç¹àÇÅÒ 30 ÇÔ¹Ò·Õ",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ã¹ 30 ÇÔ¹Ò·Õ à¨éÒË¹éÒ·Õè¨Ð¶Ù¡Êè§ÍÍ¡ä»",bc_map,"0x00ff00";
 	end;
 
 OnTimer5000:
-	mapannounce "bat_c01", "à¸«à¸²à¸à¸—à¹ˆà¸²à¸™à¹„à¸¡à¹ˆà¹„à¸”à¹‰à¸„à¸¸à¸¢à¸à¸±à¸šà¹€à¸ˆà¹‰à¸²à¸«à¸™à¹‰à¸²à¸—à¸µà¹ˆ à¸—à¹ˆà¸²à¸™à¸ˆà¸°à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹„à¸”à¹‰à¸£à¸±à¸šà¸„à¸°à¹à¸™à¸™à¹„à¸”à¹‰",bc_map,"0x00ff00";
-	mapannounce "bat_c01", "à¹‚à¸›à¸£à¸”à¸£à¸°à¸§à¸±à¸‡",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "ËÒ¡·èÒ¹äÁèä´é¤ØÂ¡Ñºà¨éÒË¹éÒ·Õè ·èÒ¹¨ÐäÁèÊÒÁÒÃ¶ä´éÃÑº¤Ðá¹¹ä´é",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "â»Ã´ÃÐÇÑ§",bc_map,"0x00ff00";
 	end;
 
 OnTimer55000:
-	mapannounce "bat_c01", "à¸—à¹ˆà¸²à¸™à¸ˆà¸°à¸–à¸¹à¸à¸ªà¹ˆà¸‡à¸à¸¥à¸±à¸š",bc_map,"0x00ff00";
+	mapannounce "bat_c01", "·èÒ¹¨Ð¶Ù¡Êè§¡ÅÑº",bc_map,"0x00ff00";
 	end;
 
 OnTimer60000:
@@ -369,16 +369,16 @@ bat_c01,51,130,5	script	KVM Officer#KVM01A	419,{
 	if( $@KvM01BG_Victory ) {
 		mes "[KVM Officer]";
 		if( $@KvM01BG_Victory == Bat_Team ) {
-			mes "à¹€à¸à¸¡à¸—à¸µà¹ˆà¸”à¸µ";
-			mes "à¸‚à¸­à¹ƒà¸«à¹‰à¹€à¸à¸µà¸¢à¸£à¸•à¸´à¸‚à¸­à¸‡ KVM à¸­à¸¢à¸¹à¹ˆà¸à¸±à¸šà¸—à¹ˆà¸²à¸™";
-			mes "à¸—à¹ˆà¸²à¸™à¹„à¸”à¹‰à¸£à¸±à¸šà¸„à¸°à¹à¸™à¸™à¹à¸«à¹ˆà¸‡à¸Šà¸±à¸¢à¸Šà¸™à¸°: 5";
+			mes "à¡Á·Õè´Õ";
+			mes "¢ÍãËéà¡ÕÂÃµÔ¢Í§ KVM ÍÂÙè¡Ñº·èÒ¹";
+			mes "·èÒ¹ä´éÃÑº¤Ðá¹¹áËè§ªÑÂª¹Ð: 5";
 			close2;
 			set kvm_point,kvm_point + 5;
 		}
 		else {
-			mes "à¸‚à¸­à¸­à¸ à¸±à¸¢";
-			mes "à¸‚à¹‰à¸²à¸‚à¸­à¹ƒà¸«à¹‰à¸—à¹ˆà¸²à¸™à¹‚à¸Šà¸„à¸”à¸µà¹ƒà¸™à¸„à¸£à¸±à¹‰à¸‡à¸•à¹ˆà¸­à¹„à¸›";
-			mes "à¸—à¹ˆà¸²à¸™à¹„à¸”à¹‰à¸£à¸±à¸šà¸„à¸°à¹à¸™à¸™à¸„à¸§à¸²à¸¡à¸žà¹ˆà¸²à¸¢à¹à¸žà¹‰: 1";
+			mes "¢ÍÍÀÑÂ";
+			mes "¢éÒ¢ÍãËé·èÒ¹âª¤´Õã¹¤ÃÑé§µèÍä»";
+			mes "·èÒ¹ä´éÃÑº¤Ðá¹¹¤ÇÒÁ¾èÒÂá¾é: 1";
 			close2;
 			set kvm_point,kvm_point + 1;
 		}

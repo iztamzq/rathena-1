@@ -354,7 +354,7 @@ function	script	F_KafCart	{
 	else if (checkcart() == true) {
 		mes "[Kafra Employee]";
 		mes "คุณได้มี";
-		mes รถเข็นอยู่แล้ว";
+		mes "รถเข็นอยู่แล้ว";
 		mes "น่าเสียดายที่เราทำไม่ได้";
 		mes "ให้คุณได้เช่ามากกว่าหนึ่ง";
 		mes "ในเวลาขณะเดียวกันนี้";
