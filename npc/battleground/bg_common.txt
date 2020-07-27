@@ -1,627 +1,855 @@
-//===== rAthena Script ======================================= 
-//= BattleGround System - Common NPCs
-//===== By: ================================================== 
-//= ????, L0ne_W0lf
-//===== Current Version: ===================================== 
-//= 1.5
-//===== Compatible With: ===================================== 
-//= rAthena Project
-//===== Description: ========================================= 
+//===== rAthena Script =======================================
+//= BattleGround System - Tierra Gorge 2
+//===== Description: =========================================
 //= [Official Conversion]
-//= Battleground NPCs:
-//= - Generals and Aides
-//= - Battleground Warper
-//= - Kafra and Repairman.
-//= - GM Management NPC
-//= - Badge Exchanger (Tierra and Flavius)
-//===== Additional Comments: ================================= 
-//= 1.0 First Version.
-//= 1.1 Updated several NPCs to Official.
-//= 1.2 Updated Repairman NPC
-//= 1.3 Optimized "Erundek" NPC. [Euphy]
+//= Second Tierra Gorge Battleground.
+//= - Winning Team: 3 badges (5 if VIP)
+//= - Losing Team: 1 badge (3 if VIP)
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [L0ne_W0lf]
+//= 1.1 Updated 'waitingroom' to support required zeny/lvl. [Kisuka]
+//= 1.2 Removed MaxLvl check in waitingrooms.
+//= 1.3 Label standardization. [Euphy]
 //= 1.4 Added GM management function. [Euphy]
 //= 1.5 Added VIP features and created a reward function. [Euphy]
+//= 1.6 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
 //============================================================
 
-// Generals
+// Waiting Room NPCs
 //============================================================
-bat_room,161,158,3	script	Gen. Guillaume's Aide#01	419,{ end; }
-bat_room,161,160,3	script	Gen. Guillaume's Aide#03	419,{ end; }
+bat_room,114,227,5	script	Lieutenant Rundel	418,{
+	end;
 
-bat_room,160,141,3	script	Prince Croix	416,{
-	cutin "bat_crua1",2;
-	mes "[Prince Croix]";
-	mes "นักผจญภัยที่ฉลาด ทำไมท่านไม่ให้เรายืมพลังแห่งชัยชนะ?";
-	next;
-	switch(select("อะไรคือเหตุผลของการต่อสู้?:บอกข้าเกี่ยวกับ General Guillaume")) {
-	case 1:
-		cutin "bat_crua2",2;
-		mes "[Prince Croix]";
-		mes "เมื่อไม่นานมานี้ Marcel Marollo VII กษัตริย์ผู้ยิ่งใหญ่ของ Maroll ป่วยหนักมาก";
-		mes "พระราชาได้ประกาศว่า เขาจะลงจากบัลลังก์ของ Maroll ให้ข้า หรือ เจ้าชายองค์ที่สาม General Guillaume.";
-		next;
-		mes "[Prince Croix]";
-		mes "General Guillaume อาจมีข้อได้เปรียบในการต่อสู้ครั้งนี้ เนื่องจากเขาเป็นนายพลที่ยิ่งใหญ่ของ Maroll แต่นั่นไม่ได้หมายความว่าเขาจะชนะโดยอัตโนมัติ";
-		mes "ข้าต้องการชนะการต่อสู้ครั้งนี้ เพื่อที่ข้าจะได้นำความมั่งคั่งมาสู่ผู้คนใน Maroll พวกเขาได้รับความทรมานจากสงครามมากพอแล้ว...";
-		next;
-		switch(select("ใช่ ข้าต้องการเข้าร่วมกับท่าน:จบการสนทนา")) {
-		case 1:
-			cutin "bat_crua1",2;
-			mes "[Prince Croix]";
-			mes "ขอบคุณมาก ข้ารู้สึกเหมือนข้าสามารถชนะได้ ด้วยความช่วยเหลือจากนักผจญภัยเช่นท่าน";
-			mes "ตอนนี้โปรดลงไปชั้นล่าง และเข้าร่วมกับสหายของท่านในการลับคมทักษะเพื่อต่อสู้กับศัตรู!";
-			break;
-		case 2:
-			mes "[Prince Croix]";
-			mes "เพื่อ Maroll!";
-			break;
-		}
-		break;
-	case 2:
-		cutin "bat_crua2",2;
-		mes "[Prince Croix]";
-		mes "เจ้าชาย Guillaume ที่ 3 เป็นนายพลที่ยิ่งใหญ่ของ Maroll";
-		mes "มันเสียเวลาที่จะอธิบายให้ท่านฟัง ว่าเขาเป็นผู้นำหรือขุนศึกที่ยิ่งใหญ่เพียงใด เนื่องจากเขาเป็นผู้นำกองทัพ Maroll ที่ยิ่งใหญ่";
-		next;
-		mes "[Prince Croix]";
-		mes "น่าเสียดาย ที่มีบางสิ่งที่เขาและผู้ติดตามของเขาไม่ทราบ:";
-		mes "ผู้คนใน Maroll ต้องการให้พวกเขาใช้จ่ายเงินจำนวนมาก เพื่ออำนาจทางทหารหรือไม่?";
-		mes "เราได้รับความทรมานจากสงครามมากพอ";
-		mes "เข้าเชื่อว่า อาวุธไม่ใช่วิธีที่ดีที่สุดในการนำความเจริญมาสู่ประเทศชาติ";
-		next;
-		mes "[Prince Croix]";
-		mes "ข้าไม่ต้องการหลั่งเลือด แต่ข้าไม่มีทางเลือกนอกจากต่อสู้เพื่อความเป็นไปได้ของสันติภาพ และเพื่อประชาชนของข้า";
-		next;
-		switch(select("ใช่ ข้าต้องการเข้าร่วมกับท่าน:จบการสนทนา")) {
-		case 1:
-			cutin "bat_crua1",2;
-			mes "[Prince Croix]";
-			mes "ขอบคุณมาก ข้ารู้สึกเหมือนข้าสามารถชนะได้ ด้วยความช่วยเหลือจากนักผจญภัยเช่นท่าน";
-			mes "ตอนนี้โปรดลงไปชั้นล่าง และเข้าร่วมสหายของท่านในการลับคมทักษะเพื่อต่อสู้กับศัตรู!";
-			break;
-		case 2:
-			mes "[Prince Croix]";
-			mes "เพื่อ Maroll!";
-			break;
-		}
-		break;
-	}
-	close2;
-	cutin "bat_crua1",255;
-	cutin "bat_crua2",255;
+OnInit:
+	waitingroom "Battle Station",11,"start#bat_a02::OnReadyCheck",1,0,80;
+	end;
+
+OnEnterBG:
+	set $@TierraBG2_id1, waitingroom2bg("bat_a02",50,374,"start#bat_a02::OnGuillaumeQuit","");
 	end;
 }
 
-bat_room,161,140,3	script	Prince Croix's Aide#01	415,{ end; }
-bat_room,161,142,3	script	Prince Croix's Aide#02	415,{ end; }
+bat_room,114,204,1	script	Lieutenant Guerrit	414,{
+	end;
 
-bat_room,160,159,3	script	General Guillaume	420,{
-	cutin "bat_kiyom2",2;
-	mes "[General Guillaume]";
-	mes "นักผจญภัยเลือดร้อน เราต้องการความสามารถของท่านในการชนะการต่อสู้ครั้งนี้";
-	next;
-	switch(select("อะไรคือเหตุผลของการต่อสู้?:บอกข้าเกี่ยวกับ Prince Croix")) {
-	case 1:
-		cutin "bat_kiyom1",2;
-		mes "[General Guillaume]";
-		mes "เมื่อไม่นานมานี้ Marcel Marollo VII กษัตริย์ผู้ยิ่งใหญ่ของเราป่วยหนักมาก";
-		mes "พระราชาได้ประกาศว่า เขาได้เลือก ข้า หรือ Prince Croix เป็นกษัตริย์องค์ต่อไปในบรรดาบุตรชายทั้งเก้าของเขา";
-		next;
-		mes "[General Guillaume]";
-		mes "กษัตริย์สององค์ไม่สามารถแบ่งปันประเทศได้! มีเพียงชัยชนะเดียวที่ได้รับจากการสู้รบที่ได้รับการแต่งตั้งจากพระราชาเท่านั้น";
-		next;
-		mes "[General Guillaume]";
-		mes "อย่างไรก็ตามนี่ไม่ใช่แค่การต่อสู้ระหว่างเรา การต่อสู้ครั้งนี้จะเป็นตัวกำหนดอนาคตของประเทศนี้";
-		mes "ข้าสัญญาว่าจะให้เกียรติแก่ท่าน เพื่อพิสูจน์ว่าข้าเป็นผู้หนึ่งที่สามารถปกป้อง Maroll นี้จากภัยคุกคามภายนอก";
-		next;
-		switch(select("ใช่ ข้าต้องการเข้าร่วมกับท่าน:จบการสนทนา")) {
-		case 1:
-			cutin "bat_kiyom2",2;
-			mes "[General Guillaume]";
-			mes "ยินดีต้อนรับสู่กองทัพของข้าสหาย";
-			mes "ดวงตาของท่านบอกข้าว่า ท่านเป็นทหารที่ข้าเชื่อถือได้";
-			next;
-			mes "[General Guillaume]";
-			mes "ตอนนี้ขึ้นไปชั้นบน และลงทะเบียนต่อสู้กับสหายของท่าน";
-			mes "ข้าแน่ใจว่า พวกเขาจะยินดีต้อนรับท่านอย่างสุดใจ!";
-			break;
-		case 2:
-			mes "[General Guillaume]";
-			mes "ข้าจะเป็นคนที่จับธง!";
-			break;
-		}
-		break;
-	case 2:
-		cutin "bat_kiyom1",2;
-		mes "[General Guillaume]";
-		mes "ปัจจุบัน Prince Croix ที่ 5 ดำรงตำแหน่งนายกรัฐมนตรี Maroll";
-		mes "เขาคิดว่าทุกเรื่องในชาติ สามารถพูดคุยและตัดสินใจได้บนโต๊ะ";
-		mes "และ เชื่อมั่นในการอยู่ร่วมกันอย่างสันติกับประเทศอื่น ๆ";
-		next;
-		mes "[General Guillaume]";
-		mes "เขาไม่รู้เกินกว่าที่จะยอมรับว่า สิ่งที่เรียกว่าความสงบสุขนั้นสร้างมาจากชีวิตที่นับไม่ถ้วนที่เสียสละในสงคราม ในขณะที่คนธรรมดาและชนชั้นสูงสามารถมีชีวิตอยู่ได้";
-		next;
-		mes "[General Guillaume]";
-		mes "เขาไร้เดียงสาเกินกว่าที่จะเข้าใจความจริง....";
-		mes "ข้าไม่สามารถทิ้ง Maroll ให้กับคนอย่างเขาที่ใช้ชีวิตในความฝัน!";
-		next;
-		mes "[General Guillaume]";
-		mes "ความเชื่อที่ไม่สมจริงของเขาจะทำให้ประเทศนี้จมอยู่ในความยากจนและทำให้ผู้คนอ่อนแอ หากเขากลายเป็นกษัตริย์ Maroll จะไม่มีวันหยุดพักจากการโจมตีของประเทศอื่น ๆ";
-		mes "ข้าต้องการสอนเขาเกี่ยวกับสิ่งที่ทำให้ประเทศเล็ก ๆ นี้มีอำนาจและเจริญรุ่งเรือง มันเป็นพลังทางทหาร!";
-		next;
-		switch(select("ข้าต้องการเข้าร่วมกองทัพของท่าน!:จบการสนทนา")) {
-		case 1:
-			cutin "bat_kiyom2",2;
-			mes "[General Guillaume]";
-			mes "ยินดีต้อนรับสู่กองทัพของข้าสหาย";
-			mes "ดวงตาของท่านบอกข้าว่า ท่านเป็นทหารที่ข้าเชื่อถือได้";
-			next;
-			mes "[General Guillaume]";
-			mes "ตอนนี้ขึ้นไปชั้นบน และลงทะเบียนการต่อสู้กับสหายของท่าน";
-			mes "ข้าแน่ใจว่าพวกเขาจะยินดีต้อนรับท่านอย่างสุดใจ!";
-			break;
-		case 2:
-			mes "[General Guillaume]";
-			mes "ข้าจะเป็นคนที่จับธง!";
-			break;
-		}
-		break;
-	}
-	close2;
-	cutin "bat_kiyom1",255;
-	cutin "bat_kiyom2",255;
+OnInit:
+	waitingroom "Battle Station",11,"start#bat_a02::OnReadyCheck",1,0,80;
+	end;
+
+OnEnterBG:
+	set $@TierraBG2_id2, waitingroom2bg("bat_a02",42,16,"start#bat_a02::OnCroixQuit","");
 	end;
 }
 
-// Flags
-//============================================================
-//bat_room,140,160,3	script	Guillaume Base#roomflag1	973,{ end; }
-//bat_room,167,160,3	script	Guillaume Base#roomflag2	973,{ end; }
-//bat_room,140,139,3	script	Croix Base#roomflag1	974,{ end; }
-//bat_room,167,139,3	script	Croix Base#roomflag2	974,{ end; }
+bat_room,1,151,3	script	#bat_a02_timer	844,{
+	end;
 
-// BattleGround Warper
+OnInit:
+	if (getbattleflag("feature.bgqueue"))
+		end;
+OnEnable:
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer1000:
+	stopnpctimer;
+	if (!bg_get_data($@TierraBG2_id1, 0) && !bg_get_data($@TierraBG2_id2, 0)) {
+		donpcevent "countdown#bat_a02::OnStop";
+		if (getbattleflag("feature.bgqueue"))
+			bg_reserve "bat_a02", true;
+		mapwarp "bat_a02","bat_room",154,150;
+		$@TierraBG2 = 0; $@TierraBG2_Victory = 0;
+		if( $@TierraBG2_id1 ) { bg_destroy $@TierraBG2_id1; $@TierraBG2_id1 = 0; }
+		if( $@TierraBG2_id2 ) { bg_destroy $@TierraBG2_id2; $@TierraBG2_id2 = 0; }
+		if (getbattleflag("feature.bgqueue"))
+			bg_unbook "bat_a02";
+		end;
+	}
+	initnpctimer;
+	end;
+}
+
+bat_a02,352,342,0	script	#bat_a02_quest_a	-1,5,5,{
+	end;
+
+OnTouch:
+	if (checkquest(2069) < 0)
+		setquest 2069;
+	end;
+}
+
+bat_a02,353,52,0	script	#bat_a02_quest_b	-1,5,5,{
+	end;
+
+OnTouch:
+	if (checkquest(2069) < 0)
+		setquest 2069;
+	end;
+}
+
+bat_room,113,220,0	warp	back_bgrooma02a	1,1,bat_room,154,150
+bat_room,113,211,0	warp	back_bgrooma02b	1,1,bat_room,154,150
+
+// Tierra Gorge Battleground Engine
 //============================================================
-bat_room,148,150,5	script	Teleporter#Battlefield	124,{
-	mes "[Teleporter]";
-	mes "ท่านต้องการออกจากสนามรบหรือไม่? ใช้บริการของข้าเพื่อกลับไปที่เมือง";
-	next;
-	switch(select("ออกจากที่นี้:ยกเลิก")) {
-	case 1:
-		mes "[Teleporter]";
-		switch(bat_return) {
-		default:
-		case 1:
-			setarray .@mapname$[0],"Prontera.","prontera";
-			setarray .@xy[0],116,72;
-			break;
-		case 2:
-			setarray .@mapname$[0],"Morocc Ruins.","moc_ruins";
-			setarray .@xy[0],152,48;
-			break;
-		case 3:
-			setarray .@mapname$[0],"Al De Baran.","aldebaran";
-			setarray .@xy[0],168,112;
-			break;
-		case 4:
-			setarray .@mapname$[0],"Geffen.","geffen";
-			setarray .@xy[0],120,39;
-			break;
-		case 5:
-			setarray .@mapname$[0],"Payon.","payon";
-			setarray .@xy[0],161,58;
-			break;
-		case 6:
-			setarray .@mapname$[0],"Lighthalzen.","lighthalzen";
-			setarray .@xy[0],159,93;
-			break;
-		case 7:
-			setarray .@mapname$[0],"Rachel.","rachel";
-			setarray .@xy[0],115,124;
-			break;
-		case 8:
-			setarray .@mapname$[0],"Morocc.","morocc";
-			setarray .@xy[0],156,46;
-			break;
+bat_a02,15,15,3	script	start#bat_a02	844,{
+OnInit:
+	mapwarp "bat_a02","bat_room",154,150;
+	end;
+
+OnEnable:
+	donpcevent "OBJ#bat_a02_a::OnKill";
+	donpcevent "OBJ#bat_a02_a::OnEnable";
+	donpcevent "OBJ#bat_a02_b::OnKill";
+	donpcevent "OBJ#bat_a02_b::OnEnable";
+	donpcevent "barricade#bat_a02_a::OnKill";
+	donpcevent "barricade#bat_a02_a::OnEnable";
+	donpcevent "barricade#bat_a02_b::OnKill";
+	donpcevent "barricade#bat_a02_b::OnEnable";
+	donpcevent "OBJ#bat_a02_n::OnKill";
+	donpcevent "OBJ#bat_a02_n::OnEnable";
+	donpcevent "NOBJ_mob#bat_a02_a::OnKill";
+	donpcevent "NOBJ_mob#bat_a02_b::OnKill";
+	donpcevent "Battle Therapist#a02_a::OnEnable";
+	donpcevent "Battle Therapist#a02_b::OnEnable";
+	donpcevent "countdown#bat_a02::OnEnable";
+	disablenpc "Guillaume Blacksmith#a02";
+	disablenpc "Croix Blacksmith#bat_a02";
+	disablenpc "Guillaume Vintenar#a02_a";
+	disablenpc "Croix Vintenar#a02_b";
+	end;
+
+OnGuillaumeActive:
+	warp "bat_a02",352,342;
+	end;
+
+OnCroixActive:
+	warp "bat_a02",353,52;
+	end;
+
+OnGuillaumeQuit:
+OnCroixQuit:
+	if (getbattleflag("feature.bgqueue"))
+		bg_desert;
+	else
+		bg_leave;
+	end;
+
+OnReadyCheck:
+	if( $@TierraBG2 )
+		end;
+	if (!getbattleflag("feature.bgqueue")) {
+		set .@Guillaume, getwaitingroomstate(0,"Lieutenant Rundel");
+		set .@Croix, getwaitingroomstate(0,"Lieutenant Guerrit");
+		if( !.@Guillaume && !.@Croix ) {
+			donpcevent "#bat_a02_timer::OnStop";
+			end;
 		}
-		mes "You will be sent back to "+.@mapname$[0]+".";
-		close2;
-		warp .@mapname$[1],.@xy[0],.@xy[1];
-		break;
-	case 2:
-		mes "[Teleporter]";
-		mes "ข้าจะมาที่นี่เมื่อใดก็ตาม ที่ท่านต้องการใช้บริการของข้า";
+		else if( .@Guillaume < 10 || .@Croix < 10 )
+			end;
+	}
+	set $@TierraBG2,1;
+	if (!getbattleflag("feature.bgqueue")) {
+		donpcevent "Lieutenant Rundel::OnEnterBG";
+		donpcevent "Lieutenant Guerrit::OnEnterBG";
+	}
+	donpcevent "start#bat_a02::OnEnable";
+	bg_warp $@TierraBG2_id1,"bat_a02",352,342;
+	bg_warp $@TierraBG2_id2,"bat_a02",353,52;
+	initnpctimer;
+	end;
+
+OnTimer10000:
+	stopnpctimer;
+	donpcevent "#bat_a02_timer::OnEnable";
+	end;
+}
+
+bat_a02,15,16,3	script	OBJ#bat_a02_a	844,{
+OnEnable:
+	bg_monster $@TierraBG2_id1,"bat_a02",177,345,"Food Storage",1909,"OBJ#bat_a02_a::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","OBJ#bat_a02_a::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","OBJ#bat_a02_a::OnMyMobDead") < 1) {
+		donpcevent "Battle Therapist#a02_a::OnStop";
+		donpcevent "Battle Therapist#a02_b::OnStop";
+		set $@TierraBG2_Victory, 2;
+		enablenpc "Guillaume Vintenar#a02_a";
+		enablenpc "Croix Vintenar#a02_b";
+		mapannounce "bat_a02", "Croix Vintenar Swandery : ��ҷ���·�����ʺ�§�ͧ Guillaume's ��Ҫ��! ����!",bc_map,"0xFFCE00";
+		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
+		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
+		if (getbattleflag("feature.bgqueue"))
+			bg_reserve "bat_a02", true;
+	}
+	end;
+}
+
+bat_a02,15,17,3	script	OBJ#bat_a02_b	844,{
+OnEnable:
+	bg_monster $@TierraBG2_id2,"bat_a02",167,50,"Food Depot",1910,"OBJ#bat_a02_b::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","OBJ#bat_a02_b::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","OBJ#bat_a02_b::OnMyMobDead") < 1) {
+		donpcevent "Battle Therapist#a02_a::OnStop";
+		donpcevent "Battle Therapist#a02_b::OnStop";
+		set $@TierraBG2_Victory, 1;
+		enablenpc "Guillaume Vintenar#a02_a";
+		enablenpc "Croix Vintenar#a02_b";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ��ҷ���·�����ʺ�§�ͧ Croix's ��Ҫ��! ����!",bc_map,"0xFFCE00";
+		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
+		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
+		if (getbattleflag("feature.bgqueue"))
+			bg_reserve "bat_a02", true;
+	}
+	end;
+}
+
+bat_a02,15,18,3	script	barricade#bat_a02_a	844,{
+OnEnable:
+	for( set .@i,185; .@i < 202; set .@i,.@i+1 )
+		bg_monster $@TierraBG2_id1,"bat_a02",.@i,266,"Barricade",1906,"barricade#bat_a02_a::OnMyMobDead";
+	setwall "bat_a02",186,266,16,6,1,"bat_a02_c1";
+	end;
+
+OnKill:
+	killmonster "bat_a02","barricade#bat_a02_a::OnMyMobDead";
+	if (checkwall("bat_a02_c1") == true)
+		delwall "bat_a02_c1";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","barricade#bat_a02_a::OnMyMobDead") < 17) {
+		killmonster "bat_a02","barricade#bat_a02_a::OnMyMobDead";
+		delwall "bat_a02_c1";
+		enablenpc "Guillaume Blacksmith#a02";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ��觡մ��ҧ��غ�Ҷ١�����! Blacksmith ������� ��Ҩ��繵�ͧ���ҧ��觡մ��ҧ����!",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+bat_a02,15,19,3	script	barricade#bat_a02_b	844,{
+OnEnable:
+	for( set .@i,169; .@i < 186; set .@i,.@i+1 )
+		bg_monster $@TierraBG2_id2,"bat_a02",.@i,129,"Barricade",1906,"barricade#bat_a02_b::OnMyMobDead";
+	setwall "bat_a02",170,129,16,6,1,"bat_a02_g1";
+	end;
+
+OnKill:
+	killmonster "bat_a02","barricade#bat_a02_b::OnMyMobDead";
+	if (checkwall("bat_a02_g1") == true)
+		delwall "bat_a02_g1";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","barricade#bat_a02_b::OnMyMobDead") < 17) {
+		killmonster "bat_a02","barricade#bat_a02_b::OnMyMobDead";
+		delwall "bat_a02_g1";
+		enablenpc "Croix Blacksmith#bat_a02";
+		mapannounce "bat_a02", "Croix Vintenar Swandery : ��觡մ��ҧ��غ�Ҷ١�����! Blacksmith ������� ��Ҩ��繵�ͧ���ҧ��觡մ��ҧ����!",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+bat_a02,15,20,3	script	OBJ#bat_a02_n	844,{
+OnEnable:
+	monster "bat_a02",273,203,"Neutrality Flag",1911,1,"OBJ#bat_a02_n::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","OBJ#bat_a02_n::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","OBJ#bat_a02_n::OnMyMobDead") < 17) {
+		bg_team_setxy getcharid(4),56,212;
+		if (getcharid(4) == $@TierraBG2_id1) {
+			donpcevent "NOBJ_mob#bat_a02_a::OnEnable";
+			mapannounce "bat_a02", "Guillaume �ִ���ç��ҧ�� �ѧ��鹾ǡ�Ҩ֧�����º",bc_map,"0xFFCE00";
+		}
+		else {
+			donpcevent "NOBJ_mob#bat_a02_b::OnEnable";
+			mapannounce "bat_a02", "Croix �ִ���ç��ҧ�� �ѧ��鹾ǡ�Ҩ֧�����º",bc_map,"0xFFCE00";
+		}
+	}
+	end;
+}
+
+bat_a02,15,21,3	script	NOBJ_mob#bat_a02_a	844,{
+OnEnable:
+	donpcevent "NOBJ_mob#bat_a02_b::OnKill";
+	bg_monster $@TierraBG2_id1,"bat_a02",272,204,"Guillaume Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id1,"bat_a02",272,213,"Guillaume Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id1,"bat_a02",273,197,"Guillaume Camp Guardian",1950,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","NOBJ_mob#bat_a02_a::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	end;
+}
+
+bat_a02,15,22,3	script	NOBJ_mob#bat_a02_b	844,{
+OnEnable:
+	donpcevent "NOBJ_mob#bat_a02_a::OnKill";
+	bg_monster $@TierraBG2_id2,"bat_a02",272,204,"Croix Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id2,"bat_a02",272,213,"Croix Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id2,"bat_a02",273,197,"Croix Camp Guardian",1950,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","NOBJ_mob#bat_a02_b::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	end;
+}
+
+bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
+	if (getcharid(4) == $@TierraBG2_id1) {
+		mes "[Guillaume Blacksmith]";
+		mes "�ǡ����պ��ǹ! ��觡մ��ҧ�١�����!";
+		mes "�������ö��������觡մ��ҧ���� ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ��� 100 Gold^000000";
+		mes "����շء���ҧ¡��� 50 Stones!";
+		next;
+		switch(select("������:¡��ԡ")) {
+		case 1:
+			if (countitem(7049) > 49) {
+				mes "[Guillaume Blacksmith]";
+				mes "��ҹ�� Stones ���ҡ��! 仵�͡ѹ���";
+				next;
+				mes "..";
+				next;
+				mes "....";
+				next;
+				mes "......";
+				next;
+				mes "........";
+				next;
+				mes "..........";
+				next;
+				mes "............";
+				next;
+				mes "..............";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones ��� Gold ��ѵ�ҷ���������";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢��";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments ��� stones �Ѻ Sinew of Bear!";
+				next;
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				next;
+				specialeffect EF_REPAIRWEAPON;
+				mes "[Guillaume Blacksmith]";
+				mes "����! ��������";
+				mes "���ʺ���";
+				if (mobcount("bat_a02","barricade#bat_a02_a::OnMyMobDead") < 17) {
+					delitem 7049,50; //Stone
+					donpcevent "barricade#bat_a02_a::OnEnable";
+				}
+				close2;
+				disablenpc "Guillaume Blacksmith#a02";
+				end;
+			}
+			else {
+				mes "[Guillaume Blacksmith]";
+				mes "��ҹ�� Stones ����!";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "^3131FF�ǡ��ҵ�ͧ��� 50 Stones^000000";
+				mes "�ǡ�����������ҧ �ѧ����ô�պ˹���";
+				close;
+			}
+		case 2:
+			mes "[Guillaume Blacksmith]";
+			mes "�ѵ�١��ѧ��! ;¾���͡�ҡ�����!";
+			close;
+		}
+	}
+	else {
+		mes "[Guillaume Blacksmith]";
+		mes "�ѵ�١��ѧ��!";
 		close;
 	}
+
+OnInit:
+	disablenpc "Guillaume Blacksmith#a02";
 	end;
 }
 
--	script	Maroll Battle Recruiter::BatRecruit	728,{
-	mes "[Maroll Battle Recruiter]";
-	mes "วันที่ดี นักผจญภัย";
-	mes "ข้าเป็นอัศวินจากเมืองไกลที่เรียกว่าอาณาจักร Maroll";
-	next;
-	mes "[Maroll Battle Recruiter]";
-	mes "ตอนนี้เจ้าชายทั้งสองแห่งราชอาณาจักร กำลังต่อสู้เพื่อบัลลังก์แห่ง Maroll และต้องการทหารที่มีประสบการณ์เช่นท่าน";
-	mes "ท่านต้องการให้พลังของท่าน แก่เจ้าชายแห่งหนึ่งในอาณาจักร Maroll อย่างไร?";
-	next;
-	switch(select("เข้าร่วม:ไม่เข้าร่วม")) {
-	case 1:
-		mes "[Maroll Battle Recruiter]";
-		mes "ขอพระเจ้าทรงอวยพรให้แก่ท่าน";
-		close2;
-		getmapxy(.@mapname$,.@x,.@y,BL_NPC);
-		if (.@mapname$ == "prontera")
-			set bat_return,1;
-		else if (.@mapname$ == "moc_ruins")
-			set bat_return,2;
-		else if (.@mapname$ == "aldebaran")
-			set bat_return,3;
-		else if (.@mapname$ == "geffen")
-			set bat_return,4;
-		else if (.@mapname$ == "payon")
-			set bat_return,5;
-		else if (.@mapname$ == "lighthalzen")
-			set bat_return,6;
-		else if (.@mapname$ == "rachel")
-			set bat_return,7;
-		else if (.@mapname$ == "morocc")
-			set bat_return,8;
+bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
+	if (getcharid(4) == $@TierraBG2_id2) {
+		mes "[Croix Blacksmith]";
+		mes "�ǡ����պ��ǹ! ��觡մ��ҧ�١�����!";
+		mes "�������ö��������觡մ��ҧ���� ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ��� 100 Gold^000000";
+		mes "����շء���ҧ¡��� 50 Stones!";
+		next;
+		switch(select("������:¡��ԡ")) {
+		case 1:
+			if (countitem(7049) > 49) {
+				mes "[Croix Blacksmith]";
+				mes "��ҹ�� Stones ���ҡ��! 仵�͡ѹ���.";
+				next;
+				mes "..";
+				next;
+				mes "....";
+				next;
+				mes "......";
+				next;
+				mes "........";
+				next;
+				mes "..........";
+				next;
+				mes "............";
+				next;
+				mes "..............";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones ��� Gold ��ѵ�ҷ���������";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢��";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments ��� stones �Ѻ Sinew of Bear!";
+				next;
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				next;
+				specialeffect EF_REPAIRWEAPON;
+				mes "[Croix Blacksmith]";
+				mes "����! ��������";
+				mes "���ʺ���";
+				if (mobcount("bat_a02","barricade#bat_a02_b::OnMyMobDead") < 17) {
+					delitem 7049,50; //Stone
+					donpcevent "barricade#bat_a02_b::OnEnable";
+				}
+				close2;
+				disablenpc "Croix Blacksmith#bat_a02";
+				end;
+			}
+			else {
+				mes "[Croix Blacksmith]";
+				mes "��ҹ�� Stones ����!";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "^3131FF�ǡ��ҵ�ͧ��� 50 Stones^000000";
+				mes "�ǡ�����������ҧ �ѧ����ô�պ˹���";
+				close;
+			}
+		case 2:
+			mes "[Croix Blacksmith]";
+			mes "�ѵ�١��ѧ��! ;¾���͡�ҡ�����!";
+			close;
+		}
+	}
+	else {
+		mes "[Croix Blacksmith]";
+		mes "�ѵ�١��ѧ��!";
+		close;
+	}
+
+OnInit:
+	disablenpc "Croix Blacksmith#bat_a02";
+	end;
+}
+
+bat_a02,53,377,3	script	Battle Therapist#a02_a	95,{
+	specialeffect2 EF_HEAL;
+	mes "[Battle Therapist]";
+	mes "����Ѻ�� ���";
+	mes "�ٴ��������֡ �";
+	mes "��ҹ����ö������Шҡ�����纻Ǵ";
+	close;
+	end;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	enablenpc "Battle Therapist#a02_a";
+	end;
+
+OnStop:
+	// disablenpc "bat_a02_rp1_a_warp";
+	disablenpc "Battle Therapist#a02_a";
+	stopnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	// enablenpc "bat_a02_rp1_a_warp";
+	areapercentheal "bat_a02",41,365,61,385,100,100;
+	areawarp "bat_a02",41,365,61,385,"bat_a02",352,342;
+	end;
+
+// OnTimer26000:
+	// disablenpc "bat_a02_rp1_a_warp";
+	// end;
+
+OnTimer26500:
+	donpcevent "Battle Therapist#a02_a::OnEnable";
+	end;
+}
+
+/*
+bat_a02,51,375,0	script	bat_a02_rp1_a_warp	-1,10,10,{
+OnInit:
+	disablenpc "bat_a02_rp1_a_warp";
+	end;
+
+OnTouch:
+	percentheal 100,100;
+	warp "bat_a02",352,342;
+	end;
+}
+*/
+
+bat_a02,45,19,3	script	Battle Therapist#a02_b	95,{
+	specialeffect2 EF_HEAL;
+	mes "[Battle Therapist]";
+	mes "����Ѻ�� ���";
+	mes "�ٴ��������֡ �";
+	mes "��ҹ����ö������Шҡ�����纻Ǵ";
+	close;
+	end;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	enablenpc "Battle Therapist#a02_b";
+	end;
+
+OnStop:
+	// disablenpc "bat_a02_rp1_b_warp";
+	disablenpc "Battle Therapist#a02_b";
+	stopnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	// enablenpc "bat_a02_rp1_b_warp";
+	areapercentheal "bat_a02",33,7,53,27,100,100;
+	areawarp "bat_a02",33,7,53,27,"bat_a02",353,52;
+	end;
+
+// OnTimer26000:
+	// disablenpc "bat_a02_rp1_b_warp";
+	// end;
+
+OnTimer26500:
+	donpcevent "Battle Therapist#a02_b::OnEnable";
+	end;
+}
+
+/*
+bat_a02,43,17,0	script	bat_a02_rp1_b_warp	-1,10,10,{
+OnInit:
+	disablenpc "bat_a02_rp1_b_warp";
+	end;
+
+OnTouch:
+	percentheal 100,100;
+	warp "bat_a02",353,52;
+	end;
+}
+*/
+
+bat_a02,60,216,3	script	Valley Ghost#bat_a02_n	950,{
+	specialeffect2 EF_HEAL;
+	mes "[Valley Ghost]";
+	mes "��...��...";
+	close;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	// enablenpc "bat_a02_rp1_n_warp";
+	areapercentheal "bat_a02",45,203,65,223,100,100;
+	areawarp "bat_a02",45,203,65,223,"bat_a02",301,209;
+	end;
+
+// OnTimer26000:
+	// disablenpc "bat_a02_rp1_n_warp";
+	// end;
+
+OnTimer26500:
+	donpcevent "Valley Ghost#bat_a02_n::OnEnable";
+	end;
+}
+
+/*
+bat_a02,55,213,0	script	bat_a02_rp1_n_warp	-1,10,10,{
+OnInit:
+	disablenpc "bat_a02_rp1_n_warp";
+	end;
+
+OnTouch:
+	percentheal 100,100;
+	warp "bat_a02",301,209;
+	end;
+}
+*/
+
+bat_a02,194,267,0	script	barri_warp_up#bat_a02_a	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id1)
+		warp "bat_a02",194,261;
+	end;
+}
+
+bat_a02,194,265,0	script	barri_warp_down#bat_a02a	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id1) 
+		warp "bat_a02",194,270;
+	end;
+}
+
+bat_a02,177,130,0	script	barri_warp_up#bat_a02_b	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id2)
+		warp "bat_a02",178,125;
+	end;
+}
+
+bat_a02,177,128,0	script	barri_warp_down#bat_a02b	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id2)
+		warp "bat_a02",178,134;
+	end;
+}
+
+bat_a02,352,342,0	script	A_CODE#bat_a02	-1,5,5,{
+OnTouch:
+	set .@chk_bfquest,checkquest(2069);
+	if ((.@chk_bfquest == 0) || (.@chk_bfquest == 1))
+		setquest 2069;
+	end;
+}
+
+bat_a02,353,52,0	script	B_CODE#bat_a02	-1,5,5,{
+OnTouch:
+	set .@chk_bfquest,checkquest(2069);
+	if ((.@chk_bfquest == 0) || (.@chk_bfquest == 1))
+		setquest 2069;
+	end;
+}
+
+bat_a02,169,227,0	warp	underladd#bat_a02_1	1,1,bat_a02,178,228
+bat_a02,208,164,0	warp	underladd#bat_a02_2	1,1,bat_a02,200,171
+
+bat_a02,171,309,3	script	Guillaume Camp#flag11	973,{ end; }
+bat_a02,149,310,3	script	Guillaume Camp#flag12	973,{ end; }
+bat_a02,119,336,3	script	Guillaume Camp#flag13	973,{ end; }
+bat_a02,118,357,3	script	Guillaume Camp#flag14	973,{ end; }
+bat_a02,150,380,3	script	Guillaume Camp#flag15	973,{ end; }
+bat_a02,173,380,3	script	Guillaume Camp#flag16	973,{ end; }
+bat_a02,210,344,3	script	Guillaume Camp#flag17	973,{ end; }
+bat_a02,350,325,3	script	Guillaume Camp#flag18	973,{ end; }
+bat_a02,358,325,3	script	Guillaume Camp#flag19	973,{ end; }
+
+bat_a02,138,12,3	script	Croix Camp#flag11	974,{ end; }
+bat_a02,108,36,3	script	Croix Camp#flag12	974,{ end; }
+bat_a02,108,63,3	script	Croix Camp#flag13	974,{ end; }
+bat_a02,136,87,3	script	Croix Camp#flag14	974,{ end; }
+bat_a02,167,86,3	script	Croix Camp#flag15	974,{ end; }
+bat_a02,199,49,3	script	Croix Camp#flag16	974,{ end; }
+bat_a02,168,16,3	script	Croix Camp#flag17	974,{ end; }
+bat_a02,357,74,3	script	Croix Camp#flag18	974,{ end; }
+bat_a02,348,74,3	script	Croix Camp#flag19	974,{ end; }
+
+bat_a02,53,377,3	script	Guillaume Vintenar#a02_a	419,{
+	if (getcharid(4) == $@TierraBG2_id1) {
+		if ($@TierraBG2_Victory == 1)
+			callfunc "F_BG_Badge",1,"Guillaume","Tierra";
 		else
-			set bat_return,1;
-		warp "bat_room",154,150;
-		break;
-	case 2:
-		mes "[Maroll Battle Recruiter]";
-		mes "ข้าจะประจำการที่นี่ เพื่อให้มีทหารมากขึ้น อย่าลังเลที่จะกลับมาทุกครั้งที่ท่านสนใจ";
-		close;
+			callfunc "F_BG_Badge",0,"Guillaume","Tierra";
 	}
+	else {
+		if ($@TierraBG2_Victory == 2)
+			callfunc "F_BG_Badge",0,"Guillaume","Tierra";
+		else
+			callfunc "F_BG_Badge",1,"Guillaume","Tierra";
+	}
+	bg_leave;
+	if (!getbattleflag("feature.bgqueue"))
+		warp "bat_room",154,150;
+	end;
+
+OnInit:
+	disablenpc "Guillaume Vintenar#a02_a";
 	end;
 }
 
-prontera,123,83,3	duplicate(BatRecruit)	Maroll Battle Recruiter::BatRecruit1	728
-moc_ruins,75,162,3	duplicate(BatRecruit)	Maroll Battle Recruiter::BatRecruit2	728
-aldebaran,146,109,3	duplicate(BatRecruit)	Maroll Battle Recruiter::BatRecruit3	728
-geffen,109,66,3	duplicate(BatRecruit)	Maroll Battle Recruiter::BatRecruit4	728
-payon,189,105,3	duplicate(BatRecruit)	Maroll Battle Recruiter::BatRecruit5	728
-lighthalzen,153,86,5	duplicate(BatRecruit)	Maroll Battle Recruiter::BatRecruit6	728
-rachel,149,138,3	duplicate(BatRecruit)	Maroll Battle Recruiter::BatRecruit7	728
+bat_a02,45,19,3	script	Croix Vintenar#a02_b	415,{
+	if (getcharid(4) == $@TierraBG2_id2) {
+		if ($@TierraBG2_Victory == 2)
+			callfunc "F_BG_Badge",1,"Croix","Tierra";
+		else
+			callfunc "F_BG_Badge",0,"Croix","Tierra";
+	}
+	else {
+		if ($@TierraBG2_Victory == 1)
+			callfunc "F_BG_Badge",0,"Croix","Tierra";
+		else
+			callfunc "F_BG_Badge",1,"Croix","Tierra";
+	}
+	bg_leave;
+	if (!getbattleflag("feature.bgqueue"))
+		warp "bat_room",154,150;
+	end;
 
-// Additional warps
-// Empty
-bat_room,57,81,0	warp	bat1	1,1,bat_room,154,149
-bat_room,57,90,0	warp	bat2	1,1,bat_room,154,149
-// Empty
-bat_room,85,81,0	warp	bat5	1,1,bat_room,154,149
-bat_room,85,90,0	warp	bat6	1,1,bat_room,154,149
-// Free BG
-bat_room,113,81,0	warp	bat9	1,1,bat_room,154,149
-bat_room,113,90,0	warp	bat10	1,1,bat_room,154,149
-// Free BG
-bat_room,141,81,0	warp	bat13	1,1,bat_room,154,149
-bat_room,141,90,0	warp	bat14	1,1,bat_room,154,149
-// Free BG
-bat_room,169,81,0	warp	bat17	1,1,bat_room,154,149
-bat_room,169,90,0	warp	bat18	1,1,bat_room,154,149
-// Free BG
-bat_room,197,81,0	warp	bat21	1,1,bat_room,154,149
-bat_room,197,90,0	warp	bat22	1,1,bat_room,154,149
-// Free BG
-bat_room,225,81,0	warp	bat25	1,1,bat_room,154,149
-bat_room,225,90,0	warp	bat26	1,1,bat_room,154,149
-// Empty
-bat_room,253,81,0	warp	bat29	1,1,bat_room,154,149
-bat_room,253,90,0	warp	bat30	1,1,bat_room,154,149
-// Empty
-bat_room,253,220,0	warp	bat31	1,1,bat_room,154,149
-bat_room,253,211,0	warp	bat32	1,1,bat_room,154,149
-
-// Kafra
-//============================================================
-bat_room,148,147,4	script	Kafra Staff::kaf_bat	861,{
-	cutin "kafra_09",2;
-	callfunc "F_Kafra",0,2,1,150,0;
-}
-
-// Repairman
-//============================================================
-bat_room,138,144,4	script	Repairman#bg	86,{
-	callfunc "repairmain","Repairman";
+OnInit:
+	disablenpc "Croix Vintenar#a02_b";
 	end;
 }
 
-// GM Management NPC
-//============================================================
-bat_room,1,151,3	script	Switch#batgnd	81,{
+bat_a02,1,5,3	script	countdown#bat_a02	844,{
+OnEnable:
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer7000:
+	mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ��������з���¤�ѧ����âͧ Croix's �ѹ!",bc_map,"0xFF9900";
+	end;
+
+OnTimer8000:
+	mapannounce "bat_a02", "Croix Vintenar Swandery : ������Ѻ�����ä������ѷ�� ��Ф��������ҭ���ҧ����շ������ش!",bc_map,"0xFF99CC";
+	end;
+
+OnTimer1800000:
+	mapannounce "bat_a02", "Marollo VII : Guillaume Marollo, Croix Marollo! ���Դ����ͧ Marollo!",bc_map,"0x99CC00";
+	end;
+
+OnTimer1803000:
+	mapannounce "bat_a02", "Marollo VII : ����ͧ���¡��ѧ�觢ѹ�ѹ �ѧ��鹨�����դ���㴶١���������� ������¤�������ҳҨѡ� Marollo ��������ѹ������!",bc_map,"0x99CC00";
+	end;
+
+OnTimer1808000:
+	mapannounce "bat_a02", "Marollo VII : ��ҤԴ�����Ҥ���صԡ�õ����� ������¡�ѹ��ҡ���觢�",bc_map,"0x99CC00";
+	end;
+
+OnTimer1822000:
+	mapannounce "bat_a02", "Marollo VII : ��ش��ѷ�Ңͧ��ҹ�ѡ���� �����ҨѴ���ʧ���� Tierra Gorge",bc_map,"0x99CC00";
+	end;
+
+OnTimer1825000:
+	mapannounce "bat_a02", "Axl Rose, Swandery : ��Ѻ��ҹ",bc_map,"0x99CC00";
+	end;
+
+OnTimer1830000:
+	mapwarp "bat_a02","bat_room",154,150;
+	donpcevent "countdown#bat_a02::OnStop";
+	end;
+}
+
+/*
+bat_a02,351,75,3	script	Croix Camp Soldier#bat_a02_guide	934,{
+	mes "���ѧ��Ŵ...";
+	close;
+}
+
+bat_a02,356,326,3	script	Guillaume Camp Soldier#bat_a02_guide	934,{
+	mes "���ѧ��Ŵ...";
+	close;
+}
+*/
+
+bat_a02,1,1,3	script	Release all#a02	81,{
 	set .@i, callfunc("F_GM_NPC",1854,0);
 	if (.@i == -1) {
-		mes "คำสั่งถูกยกเลิก";
+		mes "¡��ԡ";
 		close;
 	} else if (.@i == 0) {
 		end;
 	} else {
-		mes "มีอะไรให้ช่วยไหม?";
+		mes "���������������";
 		next;
-		switch(select("ปิดสนามรบ:เปิดสนามรบ:รีเซ็ต a01:รีเซ็ต b01:รีเซ็ต a02:รีเซ็ต b02")) {
+		switch(select("Release all.:Cancel.")) {
 		case 1:
-			disablenpc "Tierra Gorge Officer#01a";
-			disablenpc "Tierra Gorge Officer#02a";
-			disablenpc "Tierra Gorge Officer#01b";
-			disablenpc "Tierra Gorge Officer#02b";
-			disablenpc "Flavius Officer#01a";
-			disablenpc "Flavius Officer#01b";
-			disablenpc "Flavius Officer#02a";
-			disablenpc "Flavius Officer#02b";
-			break;
+			mes "�ҡ�͹";
+			close2;
+			mapwarp "bat_a02","bat_room",154,150;
+			end;
 		case 2:
-			enablenpc "Tierra Gorge Officer#01a";
-			enablenpc "Tierra Gorge Officer#02a";
-			enablenpc "Tierra Gorge Officer#01b";
-			enablenpc "Tierra Gorge Officer#02b";
-			enablenpc "Flavius Officer#01a";
-			enablenpc "Flavius Officer#01b";
-			enablenpc "Flavius Officer#02a";
-			enablenpc "Flavius Officer#02b";
-			break;
-		case 3:
-			donpcevent "start#bat_a01::OnEnable";
-			break;
-		case 4:
-			donpcevent "start#bat_b01::OnEnable";
-			break;
-		case 5:
-			donpcevent "start#bat_a02::OnEnable";
-			break;
-		case 6:
-			donpcevent "start#bat_b02::OnEnable";
-			break;
-		}
-		mes "เสร็จสมบูรณ์";
-		close;
-	}
-}
-
-// Badges Exchange
-//============================================================
-bat_room,160,150,3	script	Erundek	109,{
-	if (checkweight(1201,1) == 0) {
-		mes "- เดี๋ยวก่อน !! -";
-		mes "- ขณะนี้ท่านกำลังพก -";
-		mes "- สิ่งของติดตัวมากเกินไป -";
-		mes "- โปรดลองอีกครั้ง -";
-		mes "- หลังจากลดน้ำหนัก -";
-		close;
-	}
-	mes "[Erundek]";
-	mes "ท่านมีเหรียญตราสนามรบหรือไม่?";
-	mes "ข้าสามารถแลกเปลี่ยน Bravery Badges และ Valor Badges เพื่อรับรางวัลได้";
-	next;
-	switch(select("แลกเปลี่ยน Badges:ดูรายการของรางวัล")) {
-	case 1:
-		mes "[Erundek]";
-		mes "รายการประเภทใดที่คุณต้องการแลกเปลี่ยน";
-		mes "เพื่อตรวจสอบข้อมูลเพิ่มเติมเกี่ยวกับรายการรางวัล กรุณาใช้ ^3131FFดูรายการของรางวัล^000000 ของเรา";
-		next;
-		switch(select("Weapon:Armor:Accessory:Consumable")) {
-		case 1:
-			mes "[Erundek]";
-			mes "ท่านเลือก ^3131FFArmor^000000.";
-			mes "รายการต่อไปนี้ มีไว้เพื่อแลกเปลี่ยนกับเหรียญตราสนาม";
-			mes "โปรดทราบว่า รายการสำหรับ ^3131FFBravery Badges ระบุว่าเป็น (BB)^000000, และ ^3131FFValor Badges เป็น (VB)^000000.";
-			next;
-			switch(select("Dagger/OneSword/TwoSword/TwoSpear:Staff/Mace/TwoAxe/Shuriken:Bow/Katar/Music/Whip:Book/Knuckle:Revolver/Rifle/Gatling/Shotgun/Launcher")) {
-			case 1:
-				mes "[Erundek]";
-				mes "รายการต่อไปนี้อยู่ในประเภท ^3131FFDagger, One-Handed Sword, Two-Handed Sword, และ Two-Handed Spear^000000";
-				next;
-				setarray .@Weapons[0],13036,7828,13037,7829,13411,7828,13410,7829,1183,7828,1184,7829,1425,7828,1482,7829;
-				break;
-			case 2:
-				mes "[Erundek]";
-				mes "รายการต่อไปนี้อยู่ในประเภท ^3131FFStaff / Mace / Two-Handed Axe / Huuma Shuriken^000000";
-				next;
-				setarray .@Weapons[0],1632,7828,1633,7829,1634,7828,1635,7829,1543,7828,1542,7829,1380,7828,1379,7829,13305,7828,13306,7829;
-				break;
-			case 3:
-				mes "[Erundek]";
-				mes "รายการต่อไปนี้อยู่ในประเภท ^3131FFBow / Katar / Musical Instrument / Whip^000000";
-				next;
-				setarray .@Weapons[0],1739,7828,1738,7829,1279,7828,1280,7829,1924,7828,1923,7829,1978,7828,1977,7829;
-				break;
-			case 4:
-				mes "[Erundek]";
-				mes "รายการต่อไปนี้อยู่ในประเภท ^3131FFBook / Knuckle^000000";
-				next;
-				setarray .@Weapons[0],1574,7828,1575,7829,1824,7828,1823,7829;
-				break;
-			case 5:
-				mes "[Erundek]";
-				mes "รายการต่อไปนี้อยู่ในประเภท ^3131FFRevolver / Rifle / Gatling Gun / Shotgun / Grenade Launcher^000000";
-				next;
-				setarray .@Weapons[0],13108,7828,13171,7829,13172,7828,13173,7829,13174,7829;
-				break;
-			}
-			set .@menu$,"";
-			for(set .@i,0; .@i<getarraysize(.@Weapons); set .@i,.@i+2)
-				set .@menu$, .@menu$+getitemname(.@Weapons[.@i])+((.@Weapons[.@i+1]==7828)?"(BB)":"(VB)")+":";
-			set .@i, (select(.@menu$)-1)*2;
-			set .@type$, ((.@Weapons[.@i+1]==7828)?"(BB)":"(VB)");
-			mes "[Erundek]";
-			mes "ท่านเลือก ^3131FF"+getitemname(.@Weapons[.@i])+.@type$+"^000000.";
-			mes "ท่านสามารถแลกเปลี่ยนสำหรับรายการนี้ด้วย ^FF0000100 "+getitemname(.@Weapons[.@i+1])+"^000000.";
-			mes "ท่านต้องการแลกเปลี่ยนไหม?";
-			next;
-			switch(select("อย่าแลกเปลี่ยน:แลกเปลี่ยน")) {
-			case 1:
-				break;
-			case 2:
-				mes "[Erundek]";
-				mes "ท่านต้องการใช้ ^FF0000100 "+getitemname(.@Weapons[.@i+1])+"^000000 และรับ ^3131FF"+getitemname(.@Weapons[.@i])+.@type$+"^000000?";
-				next;
-				mes "[Erundek]";
-				mes "โปรดจำไว้ว่า รายการรางวัล Battleground ^FF0000จะถูกผูกไว้กับตัวละคร^000000. ท่านแน่ใจว่าท่านต้องการรายการนี้?";
-				next;
-				switch(select("ใช่:ไม่")) {
-				case 1:
-					mes "[Erundek]";
-					if (countitem(.@Weapons[.@i+1]) >= 100) {
-						mes "ขอบคุณสำหรับการแลกเปลี่ยน";
-						delitem .@Weapons[.@i+1],100;
-						getitem .@Weapons[.@i],1;
-					}
-					else mes "ขออภัย แต่ท่านมีเหรียญตราสนามไม่เพียงพอที่จะแลกเปลี่ยน";
-					close;
-				case 2:
-					break;
-				}
-				break;
-			}
-			mes "[Erundek]";
-			mes "ท่านต้องการเวลาเพิ่ม ในการตรวจสอบรายการหรือไม่?";
+			mes "¡��ԡ";
 			close;
-		case 2:
-			mes "[Erundek]";
-			mes "ท่านเลือก ^3131FFArmor^000000.";
-			mes "รายการต่อไปนี้ มีไว้เพื่อแลกเปลี่ยนกับเหรียญตราสนาม";
-			next;
-			switch(select("Garments / Shoes:Armor")) {
-			case 1:
-				setarray .@Items[0],2538,50,2539,50,2540,50,2435,50,2436,50,2437,50;
-				break;
-			case 2:
-				setarray .@Items[0],2376,80,2377,80,2378,80,2379,80,2380,80,2381,80,2382,80;
-				break;
-			}
-			break;
-		case 3:
-			mes "[Erundek]";
-			mes "ท่านเลือก ^3131FFAccessory^000000.";
-			mes "ท่านสามารถแลกเปลี่ยนเหรียญเกียรติยศกับตราของท่านได้ตามอาชีพดังต่อไปนี้:";
-			next;
-			setarray .@Items[0],2733,500,2720,500,2721,500,2722,500,2723,500,2724,500,2725,500;
-			set .@menu1$,"Gunslinger:Swordman/Taekwon Master:Thief:Acolyte:Magician:Archer:Merchant";
-			break;
-		case 4:
-			mes "[Erundek]";
-			mes "ท่านเลือก ^3131FFConsumable^000000.";
-			mes "รายการต่อไปนี้ มีไว้เพื่อแลกเปลี่ยนกับเหรียญตราสนาม:";
-			next;
-			setarray .@Items[0],12269,10,12270,10,12271,5,12272,10,12273,10;
-			break;
 		}
-		break;
-	case 2:
-		mes "[Erundek]";
-		mes "เรามีหลายรายการดังนั้นโปรดดูและซื้ออย่างระมัดระวัง";
-		close2;
-		readbook 11010,1;
-		end;
 	}
-	set .@menu$,"";
-	if (.@menu1$ != "") set .@menu$, .@menu1$;
-	else for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2)
-		set .@menu$, .@menu$+getitemname(.@Items[.@i])+":";
-	set .@i, (select(.@menu$)-1)*2;
-	mes "[Erundek]";
-	mes "ท่านเลือก ^3131FF"+getitemname(.@Items[.@i])+"^000000.";
-	switch(.@Items[.@i]) {
-		case 2720: mes "รายการนี้ สำหรับอาชีพ Swordman และ Taekwon Master เท่านั้น"; break;
-		case 2721: mes "รายการนี้ สำหรับอาชีพ Thief เท่านั้น"; break;
-		case 2722: mes "รายการนี้ สำหรับอาชีพ Acolyte เท่านั้น"; break;
-		case 2723: mes "รายการนี้ สำหรับอาชีพ Magician เท่านั้น"; break;
-		case 2724: mes "รายการนี้ สำหรับอาชีพ Archer เท่านั้น"; break;
-		case 2725: mes "รายการนี้ สำหรับอาชีพ Merchant เท่านั้น"; break;
-		case 2733: mes "รายการนี้ สำหรับอาชีพ Gunslinger เท่านั้น"; break;
-		default: break;
-	}
-	mes "ท่านสามารถแลกเปลี่ยนสำหรับรายการนี้ด้วย ^FF0000"+.@Items[.@i+1]+" "+getitemname(7828)+" หรือ "+.@Items[.@i+1]+" "+getitemname(7829)+"^000000.";
-	mes "ท่านต้องการแลกเปลี่ยนไหม?";
-	next;
-	switch(select("อย่าแลกเปลี่ยน:แลกเปลี่ยน")) {
-	case 1:
-		mes "[Erundek]";
-		mes "ท่านต้องการเวลาเพิ่มในการตรวจสอบรายการหรือไม่?";
-		break;
-	case 2:
-		mes "[Erundek]";
-		mes "ตราไหนที่ท่านต้องการแลกเปลี่ยน?";
-		mes "ท่านต้องการตรา ^3131FF"+.@Items[.@i+1]+"^000000 เพื่อแลกเปลี่ยน";
-		next;
-		if (.@item[0] < 12269 || .@item[0] > 12273 ) {
-			mes "[Erundek]";
-			mes "โปรดจำไว้ว่า รายการรางวัล Battleground ^FF0000จะถูกผูกไว้กับตัวละคร^000000. ท่านแน่ใจว่าท่านต้องการรายการนี้?";
-			next;
-		}
-		set .@j, select("Bravery Badge:Valor Badge:ยกเลิก");
-		mes "[Erundek]";
-		if (.@j == 3) {
-			mes "ท่านยกเลิกการแลกเปลี่ยน";
-			break;
-		}
-		set .@cost, ((.@j==1)?7828:7829);
-		if (countitem(.@cost) >= .@Items[.@i+1]) {
-			mes "ขอบคุณสำหรับการแลกเปลี่ยน";
-			delitem .@cost, .@Items[.@i+1];
-			getitem .@Items[.@i],1;
-		}
-		else mes "ท่านมี "+getitemname(.@cost)+"s. ไม่เพียงพอ";
-		break;
-	}
-	close;
 }
 
-// Badge Reward Function
-//============================================================
-function	script	F_BG_Badge	{
-	.@team$ = getarg(1);
-	.@bg_type$ = getarg(2);
+// BG Queue makes these scripts useless
+-	script	BGQueueInit#tierra02	-1,{
+	end;
 
-	if (.@bg_type$ == "Tierra") {
-		set .@badge,7828; //BF_Badge1
-		set .@amount_win,3;
-		set .@amount_lose,1;
-	} else if (.@bg_type$ == "Flavius") {
-		set .@badge,7829; //BF_Badge2
-		set .@amount_win,9;
-		set .@amount_lose,3;
-	} else
-		return;
-
-	if (getarg(0) == 1) {
-		set .@amount, .@amount_win;
-		if (.@team$ == "Guillaume") {
-			mes "[Axl Rose]";
-			mes "ชัยชนะ Guillaume!";
-		} else if (.@team$ == "Croix") {
-			mes "[Swandery]";
-			mes "ชัยชนะ Croix!";
-		}
-		mes "ขอให้สนุกกับชัยชนะอันรุ่งโรจน์ของเรา!";
-		mes strcharinfo(0)+", มันเป็นสัญญาณที่สะท้อนถึงชัยชนะ";
-	} else {
-		set .@amount, .@amount_lose;
-		if (.@team$ == "Guillaume") {
-			mes "[Axl Rose]";
-			mes "ท่านแพ้ แต่ท่านทุ่มเทเพื่อการต่อสู้ครั้งนี้";
-			mes "นี่เป็นรางวัลสำหรับความทุ่มเทอันยอดเยี่ยมของท่านโดย Guillaume Marollo!";
-			mes "เพียงแค่เอาความพ่ายแพ้นี้เป็นบทเรียน และครั้งต่อไปท่านจะชนะอย่างแน่นอน";
-		} else if (.@team$ == "Croix") {
-			mes "[Swandery]";
-			mes "โอ้ว, "+strcharinfo(0)+" อย่าเศร้า";
-			mes "แม้ว่าเราจะไม่ชนะ แต่เราก็พยายามทำให้ดีที่สุด";
-			mes "นี่คือของกำนัลจาก Croix และโปรดอย่าลืมการต่อสู้ในครั้งนี้ แล้วเราจะชนะในครั้งต่อไป";
-		}
+OnInit:
+	if (getbattleflag("feature.bgqueue")) {
+		unloadnpc "Lieutenant Rundel";
+		unloadnpc "Lieutenant Guerrit";
+		unloadnpc "#bat_a02_quest_a";
+		unloadnpc "#bat_a02_quest_b";
+		unloadnpc "back_bgrooma02a";
+		unloadnpc "back_bgrooma02b";
+		unloadnpc "A_CODE#bat_a02";
+		unloadnpc "B_CODE#bat_a02";
 	}
-	close2;
-
-	// If the VIP system is enabled, VIP players receive an extra 2 badges.
-	if (VIP_SCRIPT && vip_status(VIP_STATUS_ACTIVE))
-		set .@amount, .@amount+2;
-
-	set .@medal_gap, 500 - countitem(.@badge);
-	if (.@medal_gap >= .@amount)
-		getitem .@badge,.@amount;
-	else
-		getitem .@badge,.@medal_gap;
-	return;
+	end;
 }

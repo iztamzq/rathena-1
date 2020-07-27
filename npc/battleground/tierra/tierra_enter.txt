@@ -1,356 +1,855 @@
 //===== rAthena Script =======================================
-//= BattleGround System - Tierra Gorge Entrance NPCs
+//= BattleGround System - Tierra Gorge 2
 //===== Description: =========================================
 //= [Official Conversion]
-//= Tierra Gorge Battleground Entrance NPCs
-//===== Additional Comments: =================================
+//= Second Tierra Gorge Battleground.
+//= - Winning Team: 3 badges (5 if VIP)
+//= - Losing Team: 1 badge (3 if VIP)
+//===== Changelogs: ==========================================
 //= 1.0 First Version. [L0ne_W0lf]
-//= 1.1 Fixed silly copy paste errors. (bugreport:4401)
-//= 1.2 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
+//= 1.1 Updated 'waitingroom' to support required zeny/lvl. [Kisuka]
+//= 1.2 Removed MaxLvl check in waitingrooms.
+//= 1.3 Label standardization. [Euphy]
+//= 1.4 Added GM management function. [Euphy]
+//= 1.5 Added VIP features and created a reward function. [Euphy]
+//= 1.6 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
 //============================================================
 
-// First Tierra Gorge Officers - Guillaume
+// Waiting Room NPCs
 //============================================================
-bat_room,124,178,5	script	Tierra Gorge Officer#01a	418,{
-	if (getbattleflag("feature.bgqueue"))
-		end;
-	if (checkweight(1201,1) == 0) {
-		mes "- เดี๋ยวก่อน !! -";
-		mes "- ขณะนี้ ท่านกำลังพก -";
-		mes "- สิ่งของติดตัวมากเกินไป -";
-		mes "- โปรดลองอีกครั้ง -";
-		mes "- หลังจากลดน้ำหนัก -";
-		close;
-	}
-	mes "[Guillaume Army Officer]";
-	mes "มาแสดงพลังของกองทัพ Guillaume ให้ Croixs เหล่านั้นได้เห็น!";
-	next;
-	switch(select("ข้าต้องการเข้าร่วมกองทัพของท่าน!:จบการสนทนา")) {
-	case 1:
-		if ((Class == Job_Novice) || (BaseClass == Job_Super_Novice)) {
-			mes "[Guillaume Army Officer]";
-			mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Guillaume แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้";
-		}
-		else {
-			if (BaseLevel < 80) {
-				mes "[Guillaume Army Officer]";
-				mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Guillaume แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้";
-			}
-			else {
-				set .@chk_urtime,checkquest(2069,PLAYTIME);
-				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
-					mes "[Guillaume Army Officer]";
-					mes "ท่านดูเหมือนจะเพิ่งกลับมาจากสนามรบ";
-					mes "มันเร็วเกินไปที่ท่านจะกลับไป ไปพักผ่อนแล้วทิ้งศัตรูไว้ให้พวกเรา!";
-				}
-				else {
-					if (.@chk_urtime == 2)
-						erasequest 2069;
-					set .@mapcount,getmapusers("bat_a01");
-					if (.@mapcount > 0) {
-						mes "[Guillaume Army Officer]";
-						mes "ข้าได้รับรายงานแจ้งว่า กองกำลังชั้นยอดได้ถูกส่งไปยังสนามรบเพื่อต่อสู้กับ Croixs แล้ว";
-						mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-					}
-					else {
-						if ($@TierraBG1) {
-							mes "[Guillaume Army Officer]";
-							mes "กองกำลังชั้นนำกำลังยืนอยู่เพื่อถูกส่งไปยังสนามรบ";
-							mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-						}
-						else {
-							mes "[Guillaume Army Officer]";
-							mes "ดูเหมือนท่านพร้อมสำหรับการต่อสู้อย่างแน่นอน!";
-							mes "ไปแสดงให้ Croix เห็นว่าความกลัวที่แท้จริงหมายถึงอะไร!";
-							mes "วันนี้เสียงร้องแห่งชัยชนะของเราจะสะท้อนไปทั่วสนามรบ!";
-							close2;
-							warp "bat_room",57,223;
-							end;
-						}
-					}
-				}
-			}
-		}
-		break;
-	case 2:
-		mes "[Guillaume Army Officer]";
-		mes "วันนี้เราจะได้รับชัยชนะ!";
-		break;
-	}
-	close;
+bat_room,114,227,5	script	Lieutenant Rundel	418,{
+	end;
+
+OnInit:
+	waitingroom "Battle Station",11,"start#bat_a02::OnReadyCheck",1,0,80;
+	end;
+
+OnEnterBG:
+	set $@TierraBG2_id1, waitingroom2bg("bat_a02",50,374,"start#bat_a02::OnGuillaumeQuit","");
+	end;
 }
 
-bat_room,140,178,5	script	Tierra Gorge Officer#02a	418,{
-	if (getbattleflag("feature.bgqueue"))
-		end;
-	if (checkweight(1201,1) == 0) {
-		mes "- เดี๋ยวก่อน !! -";
-		mes "- ขณะนี้ ท่านกำลังพก -";
-		mes "- สิ่งของติดตัวมากเกินไป -";
-		mes "- โปรดลองอีกครั้ง -";
-		mes "- หลังจากลดน้ำหนัก -";
-		close;
-	}
-	mes "[Guillaume Army Officer]";
-	mes "มาแสดงพลังของกองทัพ Guillaume ให้ Croixs เหล่านั้นได้เห็น!";
-	next;
-	switch(select("ข้าต้องการเข้าร่วมกองทัพของท่าน!:จบการสนทนา")) {
-	case 1:
-		if ((Class == Job_Novice) || (BaseClass == Job_Super_Novice)) {
-			mes "[Guillaume Army Officer]";
-			mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Guillaume แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้";
-		}
-		else {
-			if (BaseLevel < 80) {
-				mes "[Guillaume Army Officer]";
-				mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Guillaume แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้.";
-			}
-			else {
-				set .@chk_urtime,checkquest(2069,PLAYTIME);
-				if (.@chk_urtime == 1) {
-					mes "[Guillaume Army Officer]";
-					mes "ท่านดูเหมือนจะเพิ่งกลับมาจากสนามรบ";
-					mes "มันเร็วเกินไปที่ท่านจะกลับไป ไปพักผ่อนแล้วทิ้งศัตรูไว้ให้พวกเรา!";
-				}
-				else {
-					if (.@chk_urtime == 2)
-						erasequest 2069;
-					set .@mapcount,getmapusers("bat_a02");
-					if (.@mapcount > 0) {
-						mes "[Guillaume Army Officer]";
-						mes "ข้าได้รับรายงานแจ้งว่า กองกำลังชั้นยอดได้ถูกส่งไปยังสนามรบเพื่อต่อสู้กับ Croixs แล้ว";
-						mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-					}
-					else {
-						if ($@TierraBG2) {
-							mes "[Guillaume Army Officer]";
-							mes "กองกำลังชั้นนำกำลังยืนอยู่เพื่อถูกส่งไปยังสนามรบ";
-							mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-						}
-						else {
-							mes "[Guillaume Army Officer]";
-							mes "ดูเหมือนท่านพร้อมสำหรับการต่อสู้อย่างแน่นอน!";
-							mes "ไปแสดงให้ Croix เห็นว่าความกลัวที่แท้จริงหมายถึงอะไร!";
-							mes "วันนี้เสียงร้องแห่งชัยชนะของเราจะสะท้อนไปทั่วสนามรบ!";
-							close2;
-							warp "bat_room",114,223;
-							end;
-						}
-					}
-				}
-			}
-		}
-		break;
-	case 2:
-		mes "[Guillaume Army Officer]";
-		mes "วันนี้เราจะได้รับชัยชนะ!";
-		break;
-	}
-	close;
+bat_room,114,204,1	script	Lieutenant Guerrit	414,{
+	end;
+
+OnInit:
+	waitingroom "Battle Station",11,"start#bat_a02::OnReadyCheck",1,0,80;
+	end;
+
+OnEnterBG:
+	set $@TierraBG2_id2, waitingroom2bg("bat_a02",42,16,"start#bat_a02::OnCroixQuit","");
+	end;
 }
 
-bat_room,127,178,5	script	Guillaume Knight#1	417,{
-	mes "[Guillaume Knight]";
-	mes "Tierra Gorge ประกอบด้วยสองด้านที่สูงชันอยู่ในแนวตั้ง และมีคลังเก็บเสบียงสำหรับกองทัพ Guillaume และ Croix ที่ 11 และ 7 นาฬิกา";
-	next;
-	mes "[Guillaume Knight]";
-	mes "การต่อสู้เริ่มต้นที่กองทัพของท่าน และเป้าหมายคือการรุกรานและทำลายคลังเสบียงศัตรูของท่าน ให้เร็วกว่าที่พวกเขาจะสามารถทำลายคลังเสบียงของท่านได้";
-	next;
-	mes "[Guillaume Knight]";
-	mes "ผู้รักษาในสนามรบ จะฟื้นคืนชีพทหารทุกๆ 25 วินาที เพื่อให้พวกเขาสามารถเข้าร่วมการต่อสู้ได้อีกครั้ง";
-	mes "กองทัพที่ยึดธงในใจกลางสนามรบ จะได้รับคะแนนการฟื้นฟูพิเศษซึ่งหมายความว่า ทหารของพวกเขาจะฟื้นคืนชีพได้มากกว่าอีกด้านหนึ่ง ทำให้พวกเขาได้เปรียบในการรบ";
-	next;
-	mes "[Guillaume Knight]";
-	mes "คลังเก็บเสบียงของทั้งสองนั้น เชื่อมต่อกันผ่านเส้นทางที่สั้นและแคบ แต่ประตูถูกปิดกั้นด้วยเครื่องกีดขวาง";
-	mes "คิดวิเคราะห์และว่องไวให้เร็วที่สุดเท่าที่จะทำได้ ชัยชนะของกองทัพของท่าน ขึ้นอยู่กับการมีส่วนร่วมของท่าน";
-	next;
-	mes "[Guillaume Knight]";
+bat_room,1,151,3	script	#bat_a02_timer	844,{
+	end;
+
+OnInit:
 	if (getbattleflag("feature.bgqueue"))
-		mes "หากท่านพร้อม ให้เริ่มโดยคลิก ^0000FFปุ่มต่อสู้ จากอินเทอร์เฟซ^000000";
-	else {
-		mes "โปรดจำไว้ว่า: เมื่อท่านเข้าร่วมการต่อสู้ ท่านจะได้รับโทเค็นซึ่งระบุระยะเวลาที่ท่านไม่สามารถเข้าร่วมในการต่อสู้ประเภทเดียวกันได้";
-		mes "ท่านสามารถตรวจสอบระยะเวลาได้โดยกดปุ่ม Alt+U";
+		end;
+OnEnable:
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer1000:
+	stopnpctimer;
+	if (!bg_get_data($@TierraBG2_id1, 0) && !bg_get_data($@TierraBG2_id2, 0)) {
+		donpcevent "countdown#bat_a02::OnStop";
+		if (getbattleflag("feature.bgqueue"))
+			bg_reserve "bat_a02", true;
+		mapwarp "bat_a02","bat_room",154,150;
+		$@TierraBG2 = 0; $@TierraBG2_Victory = 0;
+		if( $@TierraBG2_id1 ) { bg_destroy $@TierraBG2_id1; $@TierraBG2_id1 = 0; }
+		if( $@TierraBG2_id2 ) { bg_destroy $@TierraBG2_id2; $@TierraBG2_id2 = 0; }
+		if (getbattleflag("feature.bgqueue"))
+			bg_unbook "bat_a02";
+		end;
 	}
-	next;
-	mes "[Guillaume Knight]";
+	initnpctimer;
+	end;
+}
+
+bat_a02,352,342,0	script	#bat_a02_quest_a	-1,5,5,{
+	end;
+
+OnTouch:
+	if (checkquest(2069) < 0)
+		setquest 2069;
+	end;
+}
+
+bat_a02,353,52,0	script	#bat_a02_quest_b	-1,5,5,{
+	end;
+
+OnTouch:
+	if (checkquest(2069) < 0)
+		setquest 2069;
+	end;
+}
+
+bat_room,113,220,0	warp	back_bgrooma02a	1,1,bat_room,154,150
+bat_room,113,211,0	warp	back_bgrooma02b	1,1,bat_room,154,150
+
+// Tierra Gorge Battleground Engine
+//============================================================
+bat_a02,15,15,3	script	start#bat_a02	844,{
+OnInit:
+	mapwarp "bat_a02","bat_room",154,150;
+	end;
+
+OnEnable:
+	donpcevent "OBJ#bat_a02_a::OnKill";
+	donpcevent "OBJ#bat_a02_a::OnEnable";
+	donpcevent "OBJ#bat_a02_b::OnKill";
+	donpcevent "OBJ#bat_a02_b::OnEnable";
+	donpcevent "barricade#bat_a02_a::OnKill";
+	donpcevent "barricade#bat_a02_a::OnEnable";
+	donpcevent "barricade#bat_a02_b::OnKill";
+	donpcevent "barricade#bat_a02_b::OnEnable";
+	donpcevent "OBJ#bat_a02_n::OnKill";
+	donpcevent "OBJ#bat_a02_n::OnEnable";
+	donpcevent "NOBJ_mob#bat_a02_a::OnKill";
+	donpcevent "NOBJ_mob#bat_a02_b::OnKill";
+	donpcevent "Battle Therapist#a02_a::OnEnable";
+	donpcevent "Battle Therapist#a02_b::OnEnable";
+	donpcevent "countdown#bat_a02::OnEnable";
+	disablenpc "Guillaume Blacksmith#a02";
+	disablenpc "Croix Blacksmith#bat_a02";
+	disablenpc "Guillaume Vintenar#a02_a";
+	disablenpc "Croix Vintenar#a02_b";
+	end;
+
+OnGuillaumeActive:
+	warp "bat_a02",352,342;
+	end;
+
+OnCroixActive:
+	warp "bat_a02",353,52;
+	end;
+
+OnGuillaumeQuit:
+OnCroixQuit:
 	if (getbattleflag("feature.bgqueue"))
-		mes "โปรดจำไว้เมื่อท่านยกเลิก ^0000FFท่านไม่สามารถลงทะเบียนใหม่ได้เป็นเวลา 1 นาที^000000!";
+		bg_desert;
 	else
-		mes "ท่านพร้อมสำหรับการต่อสู้หรือยัง? จากนั้นลงทะเบียนกับผู้สรรหาถัดจากฉัน";
-	close;
+		bg_leave;
+	end;
+
+OnReadyCheck:
+	if( $@TierraBG2 )
+		end;
+	if (!getbattleflag("feature.bgqueue")) {
+		set .@Guillaume, getwaitingroomstate(0,"Lieutenant Rundel");
+		set .@Croix, getwaitingroomstate(0,"Lieutenant Guerrit");
+		if( !.@Guillaume && !.@Croix ) {
+			donpcevent "#bat_a02_timer::OnStop";
+			end;
+		}
+		else if( .@Guillaume < 10 || .@Croix < 10 )
+			end;
+	}
+	set $@TierraBG2,1;
+	if (!getbattleflag("feature.bgqueue")) {
+		donpcevent "Lieutenant Rundel::OnEnterBG";
+		donpcevent "Lieutenant Guerrit::OnEnterBG";
+	}
+	donpcevent "start#bat_a02::OnEnable";
+	bg_warp $@TierraBG2_id1,"bat_a02",352,342;
+	bg_warp $@TierraBG2_id2,"bat_a02",353,52;
+	initnpctimer;
+	end;
+
+OnTimer10000:
+	stopnpctimer;
+	donpcevent "#bat_a02_timer::OnEnable";
+	end;
 }
 
-bat_room,143,178,5	duplicate(Guillaume Knight#1)	Guillaume Knight#2	417
+bat_a02,15,16,3	script	OBJ#bat_a02_a	844,{
+OnEnable:
+	bg_monster $@TierraBG2_id1,"bat_a02",177,345,"Food Storage",1909,"OBJ#bat_a02_a::OnMyMobDead";
+	end;
 
-bat_room,127,121,1	script	Croix Knight#1	413,{
-	mes "[Croix Knight]";
-	mes "Tierra Gorge ประกอบด้วยสองด้านที่สูงชันอยู่ในแนวตั้ง และมีคลังเก็บเสบียงสำหรับกองทัพ Guillaume และ Croix ที่ 11 และ 7 นาฬิกา";
-	next;
-	mes "[Croix Knight]";
-	mes "การต่อสู้เริ่มต้นที่กองทัพของท่าน และเป้าหมายคือการรุกรานและทำลายคลังเสบียงศัตรูของท่าน ให้เร็วกว่าที่พวกเขาจะสามารถทำลายคลังเสบียงของท่านได้";
-	next;
-	mes "[Croix Knight]";
-	mes "ผู้รักษาในสนามรบ จะฟื้นคืนชีพทหารทุกๆ 25 วินาที เพื่อให้พวกเขาสามารถเข้าร่วมการต่อสู้ได้อีกครั้ง";
-	mes "กองทัพที่ยึดธงในใจกลางสนามรบ จะได้รับคะแนนการฟื้นฟูพิเศษซึ่งหมายความว่า ทหารของพวกเขาจะฟื้นคืนชีพได้มากกว่าอีกด้านหนึ่ง ทำให้พวกเขาได้เปรียบในการรบ";
-	next;
-	mes "[Croix Knight]";
-	mes "คลังเก็บเสบียงของทั้งสองนั้น เชื่อมต่อกันผ่านเส้นทางที่สั้นและแคบ แต่ประตูถูกปิดกั้นด้วยเครื่องกีดขวาง";
-	mes "คิดวิเคราะห์และว่องไวให้เร็วที่สุดเท่าที่จะทำได้ ชัยชนะของกองทัพของท่าน ขึ้นอยู่กับการมีส่วนร่วมของท่าน";
-	next;
-	mes "[Croix Knight]";
-	if (getbattleflag("feature.bgqueue"))
-		mes "หากท่านพร้อม ให้เริ่มโดยคลิก ^0000FFปุ่มต่อสู้ จากอินเทอร์เฟซ^000000";
+OnKill:
+	killmonster "bat_a02","OBJ#bat_a02_a::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","OBJ#bat_a02_a::OnMyMobDead") < 1) {
+		donpcevent "Battle Therapist#a02_a::OnStop";
+		donpcevent "Battle Therapist#a02_b::OnStop";
+		set $@TierraBG2_Victory, 2;
+		enablenpc "Guillaume Vintenar#a02_a";
+		enablenpc "Croix Vintenar#a02_b";
+		mapannounce "bat_a02", "Croix Vintenar Swandery : ��ҷ���·�����ʺ�§�ͧ Guillaume's ��Ҫ��! ����!",bc_map,"0xFFCE00";
+		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
+		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
+		if (getbattleflag("feature.bgqueue"))
+			bg_reserve "bat_a02", true;
+	}
+	end;
+}
+
+bat_a02,15,17,3	script	OBJ#bat_a02_b	844,{
+OnEnable:
+	bg_monster $@TierraBG2_id2,"bat_a02",167,50,"Food Depot",1910,"OBJ#bat_a02_b::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","OBJ#bat_a02_b::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","OBJ#bat_a02_b::OnMyMobDead") < 1) {
+		donpcevent "Battle Therapist#a02_a::OnStop";
+		donpcevent "Battle Therapist#a02_b::OnStop";
+		set $@TierraBG2_Victory, 1;
+		enablenpc "Guillaume Vintenar#a02_a";
+		enablenpc "Croix Vintenar#a02_b";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ��ҷ���·�����ʺ�§�ͧ Croix's ��Ҫ��! ����!",bc_map,"0xFFCE00";
+		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
+		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
+		if (getbattleflag("feature.bgqueue"))
+			bg_reserve "bat_a02", true;
+	}
+	end;
+}
+
+bat_a02,15,18,3	script	barricade#bat_a02_a	844,{
+OnEnable:
+	for( set .@i,185; .@i < 202; set .@i,.@i+1 )
+		bg_monster $@TierraBG2_id1,"bat_a02",.@i,266,"Barricade",1906,"barricade#bat_a02_a::OnMyMobDead";
+	setwall "bat_a02",186,266,16,6,1,"bat_a02_c1";
+	end;
+
+OnKill:
+	killmonster "bat_a02","barricade#bat_a02_a::OnMyMobDead";
+	if (checkwall("bat_a02_c1") == true)
+		delwall "bat_a02_c1";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","barricade#bat_a02_a::OnMyMobDead") < 17) {
+		killmonster "bat_a02","barricade#bat_a02_a::OnMyMobDead";
+		delwall "bat_a02_c1";
+		enablenpc "Guillaume Blacksmith#a02";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ��觡մ��ҧ��غ�Ҷ١�����! Blacksmith ������� ��Ҩ��繵�ͧ���ҧ��觡մ��ҧ����!",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+bat_a02,15,19,3	script	barricade#bat_a02_b	844,{
+OnEnable:
+	for( set .@i,169; .@i < 186; set .@i,.@i+1 )
+		bg_monster $@TierraBG2_id2,"bat_a02",.@i,129,"Barricade",1906,"barricade#bat_a02_b::OnMyMobDead";
+	setwall "bat_a02",170,129,16,6,1,"bat_a02_g1";
+	end;
+
+OnKill:
+	killmonster "bat_a02","barricade#bat_a02_b::OnMyMobDead";
+	if (checkwall("bat_a02_g1") == true)
+		delwall "bat_a02_g1";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","barricade#bat_a02_b::OnMyMobDead") < 17) {
+		killmonster "bat_a02","barricade#bat_a02_b::OnMyMobDead";
+		delwall "bat_a02_g1";
+		enablenpc "Croix Blacksmith#bat_a02";
+		mapannounce "bat_a02", "Croix Vintenar Swandery : ��觡մ��ҧ��غ�Ҷ١�����! Blacksmith ������� ��Ҩ��繵�ͧ���ҧ��觡մ��ҧ����!",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+bat_a02,15,20,3	script	OBJ#bat_a02_n	844,{
+OnEnable:
+	monster "bat_a02",273,203,"Neutrality Flag",1911,1,"OBJ#bat_a02_n::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","OBJ#bat_a02_n::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount("bat_a02","OBJ#bat_a02_n::OnMyMobDead") < 17) {
+		bg_team_setxy getcharid(4),56,212;
+		if (getcharid(4) == $@TierraBG2_id1) {
+			donpcevent "NOBJ_mob#bat_a02_a::OnEnable";
+			mapannounce "bat_a02", "Guillaume �ִ���ç��ҧ�� �ѧ��鹾ǡ�Ҩ֧�����º",bc_map,"0xFFCE00";
+		}
+		else {
+			donpcevent "NOBJ_mob#bat_a02_b::OnEnable";
+			mapannounce "bat_a02", "Croix �ִ���ç��ҧ�� �ѧ��鹾ǡ�Ҩ֧�����º",bc_map,"0xFFCE00";
+		}
+	}
+	end;
+}
+
+bat_a02,15,21,3	script	NOBJ_mob#bat_a02_a	844,{
+OnEnable:
+	donpcevent "NOBJ_mob#bat_a02_b::OnKill";
+	bg_monster $@TierraBG2_id1,"bat_a02",272,204,"Guillaume Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id1,"bat_a02",272,213,"Guillaume Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id1,"bat_a02",273,197,"Guillaume Camp Guardian",1950,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","NOBJ_mob#bat_a02_a::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	end;
+}
+
+bat_a02,15,22,3	script	NOBJ_mob#bat_a02_b	844,{
+OnEnable:
+	donpcevent "NOBJ_mob#bat_a02_a::OnKill";
+	bg_monster $@TierraBG2_id2,"bat_a02",272,204,"Croix Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id2,"bat_a02",272,213,"Croix Camp Guardian",1949,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	bg_monster $@TierraBG2_id2,"bat_a02",273,197,"Croix Camp Guardian",1950,"NOBJ_mob#bat_a02_a::OnMyMobDead";
+	end;
+
+OnKill:
+	killmonster "bat_a02","NOBJ_mob#bat_a02_b::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	end;
+}
+
+bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
+	if (getcharid(4) == $@TierraBG2_id1) {
+		mes "[Guillaume Blacksmith]";
+		mes "�ǡ����պ��ǹ! ��觡մ��ҧ�١�����!";
+		mes "�������ö��������觡մ��ҧ���� ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ��� 100 Gold^000000";
+		mes "����շء���ҧ¡��� 50 Stones!";
+		next;
+		switch(select("������:¡��ԡ")) {
+		case 1:
+			if (countitem(7049) > 49) {
+				mes "[Guillaume Blacksmith]";
+				mes "��ҹ�� Stones ���ҡ��! 仵�͡ѹ���";
+				next;
+				mes "..";
+				next;
+				mes "....";
+				next;
+				mes "......";
+				next;
+				mes "........";
+				next;
+				mes "..........";
+				next;
+				mes "............";
+				next;
+				mes "..............";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones ��� Gold ��ѵ�ҷ���������";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢��";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments ��� stones �Ѻ Sinew of Bear!";
+				next;
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				next;
+				specialeffect EF_REPAIRWEAPON;
+				mes "[Guillaume Blacksmith]";
+				mes "����! ��������";
+				mes "���ʺ���";
+				if (mobcount("bat_a02","barricade#bat_a02_a::OnMyMobDead") < 17) {
+					delitem 7049,50; //Stone
+					donpcevent "barricade#bat_a02_a::OnEnable";
+				}
+				close2;
+				disablenpc "Guillaume Blacksmith#a02";
+				end;
+			}
+			else {
+				mes "[Guillaume Blacksmith]";
+				mes "��ҹ�� Stones ����!";
+				next;
+				mes "[Guillaume Blacksmith]";
+				mes "^3131FF�ǡ��ҵ�ͧ��� 50 Stones^000000";
+				mes "�ǡ�����������ҧ �ѧ����ô�պ˹���";
+				close;
+			}
+		case 2:
+			mes "[Guillaume Blacksmith]";
+			mes "�ѵ�١��ѧ��! ;¾���͡�ҡ�����!";
+			close;
+		}
+	}
 	else {
-		mes "โปรดจำไว้ว่า: เมื่อท่านเข้าร่วมการต่อสู้ ท่านจะได้รับโทเค็นซึ่งระบุระยะเวลาที่ท่านไม่สามารถเข้าร่วมในการต่อสู้ประเภทเดียวกันได้";
-		mes "ท่านสามารถตรวจสอบระยะเวลาได้โดยกดปุ่ม Alt+U";
+		mes "[Guillaume Blacksmith]";
+		mes "�ѵ�١��ѧ��!";
+		close;
 	}
-	next;
-	mes "[Croix Knight]";
-	if (getbattleflag("feature.bgqueue"))
-		mes "โปรดจำไว้เมื่อท่านยกเลิก ^0000FFท่านไม่สามารถลงทะเบียนใหม่ได้เป็นเวลา 1 นาที^000000!";
-	else
-		mes "ท่านพร้อมสำหรับการต่อสู้หรือยัง? จากนั้นลงทะเบียนกับผู้สรรหาถัดจากฉัน";
+
+OnInit:
+	disablenpc "Guillaume Blacksmith#a02";
+	end;
+}
+
+bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
+	if (getcharid(4) == $@TierraBG2_id2) {
+		mes "[Croix Blacksmith]";
+		mes "�ǡ����պ��ǹ! ��觡մ��ҧ�١�����!";
+		mes "�������ö��������觡մ��ҧ���� ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ��� 100 Gold^000000";
+		mes "����շء���ҧ¡��� 50 Stones!";
+		next;
+		switch(select("������:¡��ԡ")) {
+		case 1:
+			if (countitem(7049) > 49) {
+				mes "[Croix Blacksmith]";
+				mes "��ҹ�� Stones ���ҡ��! 仵�͡ѹ���.";
+				next;
+				mes "..";
+				next;
+				mes "....";
+				next;
+				mes "......";
+				next;
+				mes "........";
+				next;
+				mes "..........";
+				next;
+				mes "............";
+				next;
+				mes "..............";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones ��� Gold ��ѵ�ҷ���������";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢��";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "��� Stones and Gold ��ѵ�ҷ��������� ��� ��˹���觡մ��ҧ �ҡ������� Rough Elunium �����������觢�� �͹��鵡�觴��� Metal Fragments ��� stones �Ѻ Sinew of Bear!";
+				next;
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				mes "..............";
+				next;
+				specialeffect EF_REPAIRWEAPON;
+				mes "[Croix Blacksmith]";
+				mes "����! ��������";
+				mes "���ʺ���";
+				if (mobcount("bat_a02","barricade#bat_a02_b::OnMyMobDead") < 17) {
+					delitem 7049,50; //Stone
+					donpcevent "barricade#bat_a02_b::OnEnable";
+				}
+				close2;
+				disablenpc "Croix Blacksmith#bat_a02";
+				end;
+			}
+			else {
+				mes "[Croix Blacksmith]";
+				mes "��ҹ�� Stones ����!";
+				next;
+				mes "[Croix Blacksmith]";
+				mes "^3131FF�ǡ��ҵ�ͧ��� 50 Stones^000000";
+				mes "�ǡ�����������ҧ �ѧ����ô�պ˹���";
+				close;
+			}
+		case 2:
+			mes "[Croix Blacksmith]";
+			mes "�ѵ�١��ѧ��! ;¾���͡�ҡ�����!";
+			close;
+		}
+	}
+	else {
+		mes "[Croix Blacksmith]";
+		mes "�ѵ�١��ѧ��!";
+		close;
+	}
+
+OnInit:
+	disablenpc "Croix Blacksmith#bat_a02";
+	end;
+}
+
+bat_a02,53,377,3	script	Battle Therapist#a02_a	95,{
+	specialeffect2 EF_HEAL;
+	mes "[Battle Therapist]";
+	mes "����Ѻ�� ���";
+	mes "�ٴ��������֡ �";
+	mes "��ҹ����ö������Шҡ�����纻Ǵ";
+	close;
+	end;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	enablenpc "Battle Therapist#a02_a";
+	end;
+
+OnStop:
+	// disablenpc "bat_a02_rp1_a_warp";
+	disablenpc "Battle Therapist#a02_a";
+	stopnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	// enablenpc "bat_a02_rp1_a_warp";
+	areapercentheal "bat_a02",41,365,61,385,100,100;
+	areawarp "bat_a02",41,365,61,385,"bat_a02",352,342;
+	end;
+
+// OnTimer26000:
+	// disablenpc "bat_a02_rp1_a_warp";
+	// end;
+
+OnTimer26500:
+	donpcevent "Battle Therapist#a02_a::OnEnable";
+	end;
+}
+
+/*
+bat_a02,51,375,0	script	bat_a02_rp1_a_warp	-1,10,10,{
+OnInit:
+	disablenpc "bat_a02_rp1_a_warp";
+	end;
+
+OnTouch:
+	percentheal 100,100;
+	warp "bat_a02",352,342;
+	end;
+}
+*/
+
+bat_a02,45,19,3	script	Battle Therapist#a02_b	95,{
+	specialeffect2 EF_HEAL;
+	mes "[Battle Therapist]";
+	mes "����Ѻ�� ���";
+	mes "�ٴ��������֡ �";
+	mes "��ҹ����ö������Шҡ�����纻Ǵ";
+	close;
+	end;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	enablenpc "Battle Therapist#a02_b";
+	end;
+
+OnStop:
+	// disablenpc "bat_a02_rp1_b_warp";
+	disablenpc "Battle Therapist#a02_b";
+	stopnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	// enablenpc "bat_a02_rp1_b_warp";
+	areapercentheal "bat_a02",33,7,53,27,100,100;
+	areawarp "bat_a02",33,7,53,27,"bat_a02",353,52;
+	end;
+
+// OnTimer26000:
+	// disablenpc "bat_a02_rp1_b_warp";
+	// end;
+
+OnTimer26500:
+	donpcevent "Battle Therapist#a02_b::OnEnable";
+	end;
+}
+
+/*
+bat_a02,43,17,0	script	bat_a02_rp1_b_warp	-1,10,10,{
+OnInit:
+	disablenpc "bat_a02_rp1_b_warp";
+	end;
+
+OnTouch:
+	percentheal 100,100;
+	warp "bat_a02",353,52;
+	end;
+}
+*/
+
+bat_a02,60,216,3	script	Valley Ghost#bat_a02_n	950,{
+	specialeffect2 EF_HEAL;
+	mes "[Valley Ghost]";
+	mes "��...��...";
+	close;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	// enablenpc "bat_a02_rp1_n_warp";
+	areapercentheal "bat_a02",45,203,65,223,100,100;
+	areawarp "bat_a02",45,203,65,223,"bat_a02",301,209;
+	end;
+
+// OnTimer26000:
+	// disablenpc "bat_a02_rp1_n_warp";
+	// end;
+
+OnTimer26500:
+	donpcevent "Valley Ghost#bat_a02_n::OnEnable";
+	end;
+}
+
+/*
+bat_a02,55,213,0	script	bat_a02_rp1_n_warp	-1,10,10,{
+OnInit:
+	disablenpc "bat_a02_rp1_n_warp";
+	end;
+
+OnTouch:
+	percentheal 100,100;
+	warp "bat_a02",301,209;
+	end;
+}
+*/
+
+bat_a02,194,267,0	script	barri_warp_up#bat_a02_a	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id1)
+		warp "bat_a02",194,261;
+	end;
+}
+
+bat_a02,194,265,0	script	barri_warp_down#bat_a02a	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id1) 
+		warp "bat_a02",194,270;
+	end;
+}
+
+bat_a02,177,130,0	script	barri_warp_up#bat_a02_b	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id2)
+		warp "bat_a02",178,125;
+	end;
+}
+
+bat_a02,177,128,0	script	barri_warp_down#bat_a02b	-1,7,0,{
+OnTouch:
+	if (getcharid(4) == $@TierraBG2_id2)
+		warp "bat_a02",178,134;
+	end;
+}
+
+bat_a02,352,342,0	script	A_CODE#bat_a02	-1,5,5,{
+OnTouch:
+	set .@chk_bfquest,checkquest(2069);
+	if ((.@chk_bfquest == 0) || (.@chk_bfquest == 1))
+		setquest 2069;
+	end;
+}
+
+bat_a02,353,52,0	script	B_CODE#bat_a02	-1,5,5,{
+OnTouch:
+	set .@chk_bfquest,checkquest(2069);
+	if ((.@chk_bfquest == 0) || (.@chk_bfquest == 1))
+		setquest 2069;
+	end;
+}
+
+bat_a02,169,227,0	warp	underladd#bat_a02_1	1,1,bat_a02,178,228
+bat_a02,208,164,0	warp	underladd#bat_a02_2	1,1,bat_a02,200,171
+
+bat_a02,171,309,3	script	Guillaume Camp#flag11	973,{ end; }
+bat_a02,149,310,3	script	Guillaume Camp#flag12	973,{ end; }
+bat_a02,119,336,3	script	Guillaume Camp#flag13	973,{ end; }
+bat_a02,118,357,3	script	Guillaume Camp#flag14	973,{ end; }
+bat_a02,150,380,3	script	Guillaume Camp#flag15	973,{ end; }
+bat_a02,173,380,3	script	Guillaume Camp#flag16	973,{ end; }
+bat_a02,210,344,3	script	Guillaume Camp#flag17	973,{ end; }
+bat_a02,350,325,3	script	Guillaume Camp#flag18	973,{ end; }
+bat_a02,358,325,3	script	Guillaume Camp#flag19	973,{ end; }
+
+bat_a02,138,12,3	script	Croix Camp#flag11	974,{ end; }
+bat_a02,108,36,3	script	Croix Camp#flag12	974,{ end; }
+bat_a02,108,63,3	script	Croix Camp#flag13	974,{ end; }
+bat_a02,136,87,3	script	Croix Camp#flag14	974,{ end; }
+bat_a02,167,86,3	script	Croix Camp#flag15	974,{ end; }
+bat_a02,199,49,3	script	Croix Camp#flag16	974,{ end; }
+bat_a02,168,16,3	script	Croix Camp#flag17	974,{ end; }
+bat_a02,357,74,3	script	Croix Camp#flag18	974,{ end; }
+bat_a02,348,74,3	script	Croix Camp#flag19	974,{ end; }
+
+bat_a02,53,377,3	script	Guillaume Vintenar#a02_a	419,{
+	if (getcharid(4) == $@TierraBG2_id1) {
+		if ($@TierraBG2_Victory == 1)
+			callfunc "F_BG_Badge",1,"Guillaume","Tierra";
+		else
+			callfunc "F_BG_Badge",0,"Guillaume","Tierra";
+	}
+	else {
+		if ($@TierraBG2_Victory == 2)
+			callfunc "F_BG_Badge",0,"Guillaume","Tierra";
+		else
+			callfunc "F_BG_Badge",1,"Guillaume","Tierra";
+	}
+	bg_leave;
+	if (!getbattleflag("feature.bgqueue"))
+		warp "bat_room",154,150;
+	end;
+
+OnInit:
+	disablenpc "Guillaume Vintenar#a02_a";
+	end;
+}
+
+bat_a02,45,19,3	script	Croix Vintenar#a02_b	415,{
+	if (getcharid(4) == $@TierraBG2_id2) {
+		if ($@TierraBG2_Victory == 2)
+			callfunc "F_BG_Badge",1,"Croix","Tierra";
+		else
+			callfunc "F_BG_Badge",0,"Croix","Tierra";
+	}
+	else {
+		if ($@TierraBG2_Victory == 1)
+			callfunc "F_BG_Badge",0,"Croix","Tierra";
+		else
+			callfunc "F_BG_Badge",1,"Croix","Tierra";
+	}
+	bg_leave;
+	if (!getbattleflag("feature.bgqueue"))
+		warp "bat_room",154,150;
+	end;
+
+OnInit:
+	disablenpc "Croix Vintenar#a02_b";
+	end;
+}
+
+bat_a02,1,5,3	script	countdown#bat_a02	844,{
+OnEnable:
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer7000:
+	mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ��������з���¤�ѧ����âͧ Croix's �ѹ!",bc_map,"0xFF9900";
+	end;
+
+OnTimer8000:
+	mapannounce "bat_a02", "Croix Vintenar Swandery : ������Ѻ�����ä������ѷ�� ��Ф��������ҭ���ҧ����շ������ش!",bc_map,"0xFF99CC";
+	end;
+
+OnTimer1800000:
+	mapannounce "bat_a02", "Marollo VII : Guillaume Marollo, Croix Marollo! ���Դ����ͧ Marollo!",bc_map,"0x99CC00";
+	end;
+
+OnTimer1803000:
+	mapannounce "bat_a02", "Marollo VII : ����ͧ���¡��ѧ�觢ѹ�ѹ �ѧ��鹨�����դ���㴶١���������� ������¤�������ҳҨѡ� Marollo ��������ѹ������!",bc_map,"0x99CC00";
+	end;
+
+OnTimer1808000:
+	mapannounce "bat_a02", "Marollo VII : ��ҤԴ�����Ҥ���صԡ�õ����� ������¡�ѹ��ҡ���觢�",bc_map,"0x99CC00";
+	end;
+
+OnTimer1822000:
+	mapannounce "bat_a02", "Marollo VII : ��ش��ѷ�Ңͧ��ҹ�ѡ���� �����ҨѴ���ʧ���� Tierra Gorge",bc_map,"0x99CC00";
+	end;
+
+OnTimer1825000:
+	mapannounce "bat_a02", "Axl Rose, Swandery : ��Ѻ��ҹ",bc_map,"0x99CC00";
+	end;
+
+OnTimer1830000:
+	mapwarp "bat_a02","bat_room",154,150;
+	donpcevent "countdown#bat_a02::OnStop";
+	end;
+}
+
+/*
+bat_a02,351,75,3	script	Croix Camp Soldier#bat_a02_guide	934,{
+	mes "���ѧ��Ŵ...";
 	close;
 }
 
-bat_room,143,121,1	duplicate(Croix Knight#1)	Croix Knight#2	413
-
-// Second Tierra Gorge Officers - Croix
-//============================================================
-bat_room,125,121,1	script	Tierra Gorge Officer#01b	414,{
-	if (getbattleflag("feature.bgqueue"))
-		end;
-	if (checkweight(1201,1) == 0) {
-		mes "- เดี๋ยวก่อน !! -";
-		mes "- ขณะนี้ ท่านกำลังพก -";
-		mes "- สิ่งของติดตัวมากเกินไป -";
-		mes "- โปรดลองอีกครั้ง -";
-		mes "- หลังจากลดน้ำหนัก -";
-		close;
-	}
-	mes "[Croix Army Officer]";
-	mes "มาแสดงพลังของกองทัพ Croixs ให้ Guillaume เหล่านั้นได้เห็น!!";
-	next;
-	switch(select("ข้าต้องการเข้าร่วมกองทัพของท่าน!:จบการสนทนา")) {
-	case 1:
-		if ((Class == Job_Novice) || (BaseClass == Job_Super_Novice)) {
-			mes "[Croix Army Officer]";
-			mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Croix แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้";
-		}
-		else {
-			if (BaseLevel < 80) {
-				mes "[Croix Army Officer]";
-				mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Croix แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้";
-			}
-			else {
-				set .@chk_urtime,checkquest(2069,PLAYTIME);
-				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
-					mes "[Croix Army Officer]";
-					mes "ท่านดูเหมือนจะเพิ่งกลับมาจากสนามรบ";
-					mes "มันเร็วเกินไปที่ท่านจะกลับไป ไปพักผ่อนแล้วทิ้งศัตรูไว้ให้พวกเรา";
-				}
-				else {
-					if (.@chk_urtime == 2)
-						erasequest 2069;
-					set .@mapcount,getmapusers("bat_a02");
-					if (.@mapcount > 0) {
-						mes "[Croix Army Officer]";
-						mes "ข้าได้รับรายงานแจ้งว่า กองกำลังชั้นยอดได้ถูกส่งไปยังสนามรบเพื่อต่อสู้กับ Guillaume แล้ว";
-						mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-					}
-					else {
-						if ($@TierraBG1) {
-							mes "[Croix Army Officer]";
-							mes "กองกำลังชั้นนำกำลังยืนอยู่เพื่อถูกส่งไปยังสนามรบ";
-							mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-						}
-						else {
-							mes "[Croix Army Officer]";
-							mes "ดูเหมือนท่านพร้อมสำหรับการต่อสู้อย่างแน่นอน!";
-							mes "ไปแสดงให้ Guillaumes เห็นว่าความกลัวที่แท้จริงหมายถึงอะไร!";
-							mes "วันนี้เสียงร้องแห่งชัยชนะของเราจะสะท้อนไปทั่วสนามรบ!";
-							close2;
-							warp "bat_room",57,207;
-							end;
-						}
-					}
-				}
-			}
-		}
-		break;
-	case 2:
-		mes "[Croix Army Officer]";
-		mes "วันนี้เราจะได้รับชัยชนะ!";
-		break;
-	}
+bat_a02,356,326,3	script	Guillaume Camp Soldier#bat_a02_guide	934,{
+	mes "���ѧ��Ŵ...";
 	close;
 }
+*/
 
-bat_room,140,121,1	script	Tierra Gorge Officer#02b	414,{
-	if (getbattleflag("feature.bgqueue"))
-		end;
-	if (checkweight(1201,1) == 0) {
-		mes "- เดี๋ยวก่อน !! -";
-		mes "- ขณะนี้ท่านกำลังพก -";
-		mes "- สิ่งของติดตัวมากเกินไป -";
-		mes "- โปรดลองอีกครั้ง -";
-		mes "- หลังจากลดน้ำหนัก -";
+bat_a02,1,1,3	script	Release all#a02	81,{
+	set .@i, callfunc("F_GM_NPC",1854,0);
+	if (.@i == -1) {
+		mes "¡��ԡ";
 		close;
-	}
-	mes "[Croix Army Officer]";
-	mes "มาแสดงพลังของกองทัพ Croixs ให้ Guillaume เหล่านั้นได้เห็น!";
-	next;
-	switch(select("ข้าต้องการเข้าร่วมกองทัพของท่าน!:จบการสนทนา")) {
-	case 1:
-		if ((Class == Job_Novice) || (BaseClass == Job_Super_Novice)) {
-			mes "[Croix Army Officer]";
-			mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Croix แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้";
+	} else if (.@i == 0) {
+		end;
+	} else {
+		mes "���������������";
+		next;
+		switch(select("Release all.:Cancel.")) {
+		case 1:
+			mes "�ҡ�͹";
+			close2;
+			mapwarp "bat_a02","bat_room",154,150;
+			end;
+		case 2:
+			mes "¡��ԡ";
+			close;
 		}
-		else {
-			if (BaseLevel < 80) {
-				mes "[Croix Army Officer]";
-				mes "ข้ายินดีมากที่ท่านต้องการเข้าร่วมและต่อสู้กับกองทัพ Croix แต่ข้าขออภัย: ข้าไม่สามารถส่งมือใหม่อย่างท่านไปตายในสนามรบที่โหดร้ายได้";
-			}
-			else {
-				set .@chk_urtime,checkquest(2069,PLAYTIME);
-				if (.@chk_urtime == 1) {
-					mes "[Croix Army Officer]";
-					mes "ท่านดูเหมือนจะเพิ่งกลับมาจากสนามรบ";
-					mes "มันเร็วเกินไปที่ท่านจะกลับไป ไปพักผ่อนแล้วทิ้งศัตรูไว้ให้พวกเรา!";
-				}
-				else {
-					if (.@chk_urtime == 2)
-						erasequest 2069;
-					set .@mapcount,getmapusers("bat_a02");
-					if (.@mapcount > 0) {
-						mes "[Croix Army Officer]";
-						mes "ข้าได้รับรายงานแจ้งว่า กองกำลังชั้นยอดได้ถูกส่งไปยังสนามรบเพื่อต่อสู้กับ Guillaume แล้ว";
-						mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-					}
-					else {
-						if ($@TierraBG2) {
-							mes "[Croix Army Officer]";
-							mes "กองกำลังชั้นนำกำลังยืนอยู่เพื่อถูกส่งไปยังสนามรบ";
-							mes "ทำไมท่านไม่รอซักพักล่ะ? ข้าขอแนะนำให้ท่านลับอาวุธของท่าน และเตรียมเสบียงของท่านจนกว่าจะถึงตอนนั้น";
-						}
-						else {
-							mes "[Croix Army Officer]";
-							mes "ดูเหมือนท่านพร้อมสำหรับการต่อสู้อย่างแน่นอน!";
-							mes "ไปแสดงให้ Guillaumes เห็นว่าความกลัวที่แท้จริงหมายถึงอะไร!";
-							mes "วันนี้เสียงร้องแห่งชัยชนะของเราจะสะท้อนไปทั่วสนามรบ!";
-							close2;
-							warp "bat_room",114,207;
-							end;
-						}
-					}
-				}
-			}
-		}
-		break;
-	case 2:
-		mes "[Croix Army Officer]";
-		mes "วันนี้เราจะได้รับชัยชนะ!";
-		break;
 	}
-	close;
+}
+
+// BG Queue makes these scripts useless
+-	script	BGQueueInit#tierra02	-1,{
+	end;
+
+OnInit:
+	if (getbattleflag("feature.bgqueue")) {
+		unloadnpc "Lieutenant Rundel";
+		unloadnpc "Lieutenant Guerrit";
+		unloadnpc "#bat_a02_quest_a";
+		unloadnpc "#bat_a02_quest_b";
+		unloadnpc "back_bgrooma02a";
+		unloadnpc "back_bgrooma02b";
+		unloadnpc "A_CODE#bat_a02";
+		unloadnpc "B_CODE#bat_a02";
+	}
+	end;
 }
