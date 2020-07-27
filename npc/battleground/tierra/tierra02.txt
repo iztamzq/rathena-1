@@ -185,7 +185,7 @@ OnMyMobDead:
 		set $@TierraBG2_Victory, 2;
 		enablenpc "Guillaume Vintenar#a02_a";
 		enablenpc "Croix Vintenar#a02_b";
-		mapannounce "bat_a02", "Croix Vintenar Swandery : ‡πÄ‡∏£‡∏≤‡∏ó‡∏≥‡∏•‡∏≤‡∏¢‡∏ó‡∏µ‡πà‡πÄ‡∏Å‡πá‡∏ö‡πÄ‡∏™‡∏ö‡∏µ‡∏¢‡∏á‡∏Ç‡∏≠‡∏á Guillaume's ‡πÄ‡∏£‡∏≤‡∏ä‡∏ô‡∏∞! ‡∏ß‡πâ‡∏≤‡∏ß!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Croix Vintenar Swandery : ‡√“∑”≈“¬∑’Ë‡°Á∫‡ ∫’¬ß¢Õß Guillaume's ‡√“™π–! «È“«!",bc_map,"0xFFCE00";
 		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
 		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
 		if (getbattleflag("feature.bgqueue"))
@@ -210,7 +210,7 @@ OnMyMobDead:
 		set $@TierraBG2_Victory, 1;
 		enablenpc "Guillaume Vintenar#a02_a";
 		enablenpc "Croix Vintenar#a02_b";
-		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ‡πÄ‡∏£‡∏≤‡∏ó‡∏≥‡∏•‡∏≤‡∏¢‡∏ó‡∏µ‡πà‡πÄ‡∏Å‡πá‡∏ö‡πÄ‡∏™‡∏ö‡∏µ‡∏¢‡∏á‡∏Ç‡∏≠‡∏á Croix's ‡πÄ‡∏£‡∏≤‡∏ä‡∏ô‡∏∞! ‡∏ß‡πâ‡∏≤‡∏ß!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ‡√“∑”≈“¬∑’Ë‡°Á∫‡ ∫’¬ß¢Õß Croix's ‡√“™π–! «È“«!",bc_map,"0xFFCE00";
 		bg_warp $@TierraBG2_id1,"bat_a02",50,374;
 		bg_warp $@TierraBG2_id2,"bat_a02",42,16;
 		if (getbattleflag("feature.bgqueue"))
@@ -237,7 +237,7 @@ OnMyMobDead:
 		killmonster "bat_a02","barricade#bat_a02_a::OnMyMobDead";
 		delwall "bat_a02_c1";
 		enablenpc "Guillaume Blacksmith#a02";
-		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡πÉ‡∏ô‡∏´‡∏∏‡∏ö‡πÄ‡∏Ç‡∏≤‡∏ñ‡∏π‡∏Å‡∏ó‡∏≥‡∏•‡∏≤‡∏¢! Blacksmith ‡∏≠‡∏¢‡∏π‡πà‡∏ó‡∏µ‡πà‡πÉ‡∏î ‡πÄ‡∏£‡∏≤‡∏à‡∏≥‡πÄ‡∏õ‡πá‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏™‡∏£‡πâ‡∏≤‡∏á‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡πÉ‡∏´‡∏°‡πà!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Guillaume Vintenar Axl Rose :  ‘Ëß°’¥¢«“ß„πÀÿ∫‡¢“∂Ÿ°∑”≈“¬! Blacksmith Õ¬ŸË∑’Ë„¥ ‡√“®”‡ªÁπµÈÕß √È“ß ‘Ëß°’¥¢«“ß„À¡Ë!",bc_map,"0xFFCE00";
 	}
 	end;
 }
@@ -260,7 +260,7 @@ OnMyMobDead:
 		killmonster "bat_a02","barricade#bat_a02_b::OnMyMobDead";
 		delwall "bat_a02_g1";
 		enablenpc "Croix Blacksmith#bat_a02";
-		mapannounce "bat_a02", "Croix Vintenar Swandery : ‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡πÉ‡∏ô‡∏´‡∏∏‡∏ö‡πÄ‡∏Ç‡∏≤‡∏ñ‡∏π‡∏Å‡∏ó‡∏≥‡∏•‡∏≤‡∏¢! Blacksmith ‡∏≠‡∏¢‡∏π‡πà‡∏ó‡∏µ‡πà‡πÉ‡∏î ‡πÄ‡∏£‡∏≤‡∏à‡∏≥‡πÄ‡∏õ‡πá‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏™‡∏£‡πâ‡∏≤‡∏á‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡πÉ‡∏´‡∏°‡πà!",bc_map,"0xFFCE00";
+		mapannounce "bat_a02", "Croix Vintenar Swandery :  ‘Ëß°’¥¢«“ß„πÀÿ∫‡¢“∂Ÿ°∑”≈“¬! Blacksmith Õ¬ŸË∑’Ë„¥ ‡√“®”‡ªÁπµÈÕß √È“ß ‘Ëß°’¥¢«“ß„À¡Ë!",bc_map,"0xFFCE00";
 	}
 	end;
 }
@@ -279,11 +279,11 @@ OnMyMobDead:
 		bg_team_setxy getcharid(4),56,212;
 		if (getcharid(4) == $@TierraBG2_id1) {
 			donpcevent "NOBJ_mob#bat_a02_a::OnEnable";
-			mapannounce "bat_a02", "Guillaume ‡∏¢‡∏∂‡∏î‡∏ò‡∏á‡∏ï‡∏£‡∏á‡∏Å‡∏•‡∏≤‡∏á‡πÑ‡∏î‡πâ ‡∏î‡∏±‡∏á‡∏ô‡∏±‡πâ‡∏ô‡∏û‡∏ß‡∏Å‡πÄ‡∏Ç‡∏≤‡∏à‡∏∂‡∏á‡πÑ‡∏î‡πâ‡πÄ‡∏õ‡∏£‡∏µ‡∏¢‡∏ö",bc_map,"0xFFCE00";
+			mapannounce "bat_a02", "Guillaume ¬÷¥∏ßµ√ß°≈“ß‰¥È ¥—ßπ—Èπæ«°‡¢“®÷ß‰¥È‡ª√’¬∫",bc_map,"0xFFCE00";
 		}
 		else {
 			donpcevent "NOBJ_mob#bat_a02_b::OnEnable";
-			mapannounce "bat_a02", "Croix ‡∏¢‡∏∂‡∏î‡∏ò‡∏á‡∏ï‡∏£‡∏á‡∏Å‡∏•‡∏≤‡∏á‡πÑ‡∏î‡πâ ‡∏î‡∏±‡∏á‡∏ô‡∏±‡πâ‡∏ô‡∏û‡∏ß‡∏Å‡πÄ‡∏Ç‡∏≤‡∏à‡∏∂‡∏á‡πÑ‡∏î‡πâ‡πÄ‡∏õ‡∏£‡∏µ‡∏¢‡∏ö",bc_map,"0xFFCE00";
+			mapannounce "bat_a02", "Croix ¬÷¥∏ßµ√ß°≈“ß‰¥È ¥—ßπ—Èπæ«°‡¢“®÷ß‰¥È‡ª√’¬∫",bc_map,"0xFFCE00";
 		}
 	}
 	end;
@@ -324,15 +324,15 @@ OnMyMobDead:
 bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 	if (getcharid(4) == $@TierraBG2_id1) {
 		mes "[Guillaume Blacksmith]";
-		mes "‡∏û‡∏ß‡∏Å‡πÄ‡∏£‡∏≤‡∏£‡∏µ‡∏ö‡∏î‡πà‡∏ß‡∏ô! ‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡∏ñ‡∏π‡∏Å‡∏ó‡∏≥‡∏•‡∏≤‡∏¢!";
-		mes "‡πÄ‡∏£‡∏≤‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ã‡πà‡∏≠‡∏°‡πÅ‡∏ã‡∏°‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡∏î‡πâ‡∏ß‡∏¢ ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ‡πÅ‡∏•‡∏∞ 100 Gold^000000";
-		mes "‡πÄ‡∏£‡∏≤‡∏°‡∏µ‡∏ó‡∏∏‡∏Å‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏¢‡∏Å‡πÄ‡∏ß‡πâ‡∏ô 50 Stones!";
+		mes "æ«°‡√“√’∫¥Ë«π!  ‘Ëß°’¥¢«“ß∂Ÿ°∑”≈“¬!";
+		mes "‡√“ “¡“√∂´ËÕ¡·´¡ ‘Ëß°’¥¢«“ß¥È«¬ ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ·≈– 100 Gold^000000";
+		mes "‡√“¡’∑ÿ°Õ¬Ë“ß¬°‡«Èπ 50 Stones!";
 		next;
-		switch(select("‡∏ã‡πà‡∏≠‡∏°‡πÅ‡∏ã‡∏°:‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å")) {
+		switch(select("´ËÕ¡·´¡:¬°‡≈‘°")) {
 		case 1:
 			if (countitem(7049) > 49) {
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏ó‡πà‡∏≤‡∏ô‡∏ô‡∏≥ Stones ‡∏°‡∏≤‡∏°‡∏≤‡∏Å‡∏û‡∏≠! ‡πÑ‡∏õ‡∏ï‡πà‡∏≠‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞";
+				mes "∑Ë“ππ” Stones ¡“¡“°æÕ! ‰ªµËÕ°—π‡∂Õ–";
 				next;
 				mes "..";
 				next;
@@ -349,19 +349,19 @@ bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 				mes "..............";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones ‡πÅ‡∏•‡∏∞ Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏°";
+				mes "√«¡ Stones ·≈– Gold „πÕ—µ√“∑’Ë‡À¡“– ¡";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á ‡∏à‡∏≤‡∏Å‡∏ô‡∏±‡πâ‡∏ô‡πÄ‡∏û‡∏¥‡πà‡∏° Rough Elunium ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡πÅ‡∏Ç‡πá‡∏á‡πÅ‡∏Å‡∏£‡πà‡∏á‡∏Ç‡∏∂‡πâ‡∏ô";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß ®“°π—Èπ‡æ‘Ë¡ Rough Elunium ‡æ◊ËÕ„ÀÈ·¢Áß·°√Ëß¢÷Èπ";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á ‡∏à‡∏≤‡∏Å‡∏ô‡∏±‡πâ‡∏ô‡πÄ‡∏û‡∏¥‡πà‡∏° Rough Elunium ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡πÅ‡∏Ç‡πá‡∏á‡πÅ‡∏Å‡∏£‡πà‡∏á‡∏Ç‡∏∂‡πâ‡∏ô ‡∏ï‡∏≠‡∏ô‡∏ô‡∏µ‡πâ‡∏ï‡∏Å‡πÅ‡∏ï‡πà‡∏á‡∏î‡πâ‡∏ß‡∏¢ Metal Fragments";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß ®“°π—Èπ‡æ‘Ë¡ Rough Elunium ‡æ◊ËÕ„ÀÈ·¢Áß·°√Ëß¢÷Èπ µÕππ’Èµ°·µËß¥È«¬ Metal Fragments";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á ‡∏à‡∏≤‡∏Å‡∏ô‡∏±‡πâ‡∏ô‡πÄ‡∏û‡∏¥‡πà‡∏° Rough Elunium ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡πÅ‡∏Ç‡πá‡∏á‡πÅ‡∏Å‡∏£‡πà‡∏á‡∏Ç‡∏∂‡πâ‡∏ô ‡∏ï‡∏≠‡∏ô‡∏ô‡∏µ‡πâ‡∏ï‡∏Å‡πÅ‡∏ï‡πà‡∏á‡∏î‡πâ‡∏ß‡∏¢ Metal Fragments ‡πÅ‡∏•‡∏∞ stones ‡∏Å‡∏±‡∏ö Sinew of Bear!";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß ®“°π—Èπ‡æ‘Ë¡ Rough Elunium ‡æ◊ËÕ„ÀÈ·¢Áß·°√Ëß¢÷Èπ µÕππ’Èµ°·µËß¥È«¬ Metal Fragments ·≈– stones °—∫ Sinew of Bear!";
 				next;
 				mes "..............";
 				mes "..............";
@@ -371,8 +371,8 @@ bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 				next;
 				specialeffect EF_REPAIRWEAPON;
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏ß‡πâ‡∏≤‡∏ß! ‡πÄ‡∏™‡∏£‡πá‡∏à‡πÅ‡∏•‡πâ‡∏ß";
-				mes "‡πÄ‡∏£‡∏≤‡∏™‡∏ö‡∏≤‡∏¢‡πÉ‡∏à";
+				mes "«È“«! ‡ √Á®·≈È«";
+				mes "‡√“ ∫“¬„®";
 				if (mobcount("bat_a02","barricade#bat_a02_a::OnMyMobDead") < 17) {
 					delitem 7049,50; //Stone
 					donpcevent "barricade#bat_a02_a::OnEnable";
@@ -383,22 +383,22 @@ bat_a02,185,270,1	script	Guillaume Blacksmith#a02	851,{
 			}
 			else {
 				mes "[Guillaume Blacksmith]";
-				mes "‡∏ó‡πà‡∏≤‡∏ô‡∏°‡∏µ Stones ‡πÑ‡∏°‡πà‡∏û‡∏≠!";
+				mes "∑Ë“π¡’ Stones ‰¡ËæÕ!";
 				next;
 				mes "[Guillaume Blacksmith]";
-				mes "^3131FF‡∏û‡∏ß‡∏Å‡πÄ‡∏£‡∏≤‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ 50 Stones^000000";
-				mes "‡∏û‡∏ß‡∏Å‡πÄ‡∏£‡∏≤‡πÑ‡∏°‡πà‡∏Ñ‡πà‡∏≠‡∏¢‡∏ß‡πà‡∏≤‡∏á ‡∏î‡∏±‡∏á‡∏ô‡∏±‡πâ‡∏ô‡πÇ‡∏õ‡∏£‡∏î‡∏£‡∏µ‡∏ö‡∏´‡∏ô‡πà‡∏≠‡∏¢";
+				mes "^3131FFæ«°‡√“µÈÕß°“√ 50 Stones^000000";
+				mes "æ«°‡√“‰¡Ë§ËÕ¬«Ë“ß ¥—ßπ—Èπ‚ª√¥√’∫ÀπËÕ¬";
 				close;
 			}
 		case 2:
 			mes "[Guillaume Blacksmith]";
-			mes "‡∏®‡∏±‡∏ï‡∏£‡∏π‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏°‡∏≤! ‡∏≠‡∏û‡∏¢‡∏û‡∏Ñ‡∏ô‡∏≠‡∏≠‡∏Å‡∏à‡∏≤‡∏Å‡∏ó‡∏µ‡πà‡∏ô‡∏µ‡πà!";
+			mes "»—µ√Ÿ°”≈—ß¡“! Õæ¬æ§πÕÕ°®“°∑’Ëπ’Ë!";
 			close;
 		}
 	}
 	else {
 		mes "[Guillaume Blacksmith]";
-		mes "‡∏®‡∏±‡∏ï‡∏£‡∏π‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏°‡∏≤!";
+		mes "»—µ√Ÿ°”≈—ß¡“!";
 		close;
 	}
 
@@ -410,15 +410,15 @@ OnInit:
 bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 	if (getcharid(4) == $@TierraBG2_id2) {
 		mes "[Croix Blacksmith]";
-		mes "‡∏û‡∏ß‡∏Å‡πÄ‡∏£‡∏≤‡∏£‡∏µ‡∏ö‡∏î‡πà‡∏ß‡∏ô! ‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡∏ñ‡∏π‡∏Å‡∏ó‡∏≥‡∏•‡∏≤‡∏¢!";
-		mes "‡πÄ‡∏£‡∏≤‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ã‡πà‡∏≠‡∏°‡πÅ‡∏ã‡∏°‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á‡∏î‡πâ‡∏ß‡∏¢ ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ‡πÅ‡∏•‡∏∞ 100 Gold^000000";
-		mes "‡πÄ‡∏£‡∏≤‡∏°‡∏µ‡∏ó‡∏∏‡∏Å‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏¢‡∏Å‡πÄ‡∏ß‡πâ‡∏ô 50 Stones!";
+		mes "æ«°‡√“√’∫¥Ë«π!  ‘Ëß°’¥¢«“ß∂Ÿ°∑”≈“¬!";
+		mes "‡√“ “¡“√∂´ËÕ¡·´¡ ‘Ëß°’¥¢«“ß¥È«¬ ^3131FF50 Stones, 3 Sinew of Bear, 500 Metal Fragments, 30 Rough Elunium ·≈– 100 Gold^000000";
+		mes "‡√“¡’∑ÿ°Õ¬Ë“ß¬°‡«Èπ 50 Stones!";
 		next;
-		switch(select("‡∏ã‡πà‡∏≠‡∏°‡πÅ‡∏ã‡∏°:‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å")) {
+		switch(select("´ËÕ¡·´¡:¬°‡≈‘°")) {
 		case 1:
 			if (countitem(7049) > 49) {
 				mes "[Croix Blacksmith]";
-				mes "‡∏ó‡πà‡∏≤‡∏ô‡∏ô‡∏≥ Stones ‡∏°‡∏≤‡∏°‡∏≤‡∏Å‡∏û‡∏≠! ‡πÑ‡∏õ‡∏ï‡πà‡∏≠‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞.";
+				mes "∑Ë“ππ” Stones ¡“¡“°æÕ! ‰ªµËÕ°—π‡∂Õ–.";
 				next;
 				mes "..";
 				next;
@@ -435,19 +435,19 @@ bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 				mes "..............";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones ‡πÅ‡∏•‡∏∞ Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏°";
+				mes "√«¡ Stones ·≈– Gold „πÕ—µ√“∑’Ë‡À¡“– ¡";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á ‡∏à‡∏≤‡∏Å‡∏ô‡∏±‡πâ‡∏ô‡πÄ‡∏û‡∏¥‡πà‡∏° Rough Elunium ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡πÅ‡∏Ç‡πá‡∏á‡πÅ‡∏Å‡∏£‡πà‡∏á‡∏Ç‡∏∂‡πâ‡∏ô";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß ®“°π—Èπ‡æ‘Ë¡ Rough Elunium ‡æ◊ËÕ„ÀÈ·¢Áß·°√Ëß¢÷Èπ";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á ‡∏à‡∏≤‡∏Å‡∏ô‡∏±‡πâ‡∏ô‡πÄ‡∏û‡∏¥‡πà‡∏° Rough Elunium ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡πÅ‡∏Ç‡πá‡∏á‡πÅ‡∏Å‡∏£‡πà‡∏á‡∏Ç‡∏∂‡πâ‡∏ô ‡∏ï‡∏≠‡∏ô‡∏ô‡∏µ‡πâ‡∏ï‡∏Å‡πÅ‡∏ï‡πà‡∏á‡∏î‡πâ‡∏ß‡∏¢ Metal Fragments";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß ®“°π—Èπ‡æ‘Ë¡ Rough Elunium ‡æ◊ËÕ„ÀÈ·¢Áß·°√Ëß¢÷Èπ µÕππ’Èµ°·µËß¥È«¬ Metal Fragments";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "‡∏£‡∏ß‡∏° Stones and Gold ‡πÉ‡∏ô‡∏≠‡∏±‡∏ï‡∏£‡∏≤‡∏ó‡∏µ‡πà‡πÄ‡∏´‡∏°‡∏≤‡∏∞‡∏™‡∏° ‡πÅ‡∏•‡∏∞ ‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡∏™‡∏¥‡πà‡∏á‡∏Å‡∏µ‡∏î‡∏Ç‡∏ß‡∏≤‡∏á ‡∏à‡∏≤‡∏Å‡∏ô‡∏±‡πâ‡∏ô‡πÄ‡∏û‡∏¥‡πà‡∏° Rough Elunium ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡πÅ‡∏Ç‡πá‡∏á‡πÅ‡∏Å‡∏£‡πà‡∏á‡∏Ç‡∏∂‡πâ‡∏ô ‡∏ï‡∏≠‡∏ô‡∏ô‡∏µ‡πâ‡∏ï‡∏Å‡πÅ‡∏ï‡πà‡∏á‡∏î‡πâ‡∏ß‡∏¢ Metal Fragments ‡πÅ‡∏•‡∏∞ stones ‡∏Å‡∏±‡∏ö Sinew of Bear!";
+				mes "√«¡ Stones and Gold „πÕ—µ√“∑’Ë‡À¡“– ¡ ·≈– °”Àπ¥ ‘Ëß°’¥¢«“ß ®“°π—Èπ‡æ‘Ë¡ Rough Elunium ‡æ◊ËÕ„ÀÈ·¢Áß·°√Ëß¢÷Èπ µÕππ’Èµ°·µËß¥È«¬ Metal Fragments ·≈– stones °—∫ Sinew of Bear!";
 				next;
 				mes "..............";
 				mes "..............";
@@ -457,8 +457,8 @@ bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 				next;
 				specialeffect EF_REPAIRWEAPON;
 				mes "[Croix Blacksmith]";
-				mes "‡∏ß‡πâ‡∏≤‡∏ß! ‡πÄ‡∏™‡∏£‡πá‡∏à‡πÅ‡∏•‡πâ‡∏ß";
-				mes "‡πÄ‡∏£‡∏≤‡∏™‡∏ö‡∏≤‡∏¢‡πÉ‡∏à";
+				mes "«È“«! ‡ √Á®·≈È«";
+				mes "‡√“ ∫“¬„®";
 				if (mobcount("bat_a02","barricade#bat_a02_b::OnMyMobDead") < 17) {
 					delitem 7049,50; //Stone
 					donpcevent "barricade#bat_a02_b::OnEnable";
@@ -469,22 +469,22 @@ bat_a02,170,121,5	script	Croix Blacksmith#bat_a02	851,{
 			}
 			else {
 				mes "[Croix Blacksmith]";
-				mes "‡∏ó‡πà‡∏≤‡∏ô‡∏°‡∏µ Stones ‡πÑ‡∏°‡πà‡∏û‡∏≠!";
+				mes "∑Ë“π¡’ Stones ‰¡ËæÕ!";
 				next;
 				mes "[Croix Blacksmith]";
-				mes "^3131FF‡∏û‡∏ß‡∏Å‡πÄ‡∏£‡∏≤‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ 50 Stones^000000";
-				mes "‡∏û‡∏ß‡∏Å‡πÄ‡∏£‡∏≤‡πÑ‡∏°‡πà‡∏Ñ‡πà‡∏≠‡∏¢‡∏ß‡πà‡∏≤‡∏á ‡∏î‡∏±‡∏á‡∏ô‡∏±‡πâ‡∏ô‡πÇ‡∏õ‡∏£‡∏î‡∏£‡∏µ‡∏ö‡∏´‡∏ô‡πà‡∏≠‡∏¢";
+				mes "^3131FFæ«°‡√“µÈÕß°“√ 50 Stones^000000";
+				mes "æ«°‡√“‰¡Ë§ËÕ¬«Ë“ß ¥—ßπ—Èπ‚ª√¥√’∫ÀπËÕ¬";
 				close;
 			}
 		case 2:
 			mes "[Croix Blacksmith]";
-			mes "‡∏®‡∏±‡∏ï‡∏£‡∏π‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏°‡∏≤! ‡∏≠‡∏û‡∏¢‡∏û‡∏Ñ‡∏ô‡∏≠‡∏≠‡∏Å‡∏à‡∏≤‡∏Å‡∏ó‡∏µ‡πà‡∏ô‡∏µ‡πà!";
+			mes "»—µ√Ÿ°”≈—ß¡“! Õæ¬æ§πÕÕ°®“°∑’Ëπ’Ë!";
 			close;
 		}
 	}
 	else {
 		mes "[Croix Blacksmith]";
-		mes "‡∏®‡∏±‡∏ï‡∏£‡∏π‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏°‡∏≤!";
+		mes "»—µ√Ÿ°”≈—ß¡“!";
 		close;
 	}
 
@@ -496,9 +496,9 @@ OnInit:
 bat_a02,53,377,3	script	Battle Therapist#a02_a	95,{
 	specialeffect2 EF_HEAL;
 	mes "[Battle Therapist]";
-	mes "‡πÅ‡∏Ñ‡πà‡∏´‡∏•‡∏±‡∏ö‡∏ï‡∏≤ ‡πÅ‡∏•‡∏∞";
-	mes "‡∏™‡∏π‡∏î‡∏´‡∏≤‡∏¢‡πÉ‡∏à‡πÄ‡∏Ç‡πâ‡∏≤‡∏•‡∏∂‡∏Å ‡πÜ";
-	mes "‡∏ó‡πà‡∏≤‡∏ô‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏õ‡πá‡∏ô‡∏≠‡∏¥‡∏™‡∏£‡∏∞‡∏à‡∏≤‡∏Å‡∏Ñ‡∏ß‡∏≤‡∏°‡πÄ‡∏à‡πá‡∏ö‡∏õ‡∏ß‡∏î";
+	mes "·§ËÀ≈—∫µ“ ·≈–";
+	mes " Ÿ¥À“¬„®‡¢È“≈÷° Ê";
+	mes "∑Ë“π “¡“√∂‡ªÁπÕ‘ √–®“°§«“¡‡®Á∫ª«¥";
 	close;
 	end;
 
@@ -550,9 +550,9 @@ OnTouch:
 bat_a02,45,19,3	script	Battle Therapist#a02_b	95,{
 	specialeffect2 EF_HEAL;
 	mes "[Battle Therapist]";
-	mes "‡πÅ‡∏Ñ‡πà‡∏´‡∏•‡∏±‡∏ö‡∏ï‡∏≤ ‡πÅ‡∏•‡∏∞";
-	mes "‡∏™‡∏π‡∏î‡∏´‡∏≤‡∏¢‡πÉ‡∏à‡πÄ‡∏Ç‡πâ‡∏≤‡∏•‡∏∂‡∏Å ‡πÜ";
-	mes "‡∏ó‡πà‡∏≤‡∏ô‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏õ‡πá‡∏ô‡∏≠‡∏¥‡∏™‡∏£‡∏∞‡∏à‡∏≤‡∏Å‡∏Ñ‡∏ß‡∏≤‡∏°‡πÄ‡∏à‡πá‡∏ö‡∏õ‡∏ß‡∏î";
+	mes "·§ËÀ≈—∫µ“ ·≈–";
+	mes " Ÿ¥À“¬„®‡¢È“≈÷° Ê";
+	mes "∑Ë“π “¡“√∂‡ªÁπÕ‘ √–®“°§«“¡‡®Á∫ª«¥";
 	close;
 	end;
 
@@ -604,7 +604,7 @@ OnTouch:
 bat_a02,60,216,3	script	Valley Ghost#bat_a02_n	950,{
 	specialeffect2 EF_HEAL;
 	mes "[Valley Ghost]";
-	mes "‡∏ö‡∏π...‡∏ö‡∏π...";
+	mes "∫Ÿ...∫Ÿ...";
 	close;
 
 OnInit:
@@ -768,31 +768,31 @@ OnStop:
 	end;
 
 OnTimer7000:
-	mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ‡∏°‡∏≤‡πÇ‡∏à‡∏°‡∏ï‡∏µ‡πÅ‡∏•‡∏∞‡∏ó‡∏≥‡∏•‡∏≤‡∏¢‡∏Ñ‡∏•‡∏±‡∏á‡∏≠‡∏≤‡∏´‡∏≤‡∏£‡∏Ç‡∏≠‡∏á Croix's ‡∏Å‡∏±‡∏ô!",bc_map,"0xFF9900";
+	mapannounce "bat_a02", "Guillaume Vintenar Axl Rose : ¡“‚®¡µ’·≈–∑”≈“¬§≈—ßÕ“À“√¢Õß Croix's °—π!",bc_map,"0xFF9900";
 	end;
 
 OnTimer8000:
-	mapannounce "bat_a02", "Croix Vintenar Swandery : ‡πÄ‡∏£‡∏≤‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö‡∏û‡∏£‡∏™‡∏ß‡∏£‡∏£‡∏Ñ‡πå‡∏î‡πâ‡∏ß‡∏¢‡∏®‡∏£‡∏±‡∏ó‡∏ò‡∏≤ ‡πÅ‡∏•‡∏∞‡∏Ñ‡∏ß‡∏≤‡∏°‡∏Å‡∏•‡πâ‡∏≤‡∏´‡∏≤‡∏ç‡∏≠‡∏¢‡πà‡∏≤‡∏á‡πÑ‡∏°‡πà‡∏°‡∏µ‡∏ó‡∏µ‡πà‡∏™‡∏¥‡πâ‡∏ô‡∏™‡∏∏‡∏î!",bc_map,"0xFF99CC";
+	mapannounce "bat_a02", "Croix Vintenar Swandery : ‡√“‰¥È√—∫æ√ «√√§Ï¥È«¬»√—∑∏“ ·≈–§«“¡°≈È“À“≠Õ¬Ë“ß‰¡Ë¡’∑’Ë ‘Èπ ÿ¥!",bc_map,"0xFF99CC";
 	end;
 
 OnTimer1800000:
-	mapannounce "bat_a02", "Marollo VII : Guillaume Marollo, Croix Marollo! ‡∏ú‡∏π‡πâ‡∏ï‡∏¥‡∏î‡∏ï‡∏≤‡∏°‡∏Ç‡∏≠‡∏á Marollo!",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII : Guillaume Marollo, Croix Marollo! ºŸÈµ‘¥µ“¡¢Õß Marollo!",bc_map,"0x99CC00";
 	end;
 
 OnTimer1803000:
-	mapannounce "bat_a02", "Marollo VII : ‡∏ó‡∏±‡πâ‡∏á‡∏™‡∏≠‡∏á‡∏Ñ‡πà‡∏≤‡∏¢‡∏Å‡∏≥‡∏•‡∏±‡∏á‡πÅ‡∏Ç‡πà‡∏á‡∏Ç‡∏±‡∏ô‡∏Å‡∏±‡∏ô ‡∏î‡∏±‡∏á‡∏ô‡∏±‡πâ‡∏ô‡∏à‡∏∞‡πÑ‡∏°‡πà‡∏°‡∏µ‡∏Ñ‡πà‡∏≤‡∏¢‡πÉ‡∏î‡∏ñ‡∏π‡∏Å‡∏ó‡∏≥‡∏•‡∏≤‡∏¢‡πÑ‡∏î‡πâ‡∏á‡πà‡∏≤‡∏¢ ‡∏ô‡∏±‡πà‡∏ô‡∏´‡∏°‡∏≤‡∏¢‡∏Ñ‡∏ß‡∏≤‡∏°‡∏ß‡πà‡∏≤‡∏≠‡∏≤‡∏ì‡∏≤‡∏à‡∏±‡∏Å‡∏£ Marollo ‡∏à‡∏∞‡πÑ‡∏°‡πà‡∏°‡∏µ‡∏ß‡∏±‡∏ô‡∏û‡πà‡∏≤‡∏¢‡πÅ‡∏û‡πâ!",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII : ∑—Èß Õß§Ë“¬°”≈—ß·¢Ëß¢—π°—π ¥—ßπ—Èπ®–‰¡Ë¡’§Ë“¬„¥∂Ÿ°∑”≈“¬‰¥ÈßË“¬ π—ËπÀ¡“¬§«“¡«Ë“Õ“≥“®—°√ Marollo ®–‰¡Ë¡’«—πæË“¬·æÈ!",bc_map,"0x99CC00";
 	end;
 
 OnTimer1808000:
-	mapannounce "bat_a02", "Marollo VII : ‡∏Ç‡πâ‡∏≤‡∏Ñ‡∏¥‡∏î‡∏ß‡πà‡∏≤‡πÄ‡∏£‡∏≤‡∏Ñ‡∏ß‡∏£‡∏¢‡∏∏‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡∏ï‡πà‡∏≠‡∏™‡∏π‡πâ ‡πÅ‡∏•‡∏∞‡πÄ‡∏£‡∏µ‡∏¢‡∏Å‡∏°‡∏±‡∏ô‡∏ß‡πà‡∏≤‡∏Å‡∏≤‡∏£‡πÅ‡∏Ç‡πà‡∏á‡∏Ç‡∏±",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII : ¢È“§‘¥«Ë“‡√“§«√¬ÿµ‘°“√µËÕ ŸÈ ·≈–‡√’¬°¡—π«Ë“°“√·¢Ëß¢—",bc_map,"0x99CC00";
 	end;
 
 OnTimer1822000:
-	mapannounce "bat_a02", "Marollo VII : ‡∏´‡∏¢‡∏∏‡∏î‡∏®‡∏£‡∏±‡∏ó‡∏ò‡∏≤‡∏Ç‡∏≠‡∏á‡∏ó‡πà‡∏≤‡∏ô‡∏™‡∏±‡∏Å‡∏Ñ‡∏£‡∏π‡πà ‡πÅ‡∏•‡πâ‡∏ß‡∏°‡∏≤‡∏à‡∏±‡∏î‡∏Å‡∏≤‡∏£‡∏™‡∏á‡∏Ñ‡∏£‡∏≤‡∏° Tierra Gorge",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Marollo VII : À¬ÿ¥»√—∑∏“¢Õß∑Ë“π —°§√ŸË ·≈È«¡“®—¥°“√ ß§√“¡ Tierra Gorge",bc_map,"0x99CC00";
 	end;
 
 OnTimer1825000:
-	mapannounce "bat_a02", "Axl Rose, Swandery : ‡∏Ñ‡∏£‡∏±‡∏ö‡∏ó‡πà‡∏≤‡∏ô",bc_map,"0x99CC00";
+	mapannounce "bat_a02", "Axl Rose, Swandery : §√—∫∑Ë“π",bc_map,"0x99CC00";
 	end;
 
 OnTimer1830000:
@@ -803,12 +803,12 @@ OnTimer1830000:
 
 /*
 bat_a02,351,75,3	script	Croix Camp Soldier#bat_a02_guide	934,{
-	mes "‡∏Å‡∏≥‡∏•‡∏±‡∏á‡πÇ‡∏´‡∏•‡∏î...";
+	mes "°”≈—ß‚À≈¥...";
 	close;
 }
 
 bat_a02,356,326,3	script	Guillaume Camp Soldier#bat_a02_guide	934,{
-	mes "‡∏Å‡∏≥‡∏•‡∏±‡∏á‡πÇ‡∏´‡∏•‡∏î...";
+	mes "°”≈—ß‚À≈¥...";
 	close;
 }
 */
@@ -816,21 +816,21 @@ bat_a02,356,326,3	script	Guillaume Camp Soldier#bat_a02_guide	934,{
 bat_a02,1,1,3	script	Release all#a02	81,{
 	set .@i, callfunc("F_GM_NPC",1854,0);
 	if (.@i == -1) {
-		mes "‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å";
+		mes "¬°‡≈‘°";
 		close;
 	} else if (.@i == 0) {
 		end;
 	} else {
-		mes "‡∏°‡∏µ‡∏≠‡∏∞‡πÑ‡∏£‡πÉ‡∏´‡πâ‡∏ä‡πà‡∏ß‡∏¢‡πÑ‡∏´‡∏°";
+		mes "¡’Õ–‰√„ÀÈ™Ë«¬‰À¡";
 		next;
 		switch(select("Release all.:Cancel.")) {
 		case 1:
-			mes "‡∏•‡∏≤‡∏Å‡πà‡∏≠‡∏ô";
+			mes "≈“°ËÕπ";
 			close2;
 			mapwarp "bat_a02","bat_room",154,150;
 			end;
 		case 2:
-			mes "‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å";
+			mes "¬°‡≈‘°";
 			close;
 		}
 	}
