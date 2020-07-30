@@ -44,4 +44,9 @@ Database | [MySQL Workbench 5 or newer](http://www.mysql.com/downloads/workbench
 
 ## 3. License
 Copyright (c) rAthena Development Team - Licensed under [GNU General Public License v3.0](https://github.com/rathena/rathena/blob/master/LICENSE)
-Translator by Playragnarok , Azael-Dev - 2020 Thai_master
+Translator by [Playragnarok](https://github.com/Playragnarok), [Azael Dev](github.com/Azael-Dev) - 2020 Thai_master
+
+## 4. Translator
+  * [Azael Dev](github.com/Azael-Dev)
+  * [Playragnarok](https://github.com/Playragnarok)
+  * [SamMeePay](https://github.com/sammeepay)
