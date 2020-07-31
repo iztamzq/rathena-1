@@ -105,7 +105,7 @@ beach_dun2,119,92,4	script	Fishing Novice#sp2	567,{
 		}
 		else {
 			mes "[Fishing Novice]";
-			mes "นี่อะไรนะ!
+			mes "นี่อะไรนะ!";
 			mes "แล้ว Esseray มาจากไหน";
 			next;
 			emotion ET_THINK, playerattached();
@@ -282,7 +282,7 @@ beach_dun2,119,92,4	script	Fishing Novice#sp2	567,{
 		if (checkquest(5094,HUNTING) != 2 && checkquest(5095,HUNTING) != 2 && checkquest(5096,HUNTING) != 2 && checkquest(5097,HUNTING) != 2) {
 			mes "[Nodor]";
 			mes "เฮ้! Super Novice!";
-			mes "ฉันไม่ได้บอกว่าจะล่า 1,000?"
+			mes "ฉันไม่ได้บอกว่าจะล่า 1,000?";
 			mes "อย่ากลับมาจนกว่าเจ้าจะมี";
 			close;
 		}
@@ -665,7 +665,7 @@ airplane,33,47,5	script	Nudor#sp2	729,{
 		next;
 		mes "[Nudor]";
 		if (Sex == SEX_MALE) mes "คุณรู้หรือไม่คุณหล่อจริงๆ~";
-		else mes "ฉันต้องบอกคุณว่าคุณจริงๆ...สวยจริงๆ~"
+		else mes "ฉันต้องบอกคุณว่าคุณจริงๆ...สวยจริงๆ~";
 		next;
 		mes "[Nudor]";
 		mes "- คุณรู้สึกว่าคุณเป็น -";

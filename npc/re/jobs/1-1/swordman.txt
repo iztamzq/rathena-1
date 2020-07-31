@@ -21,7 +21,7 @@ izlude_in,74,172,4	script	Swordman#swd	119,{
 			mes "คุณเกิดแล้วใช่มั้ย";
 			next;
 			mes "[Swordman]";
-			mes "ฉันเห็นว่าคุณกำลังพูดจาซ้ำซากเส้นทางของ Swordman! เมื่อคุณคุ้นเคยกับการกวัดแกะดาบ
+			mes "ฉันเห็นว่าคุณกำลังพูดจาซ้ำซากเส้นทางของ Swordman! เมื่อคุณคุ้นเคยกับการกวัดแกะดาบ";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
 				mes "[Swordman]";

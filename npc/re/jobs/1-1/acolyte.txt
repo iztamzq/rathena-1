@@ -116,7 +116,7 @@ prt_fild03,365,255,2	script	Ascetic#aco	89,{
 		}
 		if (job_acolyte_q != 0) {
 			if (job_acolyte_q == 2) {
-				mes "โอ้ ... เจ้าต้องเป็นคนที่ปรารถนาจะเป็น Acolyte ข้าได้รับข่าวจาก Sanctuary ว่าเจ้าอาจจะมา"
+				mes "โอ้ ... เจ้าต้องเป็นคนที่ปรารถนาจะเป็น Acolyte ข้าได้รับข่าวจาก Sanctuary ว่าเจ้าอาจจะมา";
 				next;
 				mes "[Father Rubalkabara]";
 				mes "ตอนนี้ชื่อของคุณคือ" + strcharinfo(0) + "ใช่ไหมเยี่ยมมากขอบคุณสำหรับการเยี่ยมชมฉัน";
