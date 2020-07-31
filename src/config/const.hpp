@@ -4,6 +4,8 @@
 #ifndef CONFIG_CONST_H
 #define CONFIG_CONST_H
 
+#include "../common/cbasetypes.hpp"
+
 /**
  * rAthena configuration file (http://rathena.org)
  * For detailed guidance on these check http://rathena.org/wiki/SRC/config/
@@ -53,12 +55,24 @@
 	#define DEFTYPE_MAX CHAR_MAX
 #endif
 
-	typedef unsigned long long expType;
+/**
+ * EXP definition type
+ */
+typedef uint64 t_exp;
+
+/// Max Base and Job EXP for players
 #if PACKETVER >= 20170830
-	#define EXPTYPE_MAX UINT64_MAX
+	const t_exp MAX_EXP = INT64_MAX;
 #else
-	#define EXPTYPE_MAX UINT32_MAX
+	const t_exp MAX_EXP = INT32_MAX;
 #endif
+
+/// Max EXP for guilds
+const t_exp MAX_GUILD_EXP = INT32_MAX;
+/// Max Base EXP for player on Max Base Level
+const t_exp MAX_LEVEL_BASE_EXP = 99999999;
+/// Max Job EXP for player on Max Job Level
+const t_exp MAX_LEVEL_JOB_EXP = 999999999;
 
 /* pointer size fix which fixes several gcc warnings */
 #ifdef __64BIT__
