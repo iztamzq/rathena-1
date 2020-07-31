@@ -656,7 +656,7 @@ prt_church,100,128,4	script	Bishop#w	60,{
 							mes "และความสุขขอให้ความรักที่คุณแบ่งปัน";
 							mes "เติบโตทุกวันที่ผ่านไป";
 							next;
-							mapannounce "prt_church","มาฟังสิ่งที่เจ้าสาว นาง "+ $@ wed_bride$ +" ต้องบอกว่า ...",bc_map;
+							mapannounce "prt_church","มาฟังสิ่งที่เจ้าสาว นาง "+ $@wed_bride$ +" ต้องบอกว่า ...",bc_map;
 							mes "[Vomars]";
 							mes "นาง" + $@wed_bride$ + "... ";
 							mes "คุณสาบานที่จะอยู่กับ" + $@wed_groom$ + ",";

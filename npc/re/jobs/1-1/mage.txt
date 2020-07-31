@@ -71,7 +71,7 @@ geffen_in,164,124,4	script	Mage Guildsman#mage	123,{
 			next;
 			mes "[Mage Guildsman]";
 			if (Sex == SEX_MALE) {
-				mes "เฮ้ดูนายสิเจ้าน่ารักจัง ~!
+				mes "เฮ้ดูนายสิเจ้าน่ารักจัง ~!";
 			}else{
 				mes "Oooh เธอช่างเป็นเด็กที่ร้อนแรง ~!";
 				mes "ฉันชอบผู้หญิงที่ชอบคุณ ~";
