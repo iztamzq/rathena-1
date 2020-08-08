@@ -738,7 +738,7 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 				.@menu_clear$[1] = "^999999ไม่มีออฟที่ถูกลบ^000000";
 				.@4thzptsodyd = 1;
 			}
-			if (getequipcardid(.@part, 2) > 0) {
+			if (.@equip_card[2] > 0) {
 				.@menu_clear$[2] = "ลบออฟของ '^952420Thirst for Blood^000000' แล้ว";
 			} else {
 				.@menu_clear$[2] = "^999999ไม่มีออฟที่ถูกลบ^000000";

@@ -3,8 +3,16 @@
 //===== Description: =========================================
 //= [Walkthrough Conversion]
 //= Nightmare Biolab exchange NPCs
+//  NOTE: The nightmare biolab monsters are currently missing
+//  some items used in the file.
+//    Silent Energy Particles (ID: 25127)
+//    Weak Energy Particles (ID: 25128)
+//    Unstable Energy Particles (ID: 25129)
+//    Sinister Energy Particles (ID: 25130)
+//    Cursed Crystal (ID: 23080)
 //===== Changelogs: ==========================================
 //= 1.0 First version. [Capuche]
+//= 1.1 Added some missing warp points and lore pieces [akaineko]
 //============================================================
 
 // Item Functions
@@ -121,7 +129,30 @@ function	script	F_Cursed_Fragment	{	// 23016
 lighthalzen,321,218,4	script	Ohno Tohiro#1	4_M_RASWORD,{
 	disable_items;
 	mes "[Ohno Tohiro]";
-	mes "ข้าถูกขอให้รวบรวม research charts...";
+	.@r = rand(1,10);
+	if (.@r < 6)
+		mes "ข้าถูกขอให้รวบรวม research charts...";
+	else if (.@r < 7) {
+		mes "- ฉันได้ยินใครบางคนพูด - - การสื่อสารทางไกล -";
+		next;
+		mes "[Ohno Tohiro]";
+		mes "ใช่ ... ทุกอย่างดำเนินไปอย่างราบรื่น";
+		mes "สถานะของการรวบรวมรายงานเรียบร้อยแล้ว";
+		mes "ครับท่าน";
+		next;
+		mes "[Ohno Tohiro]";
+		mes "ฉันจะรายงานข้อมูลที่เกี่ยวข้องกับห้องปฏิบัติการเป็นลำดับความสำคัญสูงสุดทันที";
+		mes "ครับท่าน ... ผมจะทำ";
+		next;
+		mes "[Ohno Tohiro]";
+		mes "มีใครมาบ้างเดี๋ยวโทรหาอีกที";
+	}
+	else {
+		mes "[Ohno Tohiro]";
+		mes "ไหล่ของฉันหนัก";
+		mes "ความปรารถนาอันยาวนานของเรา .. ";
+		mes "ทีละคนช้าๆ .. ";
+	}
 	next;
 	mes "[Ohno Tohiro]";
 	mes "หือ...? ข้าไม่รู้ว่ามีใครอยู่ที่นี่บ้าง...";
@@ -177,8 +208,10 @@ lighthalzen,321,218,4	script	Ohno Tohiro#1	4_M_RASWORD,{
 			mes "ข้าได้รับเงินมาครบแล้ว, ข้าจะเปิดให้เดี๋ยวนี้.";
 			mes "ข้าหวังว่าเจ้าจะรอดกลับมา!...";
 			next;
-			Zeny = Zeny - 100000;
-			warp "lhz_dun_n",100,202;
+			if (Zeny >= 100000) {
+				Zeny -= 100000;
+				warp "lhz_dun_n",100,202;
+			}
 			end;
 		case 4:
 			mes "[Ohno Tohiro]";
@@ -199,8 +232,6 @@ lighthalzen,321,218,4	script	Ohno Tohiro#1	4_M_RASWORD,{
 			if (countitem(7347) < 10) {
 				mes "[Ohno Tohiro]";
 				mes "ดูเหมือน 10 research charts จะไม่ครบ.";
-				mes "";
-				mes "";
 				mes "บางทีเจ้าอาจลืมหยิบออกจากคลัง.";
 				next;
 				mes "[Ohno Tohiro]";
@@ -214,7 +245,7 @@ lighthalzen,321,218,4	script	Ohno Tohiro#1	4_M_RASWORD,{
 			mes "ข้าจะส่งเจ้าไปที่รอยแยกตามสัญญา.";
 			mes "ข้าอยากให้เจ้ารอด. แล้วพบกันใหม่!";
 			next;
-			delitem 7347,10;// Research Chart
+			delitem 7347,10;// Lab_Staff_Record
 			warp "lhz_dun_n",100,202;
 			end;
 		}
@@ -342,10 +373,13 @@ lighthalzen,320,204,3	script	A kid with black finger	4_F_04,{
 lighthalzen,327,216,3	script	Crevice#1	4_CRACK,{
 	end;
 OnInit:
-	while(true) {
-		sleep 6000;
-		specialeffect EF_AGIUP3;
-	}
+	initnpctimer;
+	end;
+OnTimer5000:
+	specialeffect EF_AGIUP3;
+	end;
+OnTimer6000:
+	initnpctimer;
 	end;
 }
 
@@ -357,12 +391,14 @@ lhz_dun_n,96,203,3	script	Dungeon gateway#1	4_CRACK,{
 	}
 	warp "lighthalzen",310,228;
 	end;
-
 OnInit:
-	while(true) {
-		sleep 6000;
-		specialeffect EF_AGIUP3;
-	}
+	initnpctimer;
+	end;
+OnTimer5000:
+	specialeffect EF_AGIUP3;
+	end;
+OnTimer6000:
+	initnpctimer;
 	end;
 }
 
@@ -378,7 +414,7 @@ lighthalzen,319,213,4	script	Veteran Adventurer#JCv2	4_M_MELODY,2,2,{
 		6471,300;	// Ghost Chill
 	.@color$[0] = countitem(6820) < 200 ? "^777777" : "^000000";
 	.@color$[1] = countitem(6820) < 300 ? "^777777" : "^000000";
-	.@s = select( "ฟังเรื่องราว.", .@color$[0] + "1 Will of Warrior (200 Energy pieces)", .@color$[0] + "1 Blood Thirst (200 energy pieces)", .@color$[1] + "1 Ghost Chill (300 energy pieces)^000000" ) - 2;
+	.@s = select( "ฟังเรื่องราว", .@color$[0] + "1 Will of Warrior (200 Energy pieces)", .@color$[0] + "1 Blood Thirst (200 energy pieces)", .@color$[1] + "1 Ghost Chill (300 energy pieces)^000000" ) - 2;
 	if (.@s == -1) {
 		emotion ET_QUESTION;
 		mes "[Veteran Adventurer]";
@@ -463,7 +499,7 @@ lighthalzen,312,296,4	script	Bully#JCv2	4_M_LGTPOOR,{
 	mes "เฮ้, คู่หู. เจ้าพอจะมี Energy pieces เหลือไหม ? ข้าจะแลกมันกับสิ่งที่คู่ควรถ้าเจ้าต้องการ.";
 	next;
 	.@s = select(
-		"ฟังเรื่องราว.",
+		"Listen to the story.",
 		( countitem(25127) < 2000 ? "^777777" : "^000000" ) + "1 Energy Fragment (2000 Silent E Particles)",
 		( countitem(25128) < 1000 ? "^777777" : "^000000" ) + "1 Energy Fragment (1000 Weak E Particles)",
 		( countitem(25129) < 500 ? "^777777" : "^000000" ) + "1 Energy Fragment (500 Unstable E Particles)",
@@ -1034,6 +1070,12 @@ lhz_dun_n,143,269,4	script	Victimized Soul's Mind#1	4_M_DEATH2,{
 	mes "ถ้าเจ้า...นำมัน...มา...ข้าจะเปลี่ยน...มัน...เป็น energy...pieces...";
 	while(true) {
 		next;
+		if (checkweight(2677,5) == 0) {
+			mes "[Victimized Soul's Mind]";
+			mes "กระเป๋าเป้ของคุณ .. ";
+			mes "เต็มไปหมด ... ";
+			close;
+		}
 		if (select( "ส่งมอบอาวุธ.", "จบการสนทนา." ) == 2) {
 			mes "[Victimized Soul's Mind]";
 			mes "...เจ้าจะ...กลับ...มาหาข้า...อีก...";
@@ -1043,7 +1085,7 @@ lhz_dun_n,143,269,4	script	Victimized Soul's Mind#1	4_M_DEATH2,{
 		mes "เลือกชนิด...อาวุธ...ที่เจ้า...ต้องการ...เปลี่ยน ?...";
 		next;
 		while(true) {
-			switch( select( "กลับไปที่เมนูก่อนหน้า.", "Katar", "Bow", "Axe, Mace, Book", "Wand", "Sword, Dagger", "Spear, Two-handed sword", "Musical instrument, Whip, Knuckle" ) ) {
+			switch( select( "กลับไปที่เมนูก่อนหน้า", "Katar", "Bow", "Axe, Mace, Book", "Wand", "Sword, Dagger", "Spear, Two-handed sword", "Musical instrument, Whip, Knuckle" ) ) {
 			case 1:
 				break;
 			case 2:
@@ -1116,10 +1158,10 @@ lhz_dun_n,143,269,4	script	Victimized Soul's Mind#1	4_M_DEATH2,{
 
 S_Exchange:
 	.@size = getargcount();
-	.@menu$ = "กลับไปที่เมนูก่อนหน้า.:";
+	.@menu$ = "กลับไปที่เมนูก่อนหน้า:";
 	for ( .@i = 0; .@i < .@size; .@i++ ) {
 		if (countitem(getarg(.@i)) < 1)
-			.@menu$ += "^777777ไม่มี " + getitemname(getarg(.@i)) + ".^000000:";
+			.@menu$ += "^999999ไม่มี " + getitemname(getarg(.@i)) + ".^000000:";
 		else
 			.@menu$ += "เจ้ามี " + getitemname(getarg(.@i)) + ".:";
 	}
@@ -1137,7 +1179,8 @@ S_Exchange:
 			next;
 			return;
 		}
-		progressbar "000000",5;
+		donpcevent strnpcinfo(0) + "::OnBar";
+		sleep2 5000;
 		specialeffect EF_BLACKBODY;
 		specialeffect EF_GUMGANG4;
 		specialeffect EF_DARKCASTING2;
@@ -1146,7 +1189,14 @@ S_Exchange:
 		specialeffect2 EF_POISONSMOKE;
 		specialeffect2 EF_NPC_BURNT;
 		delitem getarg(.@s),1;
-		getitem 6820, rand(1,3);// Energy Fragment
+		.@r = rand(100);
+		if (.@r < 70)
+			.@amount = 1;
+		else if (.@r < 90)
+			.@amount = 2;
+		else
+			.@amount = 3;
+		getitem 6820, .@amount;// Energy Fragment
 		mes "[Victimized Soul's Mind]";
 		mes "ข้าได้สร้าง...Energy...Fragment...จาก ^006400" + getitemname(getarg(.@s)) + "^000000...";
 		next;
@@ -1157,6 +1207,10 @@ S_Exchange:
 	mes "เจ้ามี...ธุระอะไรกับข้า...อีกไหม ?...";
 	next;
 	return;
+
+OnBar:
+	progressbar_npc "000000",5;
+	end;
 }
 
 lhz_dun_n,136,269,6	script	Sorrowful Soul's Mind#1	4_M_DEATH,{
@@ -1220,6 +1274,12 @@ lhz_dun_n,136,269,6	script	Sorrowful Soul's Mind#1	4_M_DEATH,{
 		getitemname(18983),	// Old_Protect_Of_Crown
 		getitemname(20749);	// Cloak of the Fallen Soldier[1]
 	while(true) {
+		if (checkweight(2677,5) == 0) {
+			mes "[Sorrowful Soul's Mind]";
+			mes "กระเป๋าเป้ของคุณ .. ";
+			mes "เต็มไปหมด ... ";
+			close;
+		}
 		if (select( "ส่งมอบ soul.", "จบการสนทนา." ) == 2) {
 			mes "[Sorrowful Soul's Mind]";
 			mes "...ข้าจะรอ...เจ้า...กลับมา...หาข้าอีกครั้ง...";
@@ -1230,7 +1290,7 @@ lhz_dun_n,136,269,6	script	Sorrowful Soul's Mind#1	4_M_DEATH,{
 		mes "เจ้า...ต้องการ...อะไร ?...";
 		while(true) {
 			next;
-			switch( select( "กลับไปที่เมนูก่อนหน้า.", .@item_name$[0], .@item_name$[1], .@item_name$[2], .@item_name$[3], .@item_name$[4], .@item_name$[5], .@item_name$[6], .@item_name$[7], .@item_name$[8], .@item_name$[9], .@item_name$[10], .@item_name$[11], .@item_name$[12], .@item_name$[13], .@item_name$[14] + "[1]" ) ) {
+			switch( select( "กลับไปที่เมนูก่อนหน้า", .@item_name$[0], .@item_name$[1], .@item_name$[2], .@item_name$[3], .@item_name$[4], .@item_name$[5], .@item_name$[6], .@item_name$[7], .@item_name$[8], .@item_name$[9], .@item_name$[10], .@item_name$[11], .@item_name$[12], .@item_name$[13], .@item_name$[14] + "[1]" ) ) {
 			case 1:
 				break;
 			case 2:
@@ -1541,7 +1601,7 @@ S_Make:
 	mes "ถ้าเก็บสะสม " + getitemname(6820) + " และ " + .@string$[0] + "ได้ 5 เท่า...เจ้า...จะไม่ล้มเหลว...";
 	mes "เจ้า...จะทำ...แบบไหน ?";
 	next;
-	switch( select( "กลับไปที่เมนูก่อนหน้า.", "ใช้ " + .@material[1] + " energies, " + .@material[0] + " " + .@string$[0], "ใช้ " + (.@material[1] * 5) + " energies, " + (.@material[0] * 5) + " " + .@string$[0] + "s" ) ) {
+	switch( select( "กลับไปที่เมนูก่อนหน้า", "ใช้ " + .@material[1] + " energies, " + .@material[0] + " " + .@string$[0], "ใช้ " + (.@material[1] * 5) + " energies, " + (.@material[0] * 5) + " " + .@string$[0] + "s" ) ) {
 	case 1:
 		mes "[Sorrowful Soul's Mind]";
 		mes "ข้าหวังว่า...เจ้าสามารถ...ดู...สิ่งอื่น ๆ...ได้เช่นกัน...";
@@ -1579,7 +1639,7 @@ S_Make:
 		specialeffect EF_POISONSMOKE;
 		specialeffect EF_GUMGANG4;
 		mes "[Sorrowful Soul's Mind]";
-		mes "^006400" + getitemname(.@reward_id) + "^000000...ล้มเหลว...";
+		mes "^006400" + getitemname(.@reward_id) + "^000000... ล้มเหลว...";
 	}
 	next;
 	mes "- ข้าได้รับความเสียหายอย่างหนัก - - โดยคลื่นพลังงาน - - ได้ซึมสู่ร่างกายของข้า. -";
@@ -1631,7 +1691,7 @@ OnTouch:
 	end;
 
 OnInit:
-	// questinfo 14683,QTYPE_QUEST,1;	// display when quest 14683 active
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(14683) == 1" );
 	end;
 }
 
