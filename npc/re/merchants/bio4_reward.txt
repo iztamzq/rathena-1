@@ -640,6 +640,7 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 	}
 	.@refine_count = getequiprefinerycnt(.@part);
 	.@equip_item = getequipid(.@part);
+	setarray .@equip_card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
 	.@lhz_max_num = 4000;
 	if (.@equip_item == 13069 || .@equip_item == 1291 || .@equip_item == 1392 || 
 	    .@equip_item == 1393 || .@equip_item == 1435 || .@equip_item == 1490 || 
@@ -701,7 +702,7 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 			mes "มี '^F2766EWill of Warrior^000000' ไม่พอ, เจ้าต้องมี 10 '^F2766EWill of Warrior^000000'";
 			close;
 		}
-		else if (getequipcardid(.@part, 3) > 0) {
+		else if (.@equip_card[3] > 0) {
 			mes "[Pudding]";
 			mes "พร้อมที่จะใช้พลังจาก '^F2766EWill of Warrior^000000'.";
 			close;
@@ -715,7 +716,7 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 			mes "มี '^952420Thirst for Blood^000000' ไม่พอ, เจ้าต้องมี 10 '^952420Thirst for Blood^000000'";
 			close;
 		}
-		else if (getequipcardid(.@part, 2) > 0) {
+		else if (.@equip_card[2] > 0) {
 			mes "[Pudding]";
 			mes "พร้อมที่จะใช้พลังจาก '^952420Thirst for Blood^000000'.";
 			close;
@@ -731,7 +732,7 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 			.@4thzptsodyd = 1;
 			.@3thzptsodyd = 1;
 		} else {
-			if (getequipcardid(.@part, 3) > 0) {
+			if (.@equip_card[3] > 0) {
 				.@menu_clear$[1] = "ลบออฟของ '^F2766EWill of Warrior^000000' แล้ว";
 			} else {
 				.@menu_clear$[1] = "^999999ไม่มีออฟที่ถูกลบ^000000";
