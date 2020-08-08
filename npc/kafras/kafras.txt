@@ -35,7 +35,7 @@ aldeba_in,96,181,4	script	Kafra Service	113,{
 	mes "สำนักงานใหญ่ คุณต้องการ";
 	mes "ให้ช่วยอะไรไหม?";
 	next;
-	switch(select("บันทึกจุดเซฟ:เปิดคลัง:เช่ารถเข็ญ:ยกเลิก")) {
+	switch(select("บันทึกจุดเซฟ:เปิดคลัง:เช่ารถเข็น:ยกเลิก")) {
 	case 1:
 		mes "[Kafra Leilah]";
 		mes "จุดเกิดของคุณ";
@@ -49,7 +49,7 @@ aldeba_in,96,181,4	script	Kafra Service	113,{
 		mes "Kafra Services";
 		mes "ที่มีให้บริการทุกที่ใน";
 		mes "Midgard. ขอบคุณสำหรับ";
-		mes "การมาเยี่ยม the Kafra สำนักงานใหญ่";
+		mes "การมาเยี่ยม The Kafra สำนักงานใหญ่";
 		close2;
 		break;
 	case 2:
