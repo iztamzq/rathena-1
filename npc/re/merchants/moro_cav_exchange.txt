@@ -1,21 +1,15 @@
 //===== rAthena Script =======================================
 //= Enchants NPCs.
 //===== Description: =========================================
-//= Hero Ring enchants NPCs - Walkthrough Conversion.
+//= [Official Conversion]
+//= Hero Ring enchants NPCs
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//= 1.1 Slight change to match official script. [Capuche]
 //============================================================
 
 moro_cav,32,73,5	script	Hero Token Exchanger#1	4_F_SHADOWCHASER,{
 	disable_items;
-	if (checkweight(1201,1) == 0) {// custom
-		mes "เจ้ามีของมากเกินไป. ลองลดจำนวนของลง.";
-		close;
-	}
-	if ((MaxWeight - Weight) < 10000) {
-		mes "เจ้ามีน้ำหนักมากเกินไป, ทำให้ไม่สามารถทำใดๆได้เลย. ลองลดน้ำหนักลง.";
-		close;
-	}
 	mes "[Hero Token Exchanger]";
 	mes "ถ้าเจ้าได้สู้กับ Morroc";
 	mes "และเก็บ";
@@ -24,6 +18,12 @@ moro_cav,32,73,5	script	Hero Token Exchanger#1	4_F_SHADOWCHASER,{
 	mes "เจ้าต้องการดูแหวนของข้าไหม ?";
 	while(true) {
 		next;
+		if (checkweight(2163,2) == 0) {
+			mes "[Hero Token Exchanger]";
+			mes "ของเจ้ามีของเยอะมาก";
+			mes "โปรดมาอีกครั้งหลังจากจัดการเรียบร้อบแล้ว!";
+			close;
+		}
 		switch( select( "รายละเอียดแหวน", "แลกแหวน.", "จบบทสนทนา." ) ) {
 		case 1:
 			mes "[Hero Token Exchanger]";
@@ -83,7 +83,7 @@ moro_cav,32,73,5	script	Hero Token Exchanger#1	4_F_SHADOWCHASER,{
 			mes "[Hero Token Exchanger]";
 			mes "ข้าจะแลกเปลี่ยน";
 			mes "30 ^006400Hero Tokens^000000";
-			mes "กับ 1 ^006400Hero Ring^000000.";
+			mes "with 1 ^006400Hero Ring^000000.";
 			mes "ไม่มีอะไรอีกใช่ไหม ?";
 			delitem 6684,30;	// TokenOfHero
 			getitem 2981,1;		// RingOfHero

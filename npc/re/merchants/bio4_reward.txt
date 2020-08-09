@@ -160,7 +160,7 @@ lighthalzen,342,291,4	script	Weird old man#Bio4Reward	4_M_EINOLD,{
 				switch(select(
 					"แสดงของอย่างอื่นให้ดูหน่อย.",
 					""+.@armor$[1]+"Giant Shield^000000",
-					""+.@armor$[2]+"Acient Book of Geffenia-Water^000000",
+					""+.@armor$[2]+"Ancient Book of Geffenia-Water^000000",
 					""+.@armor$[3]+"Bible of Promise(2nd Vol.)^000000",
 					""+.@armor$[4]+"Salvage Cape^000000",
 					""+.@armor$[5]+"Assassin's Handcuffs^000000",
@@ -180,7 +180,7 @@ lighthalzen,342,291,4	script	Weird old man#Bio4Reward	4_M_EINOLD,{
 					callsub L_Reward, 2160, 100, 50, 35; //Giant_Shield
 					break;
 				case 3:
-					mes "<<Acient Book of Geffenia-Water[1]>>";
+					mes "<<Ancient Book of Geffenia-Water[1]>>";
 					mes "INT + 1, MDEF + 2. If Original INT point is 120, MATK + 10, MHP + 800.";
 					mes "When equipping with Lacryma Stick, the casting % from Storm Gust, Frost Misty and Jack frost will discount equivalent to 4 times Refine Lv.";
 					mes "Shield / Def 30 / Weight 100 / Required Lv 100 / Socket 1 / for Warlock";
@@ -194,7 +194,7 @@ lighthalzen,342,291,4	script	Weird old man#Bio4Reward	4_M_EINOLD,{
 					break;
 				case 5:
 					mes "<<Salvage Cape[0]>>";
-					mes "Allow to use 'Cicada Skin Shed'(Lv 1). Cool time for this skill will be 30 seconds. When equiping it, SP consumption for using any skill will be doubled, When taking it off, SP - 1200.";
+					mes "Allow to use 'Cicada Skin Shed'(Lv 1). Cool down time for this skill will be 30 seconds. When equipping it, SP consumption for using any skill will be doubled, When taking it off, SP - 1200.";
 					mes "Garment / Def 1 / Weight 40 / Required Lv 130 / Socket 0 / for Archbishop";
 					callsub L_Reward, 2582, 300, 300, 400; //Salvage_Cape
 					break;
@@ -316,13 +316,13 @@ lighthalzen,342,291,4	script	Weird old man#Bio4Reward	4_M_EINOLD,{
 				case 10:
 					mes "<<Aztoe Nail[0]>>";
 					mes "MATK + 80. For Physical Melee Attack, cast Freezing to the target with a certain chance. The chance is affected by Refine Lv.";
-					mes "Dagger / ATK 160 / Weight 50 / Wind Property / Weapon Lv 4 / Required Lv 110 / Socket 0 / for High Swordman/Merchant/Theif Classes";
+					mes "Dagger / ATK 160 / Weight 50 / Wind Property / Weapon Lv 4 / Required Lv 110 / Socket 0 / for High Swordman/Merchant/Thief Classes";
 					callsub L_Reward, 13069, 50, 100, 35; //Aztoe_Nail
 					break;
 				case 11:
 					mes "<<Scarletto Nail[0]>>";
 					mes "MATK + 80. For Physical Melee Attack, cast Stone curse to the target with a certain chance. The chance is affected by Refine Lv.";
-					mes "Dagger / ATK 160 / Weight 50 / Fire Property / Weapon Lv 4 / Required Lv 110 / Socket 0 / for High Swordman/Merchant/Theif Classes";
+					mes "Dagger / ATK 160 / Weight 50 / Fire Property / Weapon Lv 4 / Required Lv 110 / Socket 0 / for High Swordman/Merchant/Thief Classes";
 					callsub L_Reward, 13070, 50, 100, 35; //Scarletto_Nail
 					break;
 				case 12:
@@ -362,7 +362,7 @@ lighthalzen,342,291,4	script	Weird old man#Bio4Reward	4_M_EINOLD,{
 L_Reward:
 	setarray .@amount[0], getarg(1), getarg(2), getarg(3);
 	next;
-	mes ""+ .@amount[0] +" Will of Warrior, "+ .@amount[1] +" Thirst for Blood, "+ .@amount[2] +" Chill of the Dead เป็นของที่ใช้แลกน่ะ.";
+	mes ""+ .@amount[0] +" Will of Warrior, "+ .@amount[1] +" Thirst for Blood, "+ .@amount[2] +" Chill of the Dead เป็นของที่ใช้แลกน่ะ";
 	next;
 	if (countitem(6469) >= .@amount[0] && countitem(6470) >= .@amount[1] && countitem(6471) >= .@amount[2]) {
 		if (select("Don't exchange", "Exchange") == 1) {
@@ -575,7 +575,7 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 			.@equipped$[.@i] = getequipname(.@parts[.@i]);
 		}
 	}
-	switch(select("ข้าเปลี่ยนใจแล้ว.", .@equipped$[0], .@equipped$[1], .@equipped$[2], .@equipped$[3], .@equipped$[4], 
+	switch(select("ข้าเปลี่ยนใจแล้ว", .@equipped$[0], .@equipped$[1], .@equipped$[2], .@equipped$[3], .@equipped$[4], 
 	.@equipped$[5], .@equipped$[6])) {
 	case 1:
 		mes "[Pudding]";
@@ -766,16 +766,19 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 				mes "ของสวมใส่ไม่เคยออฟมาก่อน.";
 				close;
 			}
-			setarray .@equip_card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+			specialeffect EF_BEGINSPELL2;
+			progressbar "ffff00", 2;
+			specialeffect2 EF_FROSTWEAPON;
+			delitem 6471, 10; //Goast_Chill
+
+			// anti-hack
+			if (callfunc("F_IsEquipIDHack", .@part, .@equip_item) || callfunc("F_IsEquipCardHack", .@part, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@refine_count))
+				close;
+
 			if (.@menu == 2)
 				.@equip_card[3] = 0;
 			else
 				.@equip_card[2] = 0;
-			.@equip_item = getequipid(.@part);
-			specialeffect EF_BEGINSPELL2, AREA, "Sorcerer#Bio4Reward";
-			progressbar "ffff00", 2;
-			specialeffect2 EF_FROSTWEAPON;
-			delitem 6471, 10; //Goast_Chill
 			delequip .@part;
 			getitem2 .@equip_item, 1, 1, .@refine_count, 0, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3];
 			mes "[Pudding]";
@@ -957,15 +960,18 @@ lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
 				else                 .@enchant = 0;
 			break;
 		}
-		setarray .@equip_card[0], getequipcardid(.@part,0),getequipcardid(.@part,1),getequipcardid(.@part,2),getequipcardid(.@part,3);
-		.@equip_card[(.@socket_type-1)] = .@enchant;
-		.@equip_item = getequipid(.@part);
-		specialeffect EF_BEGINSPELL3, AREA, "Sorcerer#Bio4Reward";
+		specialeffect EF_BEGINSPELL3;
 		progressbar "ffff00", 2;
 		if (.@socket_type == 3)
 			delitem 6470, 10; //Blood_Thirst
 		else
 			delitem 6469, 10; //Will_Of_Warrior
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@equip_item) || callfunc("F_IsEquipCardHack", .@part, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@refine_count))
+			close;
+
+		.@equip_card[(.@socket_type-1)] = .@enchant;
 		delequip .@part;
 		
 		if (.@enchant == 0){
