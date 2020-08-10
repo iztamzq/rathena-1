@@ -92,46 +92,46 @@ moc_para01,48,177,3	script	91-99 Mission Board	857,{
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFSolider^000000:^0000FFFreezer^000000:^0000FFHeater^000000")) {
-			case 1: callsub L_Quest,4181,"Solider",90000,"?????","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000";
-			case 2: callsub L_Quest,4182,"Freezer",94000,"?????","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000";
-			case 3: callsub L_Quest,4183,"Heater",114000,"????","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000";
+			case 1: callsub L_Quest,4181,"Solider",90000,"Solider","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000";
+			case 2: callsub L_Quest,4182,"Freezer",94000,"Freezer","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000";
+			case 3: callsub L_Quest,4183,"Heater",114000,"Heater","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000";
 		}
 	case 2:
 		mes "^8B4513Glast Heim^000000.";
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFInjustice^000000:^0000FFRybio^000000:^0000FFDark Priest^000000")) {
-			case 1: callsub L_Quest,4184,"Injustice",96000,"???????","มีสัตว์ประหลาดที่พบได้เฉพาะใน ^8B4513Glast Heim prison^000000";
-			case 2: callsub L_Quest,4185,"Rybio",96000,"?????","มีสัตว์ประหลาดที่พบได้เฉพาะใน ^8B4513Glast Heim prison^000000";
-			case 3: callsub L_Quest,4186,"Dark Priest",146000,"????????","มีสัตว์ประหลาดที่พบได้เฉพาะใน ^8B4513Glast Heim prison^000000";
+			case 1: callsub L_Quest,4184,"Injustice",96000,"Injustice","มีสัตว์ประหลาดที่พบได้เฉพาะใน ^8B4513Glast Heim prison^000000";
+			case 2: callsub L_Quest,4185,"Rybio",96000,"Rybio","มีสัตว์ประหลาดที่พบได้เฉพาะใน ^8B4513Glast Heim prison^000000";
+			case 3: callsub L_Quest,4186,"Dark Priest",146000,"Dark Priest","มีสัตว์ประหลาดที่พบได้เฉพาะใน ^8B4513Glast Heim prison^000000";
 		}
 	case 3:
 		mes "^8B4513Rachel / Veins^000000.";
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFStapo^000000:^0000FFRoween^000000:^0000FFSiroma^000000")) {
-			case 1: callsub L_Quest,4187,"Stapo",96000,"?????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Veins^000000.";
-			case 2: callsub L_Quest,4188,"Roween",102000,"?????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Rachel^000000.";
-			case 3: callsub L_Quest,4189,"Siroma",110000,"?????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Ice Dungeon^000000.";
+			case 1: callsub L_Quest,4187,"Stapo",96000,"Stapo","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Veins^000000.";
+			case 2: callsub L_Quest,4188,"Roween",102000,"Roween","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Rachel^000000.";
+			case 3: callsub L_Quest,4189,"Siroma",110000,"Siroma","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Ice Dungeon^000000.";
 		}
 	case 4:
 		mes "^8B4513Expansion Cities^000000.";
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFShinobi^000000:^0000FFEvil Nymph^000000")) {
-			case 1: callsub L_Quest,4190,"Shinobi",102000,"?????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Amatsu Dungeon^000000.";
-			case 2: callsub L_Quest,4191,"Evil Nymph",108000,"?????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Kunlun Dungeon^000000.";
+			case 1: callsub L_Quest,4190,"Shinobi",102000,"Shinobi","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Amatsu Dungeon^000000.";
+			case 2: callsub L_Quest,4191,"Evil Nymph",108000,"Evil Nymph","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Kunlun Dungeon^000000.";
 		}
 	case 5:
 		mes "Other Regions.";
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFDeviruchi^000000:^0000FFMineral^000000:^0000FFKaho^000000:^0000FFNeraid^000000:^0000FFDisguise^000000")) {
-			case 1: callsub L_Quest,4192,"Deviruchi",110000,"??????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Geffen Dungeon^000000.";
-			case 2: callsub L_Quest,4193,"Mineral",138000,"???","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Einbech Dungeon^000000.";
-			case 3: callsub L_Quest,4194,"Kaho",118000,"????","มีสัตว์ประหลาดที่พบใน ^8B4513Nogg Road Magma 1^000000.";
-			case 4: callsub L_Quest,4195,"Neraid",96000,"??????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Comodo Dungeon^000000.";
-			case 5: callsub L_Quest,4196,"Disguise",134000,"???????","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Niflheim^000000.";
+			case 1: callsub L_Quest,4192,"Deviruchi",110000,"Deviruchi","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Geffen Dungeon^000000.";
+			case 2: callsub L_Quest,4193,"Mineral",138000,"Mineral","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Einbech Dungeon^000000.";
+			case 3: callsub L_Quest,4194,"Kaho",118000,"Kaho","มีสัตว์ประหลาดที่พบใน ^8B4513Nogg Road Magma 1^000000.";
+			case 4: callsub L_Quest,4195,"Neraid",96000,"Neraid","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Comodo Dungeon^000000.";
+			case 5: callsub L_Quest,4196,"Disguise",134000,"Disguise","มีมอนสเตอร์ที่พบเฉพาะใน ^8B4513Niflheim^000000.";
 		}
 	}
 	end;

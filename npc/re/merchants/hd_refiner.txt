@@ -83,7 +83,7 @@
 	.@material = getequiprefinecost(.@part, REFINE_COST_HD, REFINE_MATERIAL_ID);
 
 	mes "[Blacksmith Mighty Hammer]";
-	mes "ในการตีบวก ข้าต้องการ ^ff9999"+getitemname(.@material)+"^000000 และ 20,000 zeny เป็นค่าบริการ.";
+	mes "ในการตีบวก ข้าต้องการ ^ff9999" + getitemname(.@material) + "^000000 และ 20,000 zeny เป็นค่าบริการ.";
 	mes "เจ้าพร้อมที่จะตีบวกยัง ?";
 	next;
 	if(select("ใช่:ไม่") == 2) {
@@ -266,7 +266,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 		.@type$ = "weapon";
 	mes "[Basta]";
 	mes "หืมมม... เจ้าอยากตีบวกอันนี้ใช่ไหม ?";
-	mes "ในการตีบวก, ข้าต้องการ 1 ^ff9999"+getitemname(.@material)+"^000000 และ " + callfunc("F_InsertComma",.@price) + " zeny เป็นค่าบริการ.";
+	mes "ในการตีบวก, ข้าต้องการ 1 ^ff9999" + getitemname(.@material) + "^000000 และ " + callfunc("F_InsertComma",.@price) + " zeny เป็นค่าบริการ.";
 	mes "เจ้าพร้อมที่จะตีบวกยัง ?";
 	next;
 	if(select("ใช่:ไม่") == 2) {
@@ -276,7 +276,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 	}
 	if (getequippercentrefinery(.@part, REFINE_COST_OVER10_HD) < 100) {
 		mes "[Basta]";
-		mes "ของชิ้นนี้ "+.@type$+" มีเลเวลการตีบวกที่สูงแล้ว.";
+		mes "ของชิ้นนี้ " + .@type$ + " มีเลเวลการตีบวกที่สูงแล้ว.";
 		mes "ถ้าเจ้าอยากตีบวกต่อ, มันอาจจะลดเลเวลตีบวกลงได้.";
 		next;
 		mes "[Basta]";

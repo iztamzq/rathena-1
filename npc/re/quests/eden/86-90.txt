@@ -90,17 +90,17 @@ moc_para01,48,175,3	script	86-90 Mission Board	857,{
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFDragon Tail^000000:^0000FFSpring Rabbit^000000:^0000FFPest^000000")) {
-			case 1: callsub L_Quest,4167,"Dragon Tail",76000,"???????","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000","s";
-			case 2: callsub L_Quest,4168,"Spring Rabbit",82000,"???????","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000","s";
-			case 3: callsub L_Quest,4169,"Pest",82000,"?????","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000","s";
+			case 1: callsub L_Quest,4167,"Dragon Tail",76000,"Dragon Tail","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000","s";
+			case 2: callsub L_Quest,4168,"Spring Rabbit",82000,"Spring Rabbit","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000","s";
+			case 3: callsub L_Quest,4169,"Pest",82000,"Pest","มีมอนสเตอร์ที่สามารถพบได้เฉพาะบน ^8B4513Turtle Island^000000","s";
 		}
 	case 2:
 		mes "^8B4513Clock Tower Dungeon^000000.";
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFBathory^000000:^0000FFAlarm^000000")) {
-			case 1: callsub L_Quest,4170,"Bathory",72000,"?????","ดันเจี้ยนหอนาฬิกาเต็มไปด้วยสัตว์ประหลาดอันตราย";
-			case 2: callsub L_Quest,4171,"Alarm",76000,"????","ดันเจี้ยนหอนาฬิกาเต็มไปด้วยสัตว์ประหลาดอันตราย";
+			case 1: callsub L_Quest,4170,"Bathory",72000,"Bathory","ดันเจี้ยนหอนาฬิกาเต็มไปด้วยสัตว์ประหลาดอันตราย";
+			case 2: callsub L_Quest,4171,"Alarm",76000,"Alarm","ดันเจี้ยนหอนาฬิกาเต็มไปด้วยสัตว์ประหลาดอันตราย";
 		}
 	case 3:
 		mes "^8B4513Expansion Cities^000000";
@@ -108,9 +108,9 @@ moc_para01,48,175,3	script	86-90 Mission Board	857,{
 		next;
 		switch(select("^0000FFBaba Yaga^000000:^0000FFYao Jun^000000:^0000FFFirelock Soldier^000000:^0000FFZipper Bear^000000")) {
 			case 1: callsub L_Quest,4172,"Baba Yaga",72000,"","แม่มด Baba Yaga สามารถพบได้ในเขตชานเมืองของ Moscovia";
-			case 2: callsub L_Quest,4173,"Yao Jun",117000,"????","มีสัตว์ประหลาดคล้ายมนุษย์ที่เร่ร่อนไปทั่วคุกใต้ดินใน Luoyang.";
-			case 3: callsub L_Quest,4174,"Firelock Soldier",82000,"???????","มีสัตว์ประหลาดคล้ายมนุษย์ที่เร่ร่อนไปทั่วคุกใต้ดินใน Amatsu.","s";
-			case 4: callsub L_Quest,4175,"Zipper Bear",120000,"??????","มีมอนสเตอร์หมีรุมในดันเจี้ยน Kunlun";
+			case 2: callsub L_Quest,4173,"Yao Jun",117000,"Yao Jun","มีสัตว์ประหลาดคล้ายมนุษย์ที่เร่ร่อนไปทั่วคุกใต้ดินใน Luoyang.";
+			case 3: callsub L_Quest,4174,"Firelock Soldier",82000,"Firelock Soldier","มีสัตว์ประหลาดคล้ายมนุษย์ที่เร่ร่อนไปทั่วคุกใต้ดินใน Amatsu.","s";
+			case 4: callsub L_Quest,4175,"Zipper Bear",120000,"Zipper Bear","มีมอนสเตอร์หมีรุมในดันเจี้ยน Kunlun";
 		}
 	case 4:
 		mes "[86-90 Mission Board]";
@@ -118,11 +118,11 @@ moc_para01,48,175,3	script	86-90 Mission Board	857,{
 		mes "คุณจะล่ามอนสเตอร์ตัวไหนหรือล่าเสร็จแล้ว";
 		next;
 		switch(select("^0000FFGround Petite^000000:^0000FFRafflesia^000000:^0000FFVenomous^000000:^0000FFPitman^000000:^0000FFYellow Novus^000000")) {
-			case 1: callsub L_Quest,4176,"Ground Petite",72000,"??????","มีสัตว์ประหลาดประเภทมังกรรุมกินพื้นที่ทางตะวันตกของเมือง Geffen";
-			case 2: callsub L_Quest,4177,"Rafflesia",72000,"???????","มีสัตว์ประหลาดประเภทพืชอาศัยอยู่ในทุ่ง Lighthalzen";
-			case 3: callsub L_Quest,4178,"Venomous",72000,"????","มีสัตว์ประหลาดไร้รูปร่างลอยอยู่รอบๆ ทุ่ง Einbroch";
-			case 4: callsub L_Quest,4179,"Pitman",86000,"??","มีมอนสเตอร์ที่ไม่ตายกำลังเข็นรถเข็นไปรอบๆ ทุ่งและดันเจี้ยนของ Einbroch";
-			case 5: callsub L_Quest,4180,"Yellow Novus",80000,"??????","มีมอนสเตอร์ประเภทมังกรสีเหลืองกำลังคุกคามทุ่ง Hugel";
+			case 1: callsub L_Quest,4176,"Ground Petite",72000,"Ground Petite","มีสัตว์ประหลาดประเภทมังกรรุมกินพื้นที่ทางตะวันตกของเมือง Geffen";
+			case 2: callsub L_Quest,4177,"Rafflesia",72000,"Rafflesia","มีสัตว์ประหลาดประเภทพืชอาศัยอยู่ในทุ่ง Lighthalzen";
+			case 3: callsub L_Quest,4178,"Venomous",72000,"Venomous","มีสัตว์ประหลาดไร้รูปร่างลอยอยู่รอบๆ ทุ่ง Einbroch";
+			case 4: callsub L_Quest,4179,"Pitman",86000,"Pitman","มีมอนสเตอร์ที่ไม่ตายกำลังเข็นรถเข็นไปรอบๆ ทุ่งและดันเจี้ยนของ Einbroch";
+			case 5: callsub L_Quest,4180,"Yellow Novus",80000,"Yellow Novus","มีมอนสเตอร์ประเภทมังกรสีเหลืองกำลังคุกคามทุ่ง Hugel";
 		}
 	}
 	end;
