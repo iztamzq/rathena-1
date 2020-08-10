@@ -61,7 +61,7 @@ alberta,26,229,0	script	Kafra Employee#bunny	83,{
 			set BUNYBND,0;
 			next;
 			mes "[Kafra Employee]";
-			mes "ขอบคุณสำหรับการเข้าร่วมในกิจกรรมพิเศษนี้และการสนับสนุน Kafra Services~"
+			mes "ขอบคุณสำหรับการเข้าร่วมในกิจกรรมพิเศษนี้และการสนับสนุน Kafra Services~";
 			close;
 		case 2:
 			goto L_Info;

@@ -1857,7 +1857,7 @@ OnTimer1000:
 		switch (rand(3)) {
 			case 0:  .@msg$ = "ฉันมองไม่เห็นอนาคตของตัวเองอีกต่อไป..."; break;
 			case 1:  .@msg$ = "ตาของฉัน...แค่ปิด..."; break;
-			default:  .@msg$ = "ไอ้มัน...ซี้ดดดดดดดด...break;
+			default:  .@msg$ = "ไอ้มัน...ซี้ดดดดดดดด...break";;
 		}
 	}
 	else if (.@npc_name$ == "#Magaleta_Sorin_A1") {
