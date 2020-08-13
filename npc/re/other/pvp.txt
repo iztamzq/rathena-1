@@ -47,7 +47,7 @@ pvp_y_room,54,85,4	script	Fight Square Reception#8	105,{
 	end;
 
 OnInit:
-	waitingroom "ฟรีสำหรับทุกอาชีพ",0;
+	waitingroom "�������Ѻ�ء�Ҫվ",0;
 	end;
 }
 
@@ -55,15 +55,15 @@ pvp_y_room,62,85,4	script	Fight Square Reception#4	105,{
 	//if (ADVJOB > 0) {
 	if (Upper == 1) {
 		mes "[PVP Fight Square Reception Staff]";
-		mes "คุณเป็น Transcended Class";
-		mes "คุณไม่ได้รับอนุญาตให้เข้า";
+		mes "�س�� Transcended Class";
+		mes "�س������Ѻ͹حҵ������";
 		close;
 	}
 	callfunc "F_PVP_FSRS";
 	end;
 
 OnInit:
-	waitingroom "อาชีพปกติเท่านั้น",0;
+	waitingroom "�Ҫվ������ҹ��",0;
 	end;
 }
 
@@ -71,15 +71,15 @@ pvp_y_room,70,85,4	script	Fight Square Reception#5	105,{
 	//if (ADVJOB == 0) {
 	if (Upper != 1) {
 		mes "[PVP Fight Square Reception Staff]";
-		mes "คุณไม่ได้เป็น Transcended Class";
-		mes "คุณไม่ได้รับอนุญาตให้เข้า";
+		mes "�س������� Transcended Class";
+		mes "�س������Ѻ͹حҵ������";
 		close;
 	}
 	callfunc "F_PVP_FSRS";
 	end;
 
 OnInit:
-	waitingroom "อาชีพ Transcended Class เท่านั้น",0;
+	waitingroom "�Ҫվ Transcended Class ��ҹ��",0;
 	end;
 }
 
@@ -88,6 +88,6 @@ pvp_n_room,86,85,4	script	Fight Square Reception#n	105,{
 	end;
 
 OnInit:
-	waitingroom "ฟรีสำหรับทุกอาชีพ",0;
+	waitingroom "�������Ѻ�ء�Ҫվ",0;
 	end;
 }
