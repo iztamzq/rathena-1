@@ -2068,7 +2068,7 @@ lhz_dun_n,53,127,2	duplicate(A Questionable Device#14684)	A Questionable Device#
 lhz_dun_n,214,127,2	duplicate(A Questionable Device#14684)	A Questionable Device#14686	4_SYSTEM_BOX,5,5
 lhz_dun_n,148,148,2	duplicate(A Questionable Device#14684)	A Questionable Device#14687	4_SYSTEM_BOX,5,5
 
-
+/*
 // Unknown effects
 lhz_dun_n,130,204,2	script	Dead Man#lhzd01	4_TOWER_06,5,5
 lhz_dun_n,78,133,2	script	Dead Man#lhzd02	4_TOWER_06,5,5
@@ -2120,3 +2120,4 @@ lhz_dun_n,157,143,2	script	Dead Man#lhzd47	4_TOWER_13,5,5
 lhz_dun_n,202,133,2	script	Dead Man#lhzd48	4_TOWER_13,5,5
 lhz_dun_n,220,178,2	script	Dead Man#lhzd49	4_TOWER_13,5,5
 lhz_dun_n,131,148,2	script	Dead Man#lhzd50	4_TOWER_13,5,5
+*/
