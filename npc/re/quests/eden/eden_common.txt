@@ -93,7 +93,7 @@ moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 					mes "มาดูกันเถอะ";
 					next;
 					mes "[Lime Evenor]";
-					mes "ชื่อของคุณคือ ^3131FF Bo" + .@input$ + "Ba ^000000 ... ใช่ไหม?";
+					mes "ชื่อของคุณคือ ^3131FF " + .@input$ + " ^000000 ใช่ไหม?";
 					mes "หืมมใช่เหรอ?";
 					next;
 					emotion ET_SWEAT;
@@ -102,7 +102,7 @@ moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 					mes "โอเคอืมดูเหมือนยากที่จะอ่าน";
 					next;
 					mes "[Lime Evenor]";
-					mes "คุณกรุณาเขียนชื่อของคุณอีกครั้งได้ไหมกรุณาเขียนมัน ^3131FFอย่างชัดเจน^000000";
+					mes "คุณกรุณาเขียนชื่อของคุณอีกครั้งได้ไหมกรุณาเขียนมัน ^3131FF อย่างชัดเจน^000000";
 					input .@input$;
 					next;
 					mes "[Lime Evenor]";
