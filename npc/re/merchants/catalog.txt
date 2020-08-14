@@ -24,9 +24,9 @@ moc_para01,22,16,5	script	Catalog Magician#catal01	704,{
 	}
 	set .@ticket_cost, 200;
 	mes "[Catalog Magician]";
-	mes "Look ... the Magic Academy";
+	mes "ดูนี่สิ... Magic Academy";
 	mes "ใน Geffen ตรงนี้";
-	mes "ขายของใหม่";
+	mes "สินค้าใหม่";
 	mes "^007777Universal Catalog Silver^000000!";
 	next;
 	mes "เขากำลังดูคำว่า";
@@ -47,7 +47,7 @@ moc_para01,22,16,5	script	Catalog Magician#catal01	704,{
 	mes "ราคาแค่ 200z!";
 	mes "คุณสามารถซื้อได้สูงสุด 50 ชิ้นพร้อมกัน!";
 	next;
-	switch(select("ซื้อ ^007777Universal Catalog Silver^000000:ฉันไม่ต้องการมัน: คุณดูไม่เหมือนผู้ขายเลย!")) {
+	switch(select("ซื้อ ^007777Universal Catalog Silver^000000:ฉันไม่ต้องการมัน:คุณดูไม่เหมือนผู้ขายเลย!")) {
 	case 1:
 		mes "[Catalog Magician]";
 		mes "คุณ ... ต้องการทั้งหมด 50 ชิ้น";
