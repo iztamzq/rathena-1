@@ -114,7 +114,7 @@ prt_in,33,114,5	script	Raffam Oranpere	10058,{
 						if (clan_join(SWORDCLAN)) {
 							sc_start2 SC_SWORDCLAN, INFINITE_TICK, 0, SWORDCLAN;
 							mes "[Raffam Oranpere]";
-							es "ยินดีต้อนรับสู่ ^3131FFSword Clan^000000!";
+							mes "ยินดีต้อนรับสู่ ^3131FFSword Clan^000000!";
 							mes "เจ้าสามารถดูรายละเอียดแคลนได้โดยกด ^3131FFCtrl+G^000000.";
 							mes "ยินดีที่ให้บริการ!";
 						} else
