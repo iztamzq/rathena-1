@@ -40,7 +40,7 @@ prontera,184,177,6	script	Refine Master	851,{
 		case 2:
 			mes "[Refine Master]";
 			mes "แท้จริงแล้ว, บางครั้งข้าก็ตีบวกของให้กับนักผจญภัยที่มี ^006400Refine Ticket^000000...";
-			mes "Bye bye~!";
+			mes "ลาก่อน~!";
 			close;
 		}
 	}
