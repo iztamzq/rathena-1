@@ -2278,13 +2278,22 @@ static int battle_range_type(struct block_list *src, struct block_list *target, 
 	if (skill_get_inf2(skill_id, INF2_ISTRAP))
 		return BF_SHORT;
 
-	// When monsters use Arrow Shower or Bomb, it is always short range
-	if (src->type == BL_MOB && (skill_id == AC_SHOWER || skill_id == AM_DEMONSTRATION))
-		return BF_SHORT;
-
-	// Cast range is 7 cells and player jumps to target but skill is considered melee
-	if (skill_id == GC_CROSSIMPACT)
-		return BF_SHORT;
+	switch (skill_id) {
+		case AC_SHOWER:
+		case AM_DEMONSTRATION:
+			// When monsters use Arrow Shower or Bomb, it is always short range
+			if (src->type == BL_MOB)
+				return BF_SHORT;
+			break;
+#ifdef RENEWAL
+		case KN_BRANDISHSPEAR:
+			// Renewal changes to ranged physical damage
+			return BF_LONG;
+#endif
+		case GC_CROSSIMPACT:
+			// Cast range is 7 cells and player jumps to target but skill is considered melee
+			return BF_SHORT;
+	}
 
 	//Skill Range Criteria
 	if (battle_config.skillrange_by_distance &&
@@ -5622,11 +5631,6 @@ static struct Damage initialize_weapon_data(struct block_list *src, struct block
 				wd.blewcount = 0;
 				break;
 
-#ifdef RENEWAL
-			case KN_BRANDISHSPEAR:
-				wd.flag |= BF_LONG;
-				break;
-#endif
 			case KN_AUTOCOUNTER:
 				wd.flag = (wd.flag&~BF_SKILLMASK)|BF_NORMAL;
 				break;
@@ -6119,7 +6123,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 				s_ele = ELE_HOLY;
 			break;
 		case WL_HELLINFERNO:
-			if (mflag == ELE_DARK) {
+			if (mflag & 2) { // ELE_DARK
 				s_ele = ELE_DARK;
 				ad.div_ = 3;
 			}
@@ -6490,7 +6494,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						break;
 					case WL_HELLINFERNO:
 						skillratio += -100 + 400 * skill_lv;
-						if (mflag == ELE_DARK)
+						if (mflag & 2) // ELE_DARK
 							skillratio += 200;
 						RE_LVL_DMOD(100);
 						break;
@@ -8935,6 +8939,7 @@ static const struct _battle_data {
 	{ "monster_eye_range_bonus",            &battle_config.mob_eye_range_bonus,             0,      0,      10,             },
 	{ "monster_stuck_warning",              &battle_config.mob_stuck_warning,               0,      0,      1,              },
 	{ "skill_eightpath_algorithm",          &battle_config.skill_eightpath_algorithm,       1,      0,      1,              },
+	{ "skill_eightpath_same_cell",          &battle_config.skill_eightpath_same_cell,       1,      0,      1,              },
 	{ "death_penalty_maxlv",                &battle_config.death_penalty_maxlv,             0,      0,      3,              },
 	{ "exp_cost_redemptio",                 &battle_config.exp_cost_redemptio,              1,      0,      100,            },
 	{ "exp_cost_redemptio_limit",           &battle_config.exp_cost_redemptio_limit,        5,      0,      MAX_PARTY,      },
