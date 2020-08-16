@@ -259,7 +259,7 @@ int_land,73,100,3	script	Lumin#new_ship	4_M_NOV_RUMIN,{
 		mes "Lumin.";
 		next;
 		mes "[Captain Carocc]";
-		mes "เด็กๆ หลายคนไปเยี่ยมชม ^4d4dffอาณาจักรรูน - มิดการ์ท^000000เพื่อไล่ล่าความฝันของพวกเขา";
+		mes "เด็กๆ หลายคนไปเยี่ยมชม ^4d4dffอาณาจักร Rune-Midgarts^000000เพื่อไล่ล่าความฝันของพวกเขา";
 		mes "Izlude เป็นเมืองดาวเทียมของ Prontera ซึ่งเป็นเมืองหลวงของอาณาจักร Rune-Midgarts";
 		next;
 		mes "[Captain Carocc]";
