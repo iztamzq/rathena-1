@@ -261,7 +261,7 @@ cmd_in02,146,180,4	script	Kafra Employee::kaf_comodo2	721,{
 	next;
 	mes "[คาฟรามิสตี้]";
 	mes "เดอะคาฟราคอร์ปอเรชั่น";
-	mes "Western Division สัญญาว่าจะให้บริการที่มีคุณภาพดีที่สุด
+	mes "Western Division สัญญาว่าจะให้บริการที่มีคุณภาพดีที่สุด";
 	mes "ขอบคุณที่อุดหนุนครับ ~";
 	close2;
 	cutin "", 255;
