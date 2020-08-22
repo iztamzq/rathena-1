@@ -311,7 +311,7 @@ OnTouch_:
 		next;
 		mes "[Suspicious Guy]";
 		mes "ฉันเรียกมันว่า...";
-		mes "^FF3333Main Gauche^000000! ฉันคิดค้นมันขึ้นมาเองและฉันขายมันในราคา 9,400 เซนเท่านั้น!";
+		mes "^FF3333Main Gauche^000000! ฉันคิดค้นมันขึ้นมาเองและฉันขายมันในราคา 9,400 Zeny เท่านั้น!";
 		next;
 		select("คุณจะไม่ให้ปลอกด้วยเหรอ?");
 		mes "[Suspicious Guy]";
@@ -425,7 +425,7 @@ OnTouch_:
 
 geffen_in,22,125,1	script	Crumpler	52,{
 	mes "[Crumpler]";
-	mes "Ooooh~!";
+	mes "โอ้ ~!";
 	mes "แต่งตัวสวยแน่ๆ ";
 	mes "ยาวิเศษ Schmancy Mage!";
 	next;
@@ -456,7 +456,7 @@ geffen_in,22,125,1	script	Crumpler	52,{
 			mes "......";
 			next;
 			mes "[Crumpler]";
-			mes "Ooooooooh";
+			mes "โอ้";
 			mes "crraaaap!";
 			emotion ET_SURPRISE;
 			next;
@@ -475,7 +475,7 @@ geffen_in,22,125,1	script	Crumpler	52,{
 			next;
 			specialeffect EF_LORD;
 			mes "[Crumpler]";
-			mes "ARRRRRGH~!";
+			mes "อ้าา~!";
 			mes "IT BUUUURNS!";
 			close;
 		case 3:
@@ -523,7 +523,7 @@ geffen_in,22,125,1	script	Crumpler	52,{
 
 geffen_in,59,61,1	script	Skyler	61,{
 	mes "[Skyler]";
-	mes "สวัสดีสวัสดี";
+	mes "สวัสดี";
 	mes "คุณไม่ได้ตามหา Eric ใช่ไหม";
 	next;
 	if (select("Eric? นั่นใคร?:ใช่ ใช่ฉัน.") == 1) {
@@ -620,7 +620,7 @@ geffen_in,27,134,5	script	Waitress#elen	91,{
 			next;
 			mes "[Elenore]";
 			mes "ฮึ...";
-			mes "Ooooh...";
+			mes "โอ้...";
 			mes "หัวของฉัน...";
 			mes "มัน huuurts...";
 			next;
@@ -834,10 +834,10 @@ geffen_in,79,76,2	script	Merchant Daven	120,{
 			mes "[Merchant Daven]";
 			mes "อืมฉันเดาว่าคุณสามารถขอบคุณช่างตีเหล็กสำหรับเศรษฐกิจที่นี่ในเมืองเกฟเฟนได้แน่นอนว่าพวกเขาสกปรกเหงื่อเหม็นและพูดจาหยาบคายเสมอ...";
 			next;
-			mes "[พ่อค้าดาเวน]";
+			mes "[Merchant Daven]";
 			mes "แต่พวกเขาเป็นคนทำงานหนักนอกจากนี้แร่ที่พวกเขาปรับแต่งและอาวุธที่พวกเขาสร้างขึ้นก็มีความต้องการสูง";
 			next;
-			mes "[พ่อค้าดาเวน]";
+			mes "[Merchant Daven]";
 			mes "นักผจญภัยจ่ายเงินให้กับช่างตีเหล็กเป็นจำนวนมากเพื่อซื้ออาวุธคุณภาพสูงที่พวกเขาสร้างได้";
 		}
 		break;
@@ -935,7 +935,7 @@ geffen_in,39,127,2	script	Psychic Advisor	704,{
 			next;
 			break;
 		case 2:
-			mes "Hmm...";
+			mes "หืม...";
 			mes "ฉันจะบอกอะไรคุณเกี่ยวกับชีวิตให้ฉันติดต่อกับโลกแห่งวิญญาณด่วน~";
 			next;
 			mes "[Psychic Advisor]";
@@ -1345,7 +1345,7 @@ geffen_in,109,72,2	script	Monster Scholar	90,{
 		mes "ฉันหมายถึงฉันได้อ่านเกี่ยวกับสัตว์ประหลาดทุกประเภทในห้องสมุด Prontera และ Juno และพบเจอสัตว์ป่าเพียงไม่กี่ตัว แต่ตอนนี้ฉันมีโอกาสได้เห็นสัตว์ประหลาดที่แข็งแกร่งในชีวิตจริง!";
 		next;
 		mes "[Estheres]";
-		mes "สิ่งที่น่าตื่นเต้นคือการสำรวจที่ประสบความสำเร็จโดยคุณนักผจญภัยในอาณาจักรรูน - มิดการ์ท";
+		mes "สิ่งที่น่าตื่นเต้นคือการสำรวจที่ประสบความสำเร็จโดยคุณนักผจญภัยในอาณาจักร Rune-Midgarts";
 		next;
 		mes "[Estheres]";
 		mes "เมื่อมีการค้นพบดินแดนใหม่มักจะมีมอนสเตอร์ที่มีเอกลักษณ์เฉพาะถิ่นนั้นอยู่";
