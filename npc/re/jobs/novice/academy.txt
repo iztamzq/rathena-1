@@ -25,14 +25,14 @@ OnTouch:
 	if (getd(".start" + strnpcinfo(1)) == 0) {
 		setd ".start" + strnpcinfo(1), 1;
 		initnpctimer;
-		mapannounce strnpcinfo(4), "[ควรรู้] คุณสามารถเลื่อนไปยังจุดที่ต้องการได้โดยคลิกที่พื้นด้วยปุ่มซ้ายของเมาส์", bc_map,0xFF0000;
+		mapannounce strnpcinfo(4), "[เคล็ดลับ] คุณสามารถเลื่อนไปยังจุดที่ต้องการได้โดยคลิกที่พื้นด้วยปุ่มซ้ายของเมาส์", bc_map,0xFF0000;
 	}
 	end;
 OnTimer9000:
-	mapannounce strnpcinfo(4), "[ควรรู้] ในขณะที่กดปุ่มเมาส์ขวาค้างไว้ให้ลากเพื่อหมุนหน้าจอ", bc_map,0xFF0000;
+	mapannounce strnpcinfo(4), "[เคล็ดลับ] ในขณะที่กดปุ่มเมาส์ขวาค้างไว้ให้ลากเพื่อหมุนหน้าจอ", bc_map,0xFF0000;
 	end;
 OnTimer18000:
-	mapannounce strnpcinfo(4), "[ควรรู้] คุณสามารถออกจากพื้นที่ได้ด้วยการ วาร์ป", bc_map,0xFF0000;
+	mapannounce strnpcinfo(4), "[เคล็ดลับ] คุณสามารถออกจากพื้นที่ได้ด้วยการ วาร์ป", bc_map,0xFF0000;
 	emotion ET_SURPRISE, getnpcid(0, "#room_out" + replacestr( strnpcinfo(4), "iz_int", "" ));
 	end;
 OnTimer21000:
@@ -42,7 +42,7 @@ OnTimer24000:
 	emotion ET_SURPRISE, getnpcid(0, "#room_out" + replacestr( strnpcinfo(4), "iz_int", "" ));
 	end;
 OnTimer27000:
-	mapannounce strnpcinfo(4), "[ควรรู้] ออกจากที่นี้ เพื่อไปต่อ", bc_map,0xFF0000;
+	mapannounce strnpcinfo(4), "[เคล็ดลับ] ออกจากที่นี้ เพื่อไปต่อ", bc_map,0xFF0000;
 	stopnpctimer;
 	setd ".start" + strnpcinfo(1), 0;
 	end;
@@ -71,9 +71,9 @@ iz_int,56,32,3	script	Wounded Swordsman#intro_npc01_iz_int	4_TOWER_01,5,5,{
 	end;
 
 OnTouch:
-	npctalk "เฮือก... ได้โปรด... ช่วย ข้าด้วย...", "", bc_self;
+	npctalk "ได้โปรด ... ช่วยฉันด้วย ...", "", bc_self;
 	sleep2 500;
-	npctalk "เพื่อคุยกับฉัน .. สะกดตัวของฉัน..", "", bc_self;
+	npctalk "เพื่อคุยกับฉัน .. กดที่ตัวของฉัน..", "", bc_self;
 	end;
 
 OnInit:
@@ -113,7 +113,7 @@ iz_int,56,32,3	script	Wounded Swordsman#intro_npc02_iz_int	4_TOWER_02,{
 		mes "^4d4dff!- Information -!^000000";
 	}
 	mes "^4d4dffQuestinfo กด Alt + U^000000";
-	mes "เจ้าสามารถดูภาระกิจได้ตลอด";
+	mes "เจ้าสามารถดูภารกิจได้ตลอด";
 	close2;
 	cutin "",255;
 	end;
@@ -134,15 +134,15 @@ int_land,78,103,5	script	Captain Carocc#intro_npc03	4_M_REINDEER,{
 	switch( isbegin_quest(21008) ) {
 	case 0:
 		mes "[Captain Carocc]";
-		mes "ยังมีผู้คนในกระท่อม?!";
+		mes "ยังมีผู้คนในห้องโดยสารเรือ?!";
 		mes "อย่างน้อยคุณก็ปลอดภัย";
 		mes "คุณไม่เป็นอะไรใช่ไหม?";
 		next;
 		if (select("ฉันปลอดภัยดี แต่มีคนต้องช่วยเหลือ", "ฉันคิดว่า ฉันคนสุดท้าย?") == 1) {
 			mes "[Captain Carocc]";
 			mes "ยังมีคนอื่นอีกไหม?";
-			mes "ฉันจะส่งคนไปกู้ภัย";
-			mes "ขอบคุณที่มารายงาน";
+			mes "ฉันจะส่งทีมช่วยเหลือไปหาพวกเขา";
+			mes "ขอบคุณสำหรับรายงานของคุณ";
 		} else {
 			mes "[Captain Carocc]";
 			mes "เอาล่ะ เป็นสิ่งที่ดี";
